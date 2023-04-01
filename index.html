@@ -6,29 +6,28 @@
       body {
         margin: 0;
         padding: 0;
-        background-color: #f7f7f7;
         font-family: Arial, sans-serif;
       }
 
       header {
         background-color: #333;
-        height: 150px;
+        height: 7.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
       }
 
       header img {
-        height: 100px;
-        width: 100px;
+        height: 6.25rem;
+        width: 6.25rem;
         border-radius: 50%;
         object-fit: cover;
-        margin-right: 20px;
+        margin-right: 1.25rem;
       }
 
       h1 {
         color: #fff;
-        font-size: 36px;
+        font-size: 2.25rem;
         margin: 0;
       }
 
@@ -36,33 +35,45 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 70vh;
+        height: 75vh;
         flex-direction: column;
-        background-image: url(https://s1.ax1x.com/2023/03/30/pp21iKs.jpg);
+        background-image: url(https://s1.ax1x.com/2023/04/01/ppROsZ6.jpg);
         background-size: cover;
+        width: 100%;
       }
 
-    p {
-  font-size: 24px;
-  line-height: 1.5;
-  max-width: 800px;
-  text-align: center;
-  margin: 20px 0;
-  padding: 0 20px;
-  color: #333;
-  text-stroke: 1px #000;
-  -webkit-text-stroke: 0.5px #ffffff; /* 兼容 Safari */
-  white-space: nowrap; /* 单行文本不自动换行和断句 */
-}
+      .box {
+        display: flex;
+        flex-direction: column;
+      }
 
-
+      p {
+        font-size: 1.75rem;
+        line-height: 1.5;
+        max-width: 50rem;
+        text-align: center;
+        margin: 0.5rem 0;
+        padding: 1.25rem 0rem;
+        color: #ffffff;
+        /* text-stroke: 1px #000; */
+        -webkit-text-stroke: 0.5px #080808; /* 兼容 Safari */
+        /* white-space: nowrap; 单行文本不自动换行和断句 */
+        background-color: rgba(0, 0, 0, 0.5);
+        border: solid 1px #ffffff;
+        box-shadow: 0.2px 0.2px 0 #000000;
+      }
 
       footer {
         background-color: #333;
-        height: 100px;
+        height: 6.25rem;
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
+      }
+
+      footer div {
+        padding: 10px;
       }
 
       footer a {
@@ -70,6 +81,16 @@
         text-decoration: none;
         margin: 0 10px;
         font-size: 24px;
+      }
+
+      .w {
+        color: #fff;
+        font-size: 0.875rem;
+      }
+
+      .g {
+        color: #fff;
+        font-size: 1.5rem;
       }
     </style>
   </head>
@@ -80,23 +101,37 @@
     </header>
 
     <div class="intro-container">
-      <p>
+      <div class="box">
         <p>
-  你好，我叫XXX，是一名前端工程师<br>
-  我热爱编程，尤其是对前端技术有着浓厚的兴趣和热情<br>
-  我掌握了HTML、CSS、JavaScript等基本的前端技<br>
-  能够熟练地使用Vue.js、React等前端框架<br>
-  并熟悉jQuery、Bootstrap等前端工具<br>
-  我喜欢不断学习和探索新技术
-  <br>希望能够在前端领域取得更进一步的发展
-</p>
+          大家好，我是自然语言编程系列课程的老师。<br />
+          我是一个文科生，而且年龄也已经大了 <br />深知学习编程的不易，<br />
+          因此，在ChatGPT出现之后，<br />
+          萌发了制作自然语言编程系列的想法<br />
+          帮助人们更好地理解和应用自然语言编程技术。<br />
+        </p>
+        <p>
+          在我的课堂上，您将学习到自然语言处理和编程的基础知识，<br />
 
-      </p>
+          我会通过实践案例和编程项目<br />
+          来帮助您深入理解这些概念，<br />
+          并通过实际操作来提高您的编程技能。<br />
+        </p>
+        <p>
+          我相信，自然语言编程将未来的主流编程语言。<br />
+          如果您也对这个领域感兴趣，欢迎加入我的课堂，<br />
+          与我一起探索自然语言编程的奥秘！
+        </p>
+      </div>
     </div>
 
     <footer>
-      <a href="https://space.bilibili.com/31603890">Blibili</a>
-      <a href="https://github.com/Zaosusu">GitHub</a>
+      <div class="g">
+        个人主页地址：<a href="https://space.bilibili.com/31603890">Blibili</a>
+        <a href="https://github.com/Zaosusu">GitHub</a>
+      </div>
+      <div class="w">@感谢大家的关注！</div>
     </footer>
+
+    <script></script>
   </body>
 </html>
