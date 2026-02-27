@@ -30,17 +30,17 @@ export function AboutMe() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
-                <span>做过美图秀秀的供应商</span>
+                <span>做过网易、腾讯、美图秀秀的内容供应商</span>
               </li>
             </ul>
             <p className="mb-4">
-              2022年，我的淘宝店因供应链崩盘而关闭，我抑郁了两年。
+              2019-2025年，ToB业务（MCN+供应商）爆发期，带来主要财富积累。股市验证周期理论，做到稳定盈利。
+            </p>
+            <p className="mb-4">
+              但2022年，我的淘宝店因供应链崩盘而关闭，我抑郁了两年。
             </p>
             <p className="mb-4 text-text-secondary">
               那段时间我意识到：<span className="text-text-primary">依赖人的系统，永远是脆弱的。</span>
-            </p>
-            <p className="mb-4">
-              2024年，我在股市验证了自己的理论，实现了财务自由。
             </p>
             <p>
               有了时间和资源，我决定做一件"不依赖人"的事：<span className="text-text-primary">学AI，做开源项目。</span>

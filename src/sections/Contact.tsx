@@ -37,12 +37,12 @@ export function Contact() {
           {/* Contact Links */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-center gap-6 py-4">
             <a
-              href="mailto:zaosusu@example.com"
+              href="mailto:qinqiao2014@gmail.com"
               className="inline-flex items-center gap-2 text-text-primary hover:text-text-secondary transition-colors duration-200 group"
             >
               <Mail className="w-4 h-4" />
               <span className="font-noto text-sm border-b border-transparent group-hover:border-text-secondary">
-                zaosusu@example.com
+                qinqiao2014@gmail.com
               </span>
             </a>
             <a
@@ -57,7 +57,7 @@ export function Contact() {
               </span>
             </a>
             <a
-              href="https://github.com/zaosusu/discussions"
+              href="https://github.com/zaosusu/zaosusu.github.io/discussions"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-text-primary hover:text-text-secondary transition-colors duration-200 group"
