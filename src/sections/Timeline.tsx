@@ -11,10 +11,11 @@ const timelineData: TimelineItem[] = [
     description: "影视、MCN、电商。积累认知，但看清「依赖人」的脆弱性"
   },
   {
-    year: "2023-2025",
-    title: "财务自由",
-    description: "股市验证周期理论。获得转型的资本和时间"
-  },
+  year: "2019-2025",
+  title: "财务自由",
+  description: "ToB业务（MCN+供应商）爆发期，带来主要财富积累。股市验证周期理论，做到稳定盈利。"
+},
+
   {
     year: "2026",
     title: "AI研究启动",
