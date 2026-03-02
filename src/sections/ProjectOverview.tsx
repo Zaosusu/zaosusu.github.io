@@ -40,15 +40,15 @@ export function ProjectOverview() {
             <ul className="space-y-2">
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
-                <span>Phase 1: 单音符识别（数据集采集中）</span>
+                <span>Phase 1: 和弦识别（数据集采集中）</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
-                <span>Phase 2: 和弦识别</span>
+                <span>Phase 2: 和弦进行/和弦转换识别</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
-                <span>Phase 3: 完整扫弦模式识别</span>
+                <span>Phase 3: 完整六线谱生成</span>
               </li>
             </ul>
           </div>
