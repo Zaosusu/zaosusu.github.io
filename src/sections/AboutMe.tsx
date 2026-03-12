@@ -16,13 +16,10 @@ export function AboutMe() {
           {/* Why AI Research */}
           <div>
             <h3 className="font-bold text-text-primary mb-3">为什么做AI研究？</h3>
-            <p className="text-text-secondary mb-4">
-              我不是科班出身，过去14年做过很多事：
-            </p>
-            <ul className="space-y-2 mb-4">
+            <ul className="space-y-2">
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
-                <span>导演、MCN操盘手、淘宝店主</span>
+                <span>我不是科班出身，过去14年做过很多事：导演、MCN操盘手、淘宝店主</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
@@ -32,30 +29,42 @@ export function AboutMe() {
                 <span className="text-text-secondary mt-1">•</span>
                 <span>做过网易、腾讯、美图秀秀的内容供应商</span>
               </li>
+              <li className="flex items-start gap-2">
+                <span className="text-text-secondary mt-1">•</span>
+                <span>2019-2025年，ToB业务爆发期带来主要财富积累；股市验证周期理论，做到稳定盈利</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-text-secondary mt-1">•</span>
+                <span>2022年淘宝店因供应链崩盘关闭，抑郁了两年——那段时间让我意识到：<span className="text-text-primary">依赖人的系统，永远是脆弱的</span></span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-text-secondary mt-1">•</span>
+                <span>有了时间和资源，决定做一件"不依赖人"的事：<span className="text-text-primary">学AI，做开源项目</span></span>
+              </li>
             </ul>
-            <p className="mb-4">
-              2019-2025年，ToB业务（MCN+供应商）爆发期，带来主要财富积累。股市验证周期理论，做到稳定盈利。
-            </p>
-            <p className="mb-4">
-              但2022年，我的淘宝店因供应链崩盘而关闭，我抑郁了两年。
-            </p>
-            <p className="mb-4 text-text-secondary">
-              那段时间我意识到：<span className="text-text-primary">依赖人的系统，永远是脆弱的。</span>
-            </p>
-            <p>
-              有了时间和资源，我决定做一件"不依赖人"的事：<span className="text-text-primary">学AI，做开源项目。</span>
-            </p>
           </div>
           
           {/* Why This Project */}
           <div>
             <h3 className="font-bold text-text-primary mb-3">为什么做OpenGuitarChordProject？</h3>
-            <ol className="space-y-2 list-decimal list-inside">
-              <li>我喜欢吉他，但扒谱效率低</li>
-              <li>市面上的工具不够好</li>
-              <li>我想用技术解决自己的需求</li>
-              <li>这是我学习音频AI + 深度学习的实践项目</li>
-            </ol>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2">
+                <span className="text-text-secondary mt-1">•</span>
+                <span>我喜欢吉他，但扒谱效率低</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-text-secondary mt-1">•</span>
+                <span>市面上的工具不够好</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-text-secondary mt-1">•</span>
+                <span>我想用技术解决自己的需求</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-text-secondary mt-1">•</span>
+                <span>这是我学习音频AI + 深度学习的实践项目</span>
+              </li>
+            </ul>
           </div>
           
           {/* Goals */}
