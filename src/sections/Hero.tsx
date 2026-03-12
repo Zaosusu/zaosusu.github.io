@@ -43,7 +43,11 @@ export function Hero() {
         {/* Author */}
         <p className="font-noto text-sm text-text-muted">
           by 阿早 · 2026
+          日拱一卒，功不唐捐
         </p>
+        <p className="font-noto text-sm text-text-muted">
+          日拱一卒，功不唐捐
+      </p>
       </div>
       
       {/* Scroll Indicator */}
