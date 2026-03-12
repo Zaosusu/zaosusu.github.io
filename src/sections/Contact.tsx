@@ -57,7 +57,7 @@ export function Contact() {
               </span>
             </a>
             <a
-              href="https://github.com/zaosusu/zaosusu.github.io/discussions"
+              href="https://github.com/zaosusu/ogcp-pilot/discussions"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-text-primary hover:text-text-secondary transition-colors duration-200 group"
@@ -74,7 +74,7 @@ export function Contact() {
             <h3 className="font-bold text-text-primary mb-4">想围观项目进展：</h3>
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-center gap-6">
               <a
-                href="https://github.com/zaosusu"
+                href="https://github.com/Zaosusu/ogcp-pilot"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors duration-200"
@@ -90,7 +90,7 @@ export function Contact() {
                 <span className="font-noto text-sm">阅读文档</span>
               </a>
               <a
-                href="https://github.com/zaosusu"
+                href="https://github.com/Zaosusu/ogcp-pilot"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors duration-200"
