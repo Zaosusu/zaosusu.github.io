@@ -63,7 +63,7 @@ export function ProjectOverview() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
-                <span>待扩展：7/9/11/13和弦、挂留和弦、半减七和弦、升降调等</span>
+                <span>待扩展：强力和弦、增减三和弦、七和弦家族、九/十一/十三和弦、挂留和弦、加音和弦、六和弦、变化和弦、转位与多把位、全部升降调...</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
