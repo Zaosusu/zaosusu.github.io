@@ -40,7 +40,7 @@ export function ProjectOverview() {
             <ul className="space-y-2">
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
-                <span>Phase 1: 和弦识别 ✅ 已完成（v1.0 Pilot，660样本）</span>
+                <span>Phase 1: 和弦识别（进行中）— Pilot v1.0 已发布</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
@@ -59,7 +59,11 @@ export function ProjectOverview() {
             <ul className="space-y-2">
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
-                <span>v1.0 Pilot 已发布：660样本，14类和弦</span>
+                <span>Pilot v1.0 数据集：660样本，14类和弦（自然大/小三和弦）</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-text-secondary mt-1">•</span>
+                <span>待扩展：7/9/11/13和弦、挂留和弦、半减七和弦、升降调等</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
