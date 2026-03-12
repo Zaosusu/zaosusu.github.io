@@ -26,7 +26,7 @@ export function AboutMe() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
-                <span>写过10万字行业研报</span>
+                <span>写过10万+字二次元cosplay行业研报</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
