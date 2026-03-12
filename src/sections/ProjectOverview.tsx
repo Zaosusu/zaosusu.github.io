@@ -1,4 +1,4 @@
-import { Github, BookOpen, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink } from 'lucide-react';
 
 export function ProjectOverview() {
   return (
@@ -40,7 +40,7 @@ export function ProjectOverview() {
             <ul className="space-y-2">
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
-                <span>Phase 1: 和弦识别（数据集采集中）</span>
+                <span>Phase 1: 和弦识别 ✅ 已完成（v1.0 Pilot，660样本）</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
@@ -53,46 +53,21 @@ export function ProjectOverview() {
             </ul>
           </div>
           
-          {/* Why */}
-          <div>
-            <h3 className="font-bold text-text-primary mb-3">为什么做这个？</h3>
-            <p className="text-text-secondary mb-4">
-              市面上的吉他扒谱工具，要么收费，要么不开源。
-            </p>
-            <p className="mb-4">
-              作为一个吉他爱好者 + AI学习者，我决定自己做一个：
-            </p>
-            <ul className="space-y-2">
-              <li className="flex items-start gap-2">
-                <span className="text-text-secondary mt-1">•</span>
-                <span>开源、免费</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-text-secondary mt-1">•</span>
-                <span>可复现、可扩展</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-text-secondary mt-1">•</span>
-                <span>欢迎社区贡献</span>
-              </li>
-            </ul>
-          </div>
-          
           {/* Current Status */}
           <div>
             <h3 className="font-bold text-text-primary mb-3">当前状态：</h3>
             <ul className="space-y-2">
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
-                <span>项目处于早期阶段（Phase 1数据集采集中）</span>
+                <span>v1.0 Pilot 已发布：660样本，14类和弦</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
-                <span>预计将发表论文至相关学术平台</span>
+                <span>GitHub：代码 + JAMS标注</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-text-secondary mt-1">•</span>
-                <span>数据集将开源至Hugging Face等平台</span>
+                <span>Hugging Face：音频数据集</span>
               </li>
             </ul>
           </div>
@@ -101,7 +76,7 @@ export function ProjectOverview() {
         {/* Links */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-10">
           <a
-            href="https://github.com/zaosusu"
+            href="https://github.com/Zaosusu/ogcp-pilot"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-text-primary hover:text-text-secondary transition-colors duration-200 group"
@@ -113,13 +88,15 @@ export function ProjectOverview() {
             <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
           </a>
           <a
-            href="#project"
+            href="https://huggingface.co/datasets/Zaosusu/ogcp-pilot"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-text-primary hover:text-text-secondary transition-colors duration-200 group"
           >
-            <BookOpen className="w-4 h-4" />
             <span className="font-noto text-sm border-b border-transparent group-hover:border-text-secondary">
-              项目文档
+              🤗 Hugging Face数据集
             </span>
+            <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
           </a>
         </div>
       </div>

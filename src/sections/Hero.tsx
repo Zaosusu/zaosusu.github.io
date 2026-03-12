@@ -1,4 +1,4 @@
-import { Github, BookOpen } from 'lucide-react';
+import { Github } from 'lucide-react';
 
 export function Hero() {
   return (
@@ -16,13 +16,13 @@ export function Hero() {
         
         {/* Description */}
         <p className="font-noto text-sm md:text-base text-text-muted mb-8">
-          让每个吉他爱好者都能轻松学习和创作
+          660样本物理感知数据集 · 已发布 v1.0 Pilot
         </p>
         
         {/* Button Group */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
           <a
-            href="https://github.com/zaosusu"
+            href="https://github.com/Zaosusu/ogcp-pilot"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 border border-border-custom rounded text-text-primary hover:border-text-secondary hover:text-text-secondary transition-colors duration-200"
@@ -31,17 +31,18 @@ export function Hero() {
             <span className="font-noto text-sm">GitHub</span>
           </a>
           <a
-            href="#project"
+            href="https://huggingface.co/datasets/Zaosusu/ogcp-pilot"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 border border-border-custom rounded text-text-primary hover:border-text-secondary hover:text-text-secondary transition-colors duration-200"
           >
-            <BookOpen className="w-4 h-4" />
-            <span className="font-noto text-sm">Documentation</span>
+            <span className="font-noto text-sm">🤗 Hugging Face</span>
           </a>
         </div>
         
         {/* Author */}
         <p className="font-noto text-sm text-text-muted">
-          by 阿早
+          by 阿早 · 2026
         </p>
       </div>
       
