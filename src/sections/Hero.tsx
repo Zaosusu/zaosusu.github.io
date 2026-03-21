@@ -1,25 +1,37 @@
 import { Github } from 'lucide-react';
+import { useLang } from '../context/LanguageContext';
+
+const t = {
+  zh: {
+    subtitle: '开源吉他和弦识别项目',
+    desc: '996样本物理感知数据集 · v1.1.0 已发布',
+    by: 'by 阿早 · 2026',
+    motto: '日拱一卒，功不唐捐',
+  },
+  en: {
+    subtitle: 'Open Source Guitar Chord Recognition',
+    desc: '996-sample physics-aware dataset · v1.1.0 released',
+    by: 'by Zaosusu · 2026',
+    motto: 'Brick by brick, nothing is in vain.',
+  },
+};
 
 export function Hero() {
+  const { lang } = useLang();
+  const c = t[lang];
+
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-bg-primary px-5">
       <div className="max-w-content w-full text-center animate-fade-in">
-        {/* Main Title */}
         <h1 className="font-inter font-bold text-4xl md:text-5xl text-text-primary tracking-tight mb-4">
           OpenGuitarChordProject
         </h1>
-        
-        {/* Subtitle */}
         <p className="font-noto text-lg md:text-xl text-text-secondary mb-3">
-          开源吉他和弦识别项目
+          {c.subtitle}
         </p>
-        
-        {/* Description */}
         <p className="font-noto text-sm md:text-base text-text-muted mb-8">
-          660样本物理感知数据集 · 已发布 v1.0 Pilot
+          {c.desc}
         </p>
-        
-        {/* Button Group */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
           <a
             href="https://github.com/Zaosusu/ogcp-pilot"
@@ -39,17 +51,9 @@ export function Hero() {
             <span className="font-noto text-sm">🤗 Hugging Face</span>
           </a>
         </div>
-        
-        {/* Author */}
-        <p className="font-noto text-sm text-text-muted">
-          by 阿早 · 2026         
-        </p>
-        <p className="font-noto text-sm text-text-muted">
-          日拱一卒，功不唐捐
-        </p>
+        <p className="font-noto text-sm text-text-muted">{c.by}</p>
+        <p className="font-noto text-sm text-text-muted">{c.motto}</p>
       </div>
-      
-      {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
         <div className="w-5 h-8 border-2 border-border-custom rounded-full flex justify-center pt-2">
           <div className="w-1 h-2 bg-text-muted rounded-full animate-bounce" />

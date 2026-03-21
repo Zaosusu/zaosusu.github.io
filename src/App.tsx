@@ -1,3 +1,5 @@
+import { LangProvider } from './context/LanguageContext';
+import { Navbar } from './components/ui/Navbar';
 import { Hero } from './sections/Hero';
 import { ProjectOverview } from './sections/ProjectOverview';
 import { AboutMe } from './sections/AboutMe';
@@ -7,14 +9,17 @@ import { Footer } from './sections/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-bg-primary">
-      <Hero />
-      <ProjectOverview />
-      <AboutMe />
-      <Timeline />
-      <Contact />
-      <Footer />
-    </div>
+    <LangProvider>
+      <div className="min-h-screen bg-bg-primary">
+        <Navbar />
+        <Hero />
+        <ProjectOverview />
+        <AboutMe />
+        <Timeline />
+        <Contact />
+        <Footer />
+      </div>
+    </LangProvider>
   );
 }
 
