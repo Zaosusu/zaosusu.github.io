@@ -1,25 +1,25 @@
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { LangProvider } from './context/LanguageContext';
 import { Navbar } from './components/ui/Navbar';
-import { Hero } from './sections/Hero';
-import { ProjectOverview } from './sections/ProjectOverview';
-import { AboutMe } from './sections/AboutMe';
-import { Timeline } from './sections/Timeline';
-import { Contact } from './sections/Contact';
-import { Footer } from './sections/Footer';
+import { Home } from './pages/Home';
+import { OGCPProject } from './pages/OGCPProject';
+import { WalkingXiuxian } from './pages/WalkingXiuxian';
 
 function App() {
   return (
-    <LangProvider>
-      <div className="min-h-screen bg-bg-primary">
-        <Navbar />
-        <Hero />
-        <ProjectOverview />
-        <AboutMe />
-        <Timeline />
-        <Contact />
-        <Footer />
-      </div>
-    </LangProvider>
+    <HashRouter>
+      <LangProvider>
+        <div className="min-h-screen bg-bg-primary">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects/ogcp" element={<OGCPProject />} />
+            <Route path="/projects/walking-xiuxian" element={<WalkingXiuxian />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </div>
+      </LangProvider>
+    </HashRouter>
   );
 }
 

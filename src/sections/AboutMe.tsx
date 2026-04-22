@@ -6,7 +6,7 @@ const t = {
     intro: '我叫阿早，独立AI研究者。',
     whyTitle: '为什么做AI研究？',
     why: [
-      '我不是科班出身，过去14年做过很多事：导演、MCN操盘手、淘宝店主',
+      '我不是科班出身，过去15年做过很多事：导演、MCN操盘手、淘宝店主',
       '写过10万多字的二次元cosplay行业研报',
       '做过网易、腾讯、美图秀秀的内容供应商',
       '2019-2025年，ToB业务爆发期带来主要财富积累；股市验证周期理论，做到稳定盈利',
@@ -37,7 +37,7 @@ const t = {
     intro: "I'm Zaosusu, an independent AI researcher.",
     whyTitle: 'Why AI Research?',
     why: [
-      "I'm not from a CS background — over the past 14 years I've been a director, MCN operator, and e-commerce seller",
+      "I'm not from a CS background — over the past 15 years I've been a director, MCN operator, and e-commerce seller",
       'Wrote 100,000+ words of industry research on the cosplay market',
       'Content supplier for NetEase, Tencent, and Meitu',
       '2019–2025: Major wealth accumulation from ToB business; validated cycle theory in the stock market',

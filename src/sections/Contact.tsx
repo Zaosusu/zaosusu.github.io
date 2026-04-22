@@ -1,4 +1,4 @@
-import { Mail, Github, MessageCircle, Star, BookOpen, Bell } from 'lucide-react';
+import { Mail, Github, MessageCircle, Star } from 'lucide-react';
 import { useLang } from '../context/LanguageContext';
 
 const t = {
@@ -73,14 +73,6 @@ export function Contact() {
               <a href="https://github.com/Zaosusu/ogcp-pilot" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors duration-200">
                 <Star className="w-4 h-4" />
                 <span className="font-noto text-sm">{c.star}</span>
-              </a>
-              <a href="#project" className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors duration-200">
-                <BookOpen className="w-4 h-4" />
-                <span className="font-noto text-sm">{c.docs}</span>
-              </a>
-              <a href="https://github.com/Zaosusu/ogcp-pilot" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors duration-200">
-                <Bell className="w-4 h-4" />
-                <span className="font-noto text-sm">{c.watch}</span>
               </a>
             </div>
           </div>
