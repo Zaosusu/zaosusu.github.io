@@ -1,4 +1,5 @@
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { ScrollToTop } from './components/ScrollToTop';
 import { LangProvider } from './context/LanguageContext';
 import { Navbar } from './components/ui/Navbar';
 import { Home } from './pages/Home';
@@ -10,6 +11,7 @@ function App() {
     <HashRouter>
       <LangProvider>
         <div className="min-h-screen bg-bg-primary">
+          <ScrollToTop />
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
