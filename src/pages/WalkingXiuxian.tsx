@@ -251,7 +251,7 @@ export function WalkingXiuxian() {
               <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.cardTitle}</h3>
               <p className="font-noto text-sm text-text-secondary mb-4">{c.cardDesc}</p>
               <a
-                href="https://walkingxiuxian.cn"
+                href="https://www.walkingxiuxian.cn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 border border-border-custom rounded text-text-primary hover:border-text-secondary hover:text-text-secondary transition-colors duration-200"
