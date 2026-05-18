@@ -9,7 +9,7 @@ export function Footer() {
           © {new Date().getFullYear()} 阿早 · Zaosusu
         </p>
         <p className="font-noto text-xs text-text-muted mt-2">
-          {lang === 'zh' ? '开源、免费、可复现' : 'Open source · Free · Reproducible'}
+          {lang === 'zh' ? '独立AI研究者 · 开源实践者 · 长期主义自学者' : 'Independent AI Researcher · Open Source Practitioner · Long-term Self-learner'}
         </p>
       </div>
     </footer>
