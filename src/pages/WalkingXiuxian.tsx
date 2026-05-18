@@ -1,4 +1,4 @@
-import { ExternalLink, ArrowLeft, Smartphone, Server, Cloud, GitBranch, Database, WifiOff, Activity } from 'lucide-react';
+import { ExternalLink, ArrowLeft, Smartphone, Server, Cloud, GitBranch, Database, WifiOff, Activity, Trophy } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
@@ -9,7 +9,17 @@ const t = {
     heroTitle: '走路修仙',
     heroSubtitle: 'WalkingXiuxian',
     heroDesc: '跨端计步修仙 App。Flutter + FastAPI，事件驱动架构，增量云同步。',
-    status: '开发中 · Android 真机计步验证通过',
+    status: '主推商业项目 · Android 真机计步验证通过',
+    heroWebsite: '访问项目官网',
+    waicBadge: 'WAIC 复赛入围',
+    waicTitle: '入围 WAIC FutureTech 复赛',
+    waicDesc: '走路修仙目前已进入 WAIC 相关赛事复赛。WAIC 即 World Artificial Intelligence Conference，中文为世界人工智能大会，是自 2018 年起在上海举办的人工智能大会，覆盖会议论坛、展览展示、赛事评奖、应用体验和创新孵化等板块。',
+    waicFormat: '本次参赛采用 600 → 160 → 30 的递进筛选机制：约 600 个项目进入初筛，约 160 个项目进入复赛，最终约 30 个项目进入更高阶段竞争。走路修仙已从第一轮筛选中突围，进入复赛阶段。',
+    waicSteps: [
+      { count: '600', label: '初筛项目' },
+      { count: '160', label: '复赛入围' },
+      { count: '30', label: '最终阶段' },
+    ],
     archTitle: '技术架构',
     archDesc: '整体采用前后端分离 + 自建后端持久化的三层架构。前端 Flutter 负责传感器数据采集与本地状态管理；后端 FastAPI 提供 RESTful API 与 WebSocket 实时通道；认证与业务数据全部自建，部署在国内可访问的服务器。',
     archLayers: [
@@ -58,7 +68,17 @@ const t = {
     heroTitle: '走路修仙',
     heroSubtitle: 'WalkingXiuxian',
     heroDesc: 'Cross-platform pedometer xianxia app. Flutter + FastAPI, event-driven architecture, incremental cloud sync.',
-    status: 'In Development · Verified on Android devices',
+    status: 'Primary commercial project · Verified on Android devices',
+    heroWebsite: 'Visit Project Website',
+    waicBadge: 'WAIC Semifinalist',
+    waicTitle: 'Selected for the WAIC FutureTech Semifinal',
+    waicDesc: 'WalkingXiuxian has advanced to the semifinal stage of a WAIC-related competition. WAIC stands for World Artificial Intelligence Conference, an AI conference held annually in Shanghai since 2018, covering forums, exhibitions, awards, application experiences, and innovation incubation.',
+    waicFormat: 'The competition follows a 600 → 160 → 30 funnel: around 600 projects entered the initial screening, around 160 advanced to the semifinal, and around 30 move into the next high-stakes stage. WalkingXiuxian has passed the first selection round and entered the semifinal.',
+    waicSteps: [
+      { count: '600', label: 'Initial projects' },
+      { count: '160', label: 'Semifinalists' },
+      { count: '30', label: 'Final-stage projects' },
+    ],
     archTitle: 'Architecture',
     archDesc: 'Three-layer architecture: frontend-backend separation + self-hosted persistence. Flutter handles sensor data and local state; FastAPI provides RESTful API and WebSocket; auth and business data fully self-hosted on domestic-accessible servers.',
     archLayers: [
@@ -150,9 +170,47 @@ export function WalkingXiuxian() {
           <p className="font-noto text-sm md:text-base text-text-muted mb-6 max-w-lg mx-auto">
             {c.heroDesc}
           </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-5">
+            <a
+              href="https://www.walkingxiuxian.cn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-[#6cbcb2]/70 bg-[#6cbcb2]/14 rounded text-text-primary hover:border-[#9bd8cf] hover:bg-[#6cbcb2]/20 transition-colors duration-200"
+            >
+              <ExternalLink className="w-4 h-4" />
+              <span className="font-noto text-sm">{c.heroWebsite}</span>
+            </a>
+            <span className="inline-flex items-center gap-2 px-4 py-3 border border-border-custom bg-bg-secondary/70 rounded text-xs text-text-secondary">
+              <Trophy className="w-4 h-4 text-[#9bd8cf]" />
+              <span>{c.waicBadge}</span>
+            </span>
+          </div>
           <span className="inline-block px-4 py-1.5 border border-[#6cbcb2]/40 bg-[#6cbcb2]/10 rounded text-xs text-[#9bd8cf]">
             {c.status}
           </span>
+        </div>
+      </section>
+
+      {/* WAIC */}
+      <section className="bg-bg-primary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <div className="rounded border border-[#6cbcb2]/40 bg-bg-secondary/80 p-5 md:p-8">
+            <div className="flex items-center gap-2 text-[#9bd8cf] mb-4">
+              <Trophy className="w-5 h-5" />
+              <span className="font-noto text-sm">{c.waicBadge}</span>
+            </div>
+            <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-5">{c.waicTitle}</h2>
+            <p className="font-noto text-base text-text-primary leading-relaxed mb-5">{c.waicDesc}</p>
+            <p className="font-noto text-sm text-text-secondary leading-relaxed mb-8">{c.waicFormat}</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {c.waicSteps.map((step, i) => (
+                <div key={step.count} className={`p-5 rounded border ${i === 1 ? 'border-[#6cbcb2]/70 bg-[#6cbcb2]/10' : 'border-border-custom bg-bg-primary/70'}`}>
+                  <span className="font-inter font-bold text-3xl text-text-primary">{step.count}</span>
+                  <p className="font-noto text-sm text-text-secondary mt-2">{step.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
