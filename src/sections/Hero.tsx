@@ -21,9 +21,10 @@ export function Hero() {
   const c = t[lang];
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-bg-primary px-5">
-      <div className="max-w-content w-full text-center animate-fade-in">
-        <h1 className="font-inter font-bold text-4xl md:text-5xl text-text-primary tracking-tight mb-4">
+    <section className="relative min-h-screen flex flex-col items-center justify-center bg-bg-primary px-5 overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(108,188,178,0.16),transparent_36%),linear-gradient(180deg,rgba(244,241,232,0.05),transparent_50%)]" />
+      <div className="relative max-w-content w-full text-center animate-rise-in">
+        <h1 className="font-inter font-bold text-4xl md:text-6xl text-text-primary tracking-tight mb-5">
           OpenGuitarChordProject
         </h1>
         <p className="font-noto text-lg md:text-xl text-text-secondary mb-3">
@@ -37,7 +38,7 @@ export function Hero() {
             href="https://github.com/Zaosusu/ogcp-pilot"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 border border-border-custom rounded text-text-primary hover:border-text-secondary hover:text-text-secondary transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-[#6cbcb2]/50 bg-[#6cbcb2]/10 rounded text-text-primary hover:border-[#9bd8cf] hover:bg-[#6cbcb2]/15 transition-colors duration-200"
           >
             <Github className="w-4 h-4" />
             <span className="font-noto text-sm">GitHub</span>
@@ -46,7 +47,7 @@ export function Hero() {
             href="https://huggingface.co/datasets/Zaosusu/ogcp-pilot"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 border border-border-custom rounded text-text-primary hover:border-text-secondary hover:text-text-secondary transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-border-custom bg-bg-secondary/80 rounded text-text-primary hover:border-[#9bd8cf] hover:text-[#9bd8cf] transition-colors duration-200"
           >
             <span className="font-noto text-sm">🤗 Hugging Face</span>
           </a>

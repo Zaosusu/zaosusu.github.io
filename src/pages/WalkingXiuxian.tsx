@@ -135,34 +135,35 @@ export function WalkingXiuxian() {
       </div>
 
       {/* Hero */}
-      <section className="py-12 md:py-20 px-5">
-        <div className="max-w-content mx-auto text-center">
+      <section className="relative py-12 md:py-24 px-5 overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(108,188,178,0.14),transparent_38%),linear-gradient(180deg,rgba(244,241,232,0.04),transparent_56%)]" />
+        <div className="relative max-w-content mx-auto text-center animate-rise-in">
           <img
             src="/walking-logo.png"
             alt="WalkingXiuxian Logo"
             className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 rounded-2xl object-cover"
           />
-          <h1 className="font-inter font-bold text-3xl md:text-5xl text-text-primary tracking-tight mb-2">
+          <h1 className="font-inter font-bold text-4xl md:text-6xl text-text-primary tracking-tight mb-3">
             {c.heroTitle}
           </h1>
           <p className="font-inter text-lg text-text-secondary mb-4">{c.heroSubtitle}</p>
           <p className="font-noto text-sm md:text-base text-text-muted mb-6 max-w-lg mx-auto">
             {c.heroDesc}
           </p>
-          <span className="inline-block px-4 py-1.5 border border-border-custom rounded text-xs text-text-muted">
+          <span className="inline-block px-4 py-1.5 border border-[#6cbcb2]/40 bg-[#6cbcb2]/10 rounded text-xs text-[#9bd8cf]">
             {c.status}
           </span>
         </div>
       </section>
 
       {/* Architecture */}
-      <section className="bg-bg-secondary py-16 md:py-20 px-5">
+      <section className="bg-bg-secondary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
-          <h2 className="font-noto font-bold text-xl md:text-2xl text-text-primary mb-6">{c.archTitle}</h2>
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-6">{c.archTitle}</h2>
           <p className="font-noto text-base text-text-primary leading-relaxed mb-8">{c.archDesc}</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {c.archLayers.map((l, i) => (
-              <div key={i} className="p-5 border border-border-custom rounded bg-bg-primary">
+              <div key={i} className="p-5 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2]/60 transition-colors">
                 <h3 className="font-noto font-bold text-base text-text-primary mb-2">{l.title}</h3>
                 <p className="font-noto text-sm text-text-secondary leading-relaxed">{l.desc}</p>
               </div>
@@ -172,12 +173,12 @@ export function WalkingXiuxian() {
       </section>
 
       {/* Core Modules */}
-      <section className="bg-bg-primary py-16 md:py-20 px-5">
+      <section className="bg-bg-primary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
-          <h2 className="font-noto font-bold text-xl md:text-2xl text-text-primary mb-8">{c.modulesTitle}</h2>
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-8">{c.modulesTitle}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {c.modules.map((m, i) => (
-              <div key={i} className="p-5 border border-border-custom rounded bg-bg-secondary">
+              <div key={i} className="p-5 border border-border-custom rounded bg-bg-secondary hover:border-[#6cbcb2]/60 transition-colors">
                 <div className="flex items-center gap-2 text-text-primary mb-3">
                   <ModIcon type={m.icon} />
                   <h3 className="font-noto font-bold text-base">{m.title}</h3>
@@ -190,9 +191,9 @@ export function WalkingXiuxian() {
       </section>
 
       {/* Challenges */}
-      <section className="bg-bg-secondary py-16 md:py-20 px-5">
+      <section className="bg-bg-secondary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
-          <h2 className="font-noto font-bold text-xl md:text-2xl text-text-primary mb-8">{c.challengesTitle}</h2>
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-8">{c.challengesTitle}</h2>
           <div className="space-y-6">
             {c.challenges.map((cItem, i) => (
               <div key={i} className="p-5 border border-border-custom rounded bg-bg-primary">
@@ -205,9 +206,9 @@ export function WalkingXiuxian() {
       </section>
 
       {/* Code Organization */}
-      <section className="bg-bg-primary py-16 md:py-20 px-5">
+      <section className="bg-bg-primary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
-          <h2 className="font-noto font-bold text-xl md:text-2xl text-text-primary mb-6">{c.codeTitle}</h2>
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-6">{c.codeTitle}</h2>
           <p className="font-noto text-base text-text-primary leading-relaxed mb-6">{c.codeDesc}</p>
           <ul className="space-y-2">
             {c.codeItems.map((item, i) => (
@@ -221,12 +222,12 @@ export function WalkingXiuxian() {
       </section>
 
       {/* Tech Stack */}
-      <section className="bg-bg-secondary py-16 md:py-20 px-5">
+      <section className="bg-bg-secondary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
-          <h2 className="font-noto font-bold text-xl md:text-2xl text-text-primary mb-8">{c.stackTitle}</h2>
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-8">{c.stackTitle}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {c.stack.map((s, i) => (
-              <div key={i} className="p-5 border border-border-custom rounded bg-bg-primary">
+              <div key={i} className="p-5 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2]/60 transition-colors">
                 <div className="flex items-center gap-2 text-text-primary mb-3">
                   <StackIcon type={s.icon} />
                   <h3 className="font-noto font-bold text-base">{s.title}</h3>
@@ -239,7 +240,7 @@ export function WalkingXiuxian() {
       </section>
 
       {/* Links */}
-      <section className="bg-bg-primary py-16 md:py-20 px-5">
+      <section className="bg-bg-primary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
           <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
             <img
@@ -265,9 +266,9 @@ export function WalkingXiuxian() {
       </section>
 
       {/* Contact */}
-      <section className="bg-bg-secondary py-16 md:py-20 px-5">
+      <section className="bg-bg-secondary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto text-center">
-          <h2 className="font-noto font-bold text-xl md:text-2xl text-text-primary mb-4">{c.contactTitle}</h2>
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-4">{c.contactTitle}</h2>
           <p className="font-noto text-base text-text-secondary mb-6">{c.contactDesc}</p>
           <a href={`mailto:${c.email}`} className="inline-flex items-center gap-2 text-text-primary hover:text-text-secondary transition-colors duration-200 group">
             <span className="font-noto text-sm border-b border-transparent group-hover:border-text-secondary">{c.email}</span>

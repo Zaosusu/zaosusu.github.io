@@ -37,10 +37,10 @@ export function Contact() {
   const c = t[lang];
 
   return (
-    <section id="contact" className="bg-bg-primary py-16 md:py-20 px-5">
-      <div className="max-w-content mx-auto text-center">
-        <h2 className="font-noto font-bold text-xl md:text-2xl text-text-primary mb-8">{c.title}</h2>
-        <div className="font-noto text-base text-text-primary leading-relaxed space-y-6 text-left">
+    <section id="contact" className="bg-bg-primary py-16 md:py-24 px-5">
+      <div className="max-w-content mx-auto">
+        <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-8 text-center">{c.title}</h2>
+        <div className="font-noto text-base text-text-primary leading-relaxed space-y-6 rounded border border-border-custom bg-bg-secondary/70 p-5 md:p-8">
           <div>
             <h3 className="font-bold text-text-primary mb-3">{c.ifTitle}</h3>
             <ul className="space-y-2">
@@ -70,7 +70,7 @@ export function Contact() {
           <div>
             <h3 className="font-bold text-text-primary mb-4">{c.followTitle}</h3>
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-center gap-6">
-              <a href="https://github.com/Zaosusu/ogcp-pilot" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors duration-200">
+              <a href="https://github.com/Zaosusu/ogcp-pilot" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-text-secondary hover:text-[#9bd8cf] transition-colors duration-200">
                 <Star className="w-4 h-4" />
                 <span className="font-noto text-sm">{c.star}</span>
               </a>

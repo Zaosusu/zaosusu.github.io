@@ -63,12 +63,12 @@ export function ProjectOverview() {
   const c = t[lang];
 
   return (
-    <section id="project" className="bg-bg-secondary py-16 md:py-20 px-5">
+    <section id="project" className="bg-bg-secondary py-16 md:py-24 px-5">
       <div className="max-w-content mx-auto">
-        <h2 className="font-noto font-bold text-xl md:text-2xl text-text-primary mb-8">
+        <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-8">
           {c.title}
         </h2>
-        <div className="font-noto text-base text-text-primary leading-relaxed space-y-6">
+        <div className="font-noto text-base text-text-primary leading-relaxed space-y-6 rounded border border-border-custom bg-bg-primary/70 p-5 md:p-8">
           <p>{c.intro}</p>
           <div>
             <h3 className="font-bold text-text-primary mb-3">{c.goalsTitle}</h3>
@@ -109,7 +109,7 @@ export function ProjectOverview() {
             href="https://github.com/Zaosusu/ogcp-pilot"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-text-primary hover:text-text-secondary transition-colors duration-200 group"
+            className="inline-flex items-center gap-2 rounded border border-border-custom px-4 py-2.5 text-text-primary hover:border-[#9bd8cf] hover:text-[#9bd8cf] transition-colors duration-200 group"
           >
             <Github className="w-4 h-4" />
             <span className="font-noto text-sm border-b border-transparent group-hover:border-text-secondary">
@@ -121,7 +121,7 @@ export function ProjectOverview() {
             href="https://huggingface.co/datasets/Zaosusu/ogcp-pilot"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-text-primary hover:text-text-secondary transition-colors duration-200 group"
+            className="inline-flex items-center gap-2 rounded border border-border-custom px-4 py-2.5 text-text-primary hover:border-[#9bd8cf] hover:text-[#9bd8cf] transition-colors duration-200 group"
           >
             <span className="font-noto text-sm border-b border-transparent group-hover:border-text-secondary">
               {c.hf}

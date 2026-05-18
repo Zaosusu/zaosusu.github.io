@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Github, Mail, ExternalLink, ArrowRight } from 'lucide-react';
+import { Github, Mail, ExternalLink, ArrowRight, Sparkles } from 'lucide-react';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
 
@@ -24,6 +24,10 @@ const t = {
     ogcpCardDesc: '开源吉他和弦识别项目。996样本物理感知数据集，目标是从音频自动识别和弦并生成六线谱。',
     walkingCardTitle: '走路修仙',
     walkingCardDesc: '将真实步数转化为修仙修为的跨端App。Flutter + FastAPI，21阶境界系统，Android 真机计步验证通过。',
+    xhsCardTitle: '小红书蒲公英达人筛选系统',
+    xhsCardDesc: '面向品牌投放的达人采集、筛选、分析与批量邀约工具。FastAPI + Playwright + SQLAlchemy。',
+    academyCardTitle: '无限学园',
+    academyCardDesc: 'Godot 4 视觉小说/养成项目，配套 React 剧情编辑器与本地 AIGC 驱动的内容资产生产管线。',
     contactTitle: '联系我',
     contactDesc: '如果你对我的研究或项目感兴趣，欢迎交流：',
     email: 'qinqiao2014@gmail.com',
@@ -49,6 +53,10 @@ const t = {
     ogcpCardDesc: 'Open-source guitar chord recognition. 996-sample physics-aware dataset. Goal: recognize chords from audio and generate guitar tablature.',
     walkingCardTitle: 'WalkingXiuxian',
     walkingCardDesc: 'Turn real-world steps into cultivation power. Cross-platform Flutter App + FastAPI backend. 21-realm system. Verified on Android devices.',
+    xhsCardTitle: 'Xiaohongshu KOL Filter',
+    xhsCardDesc: 'Creator discovery, filtering, analytics, and batch invitation tool for brand campaigns. FastAPI + Playwright + SQLAlchemy.',
+    academyCardTitle: 'Infinite Academy',
+    academyCardDesc: 'Godot 4 visual novel / simulation prototype with a React story editor and a local AIGC content-asset pipeline.',
     contactTitle: 'Contact',
     contactDesc: 'If you are interested in my research or projects, feel free to reach out:',
     email: 'qinqiao2014@gmail.com',
@@ -63,32 +71,56 @@ export function Home() {
   return (
     <div className="min-h-screen bg-bg-primary pt-14">
       {/* Hero */}
-      <section className="min-h-[80vh] flex flex-col items-center justify-center px-5">
-        <div className="max-w-content w-full text-center animate-fade-in">
-          <h1 className="font-inter font-bold text-4xl md:text-6xl text-text-primary tracking-tight mb-4">
-            {c.heroTitle}
-          </h1>
-          <p className="font-noto text-lg md:text-xl text-text-secondary mb-3">
-            {c.heroSubtitle}
-          </p>
-          <p className="font-noto text-sm md:text-base text-text-muted mb-10 max-w-lg mx-auto">
-            {c.heroDesc}
-          </p>
-          <button
-            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            className="inline-flex items-center gap-2 px-6 py-3 border border-border-custom rounded text-text-primary hover:border-text-secondary hover:text-text-secondary transition-colors duration-200 cursor-pointer"
-          >
-            <span className="font-noto text-sm">{c.heroCta}</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
+      <section className="relative min-h-[86vh] flex items-center overflow-hidden px-5">
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(67,120,116,0.18),transparent_34%),linear-gradient(180deg,rgba(244,241,232,0.04),transparent_46%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#6cbcb2]/50 to-transparent" />
+        <div className="relative max-w-content w-full mx-auto grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center animate-rise-in">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded border border-[#6cbcb2]/30 bg-[#6cbcb2]/10 px-3 py-1.5 text-xs text-[#9bd8cf] mb-7">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span className="font-noto">{c.heroSubtitle}</span>
+            </div>
+            <h1 className="font-inter font-bold text-5xl md:text-7xl text-text-primary tracking-tight mb-5">
+              {c.heroTitle}
+            </h1>
+            <p className="font-noto text-base md:text-lg text-text-secondary leading-relaxed mb-9 max-w-2xl">
+              {c.heroDesc}
+            </p>
+            <button
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              className="inline-flex items-center gap-2 px-5 py-3 rounded border border-[#6cbcb2]/60 bg-[#6cbcb2]/12 text-text-primary hover:bg-[#6cbcb2]/18 hover:border-[#9bd8cf] transition-colors duration-200 cursor-pointer"
+            >
+              <span className="font-noto text-sm">{c.heroCta}</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+          <div className="relative">
+            <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 shadow-2xl shadow-black/30">
+              <div className="grid grid-cols-2 gap-3 mb-5">
+                {['2012-2022', '2019-2025', '2026', '2026-2030'].map((item) => (
+                  <div key={item} className="rounded border border-border-custom bg-bg-primary/80 p-4">
+                    <span className="font-inter text-xs text-text-muted">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="space-y-3">
+                {c.timeline.slice(0, 3).map((item) => (
+                  <div key={item.year} className="rounded border border-border-custom bg-bg-primary/70 p-4">
+                    <h3 className="font-noto text-sm font-bold text-text-primary mb-1">{item.title}</h3>
+                    <p className="font-noto text-xs leading-relaxed text-text-secondary">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* About */}
-      <section className="bg-bg-secondary py-16 md:py-20 px-5">
-        <div className="max-w-content mx-auto">
-          <h2 className="font-noto font-bold text-xl md:text-2xl text-text-primary mb-8">{c.aboutTitle}</h2>
-          <div className="font-noto text-base text-text-primary leading-relaxed space-y-6">
+      <section className="bg-bg-secondary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto grid grid-cols-1 md:grid-cols-[0.35fr_0.65fr] gap-8 md:gap-14">
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary">{c.aboutTitle}</h2>
+          <div className="font-noto text-base text-text-primary leading-relaxed space-y-6 border-l border-border-custom pl-6">
             <p>{c.aboutIntro}</p>
             <p className="text-text-secondary">{c.aboutGoal}</p>
           </div>
@@ -96,19 +128,21 @@ export function Home() {
       </section>
 
       {/* Timeline */}
-      <section className="bg-bg-primary py-16 md:py-20 px-5">
+      <section className="bg-bg-primary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
-          <h2 className="font-noto font-bold text-xl md:text-2xl text-text-primary mb-10">{c.timelineTitle}</h2>
-          <div className="relative">
-            <div className="absolute left-0 md:left-4 top-0 bottom-0 w-px bg-border-custom" />
-            <div className="space-y-10">
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-10">{c.timelineTitle}</h2>
+          <div className="relative rounded border border-border-custom bg-bg-secondary/70 p-5 md:p-8">
+            <div className="absolute left-5 md:left-9 top-8 bottom-8 w-px bg-gradient-to-b from-[#6cbcb2] via-border-custom to-transparent" />
+            <div className="space-y-8">
               {c.timeline.map((item, i) => (
-                <div key={i} className="relative pl-8 md:pl-12">
-                  <div className="absolute left-0 md:left-4 top-1.5 -translate-x-1/2 w-2 h-2 rounded-full bg-text-muted hover:bg-text-secondary transition-colors duration-200" />
-                  <div>
-                    <span className="font-inter font-bold text-base text-text-primary block mb-1">{item.year}</span>
+                <div key={i} className="relative pl-9 md:pl-14">
+                  <div className="absolute left-0 md:left-1 top-1.5 w-3 h-3 rounded-full bg-[#6cbcb2] shadow-[0_0_18px_rgba(108,188,178,0.45)]" />
+                  <div className="grid grid-cols-1 md:grid-cols-[150px_1fr] gap-2 md:gap-7">
+                    <span className="font-inter font-bold text-sm text-[#9bd8cf] block">{item.year}</span>
+                    <div>
                     <h3 className="font-noto font-bold text-base text-text-primary mb-2">{item.title}</h3>
                     <p className="font-noto text-sm text-text-secondary leading-relaxed">{item.desc}</p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -118,14 +152,14 @@ export function Home() {
       </section>
 
       {/* Projects */}
-      <section id="projects" className="bg-bg-secondary py-16 md:py-20 px-5">
+      <section id="projects" className="bg-bg-secondary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
-          <h2 className="font-noto font-bold text-xl md:text-2xl text-text-primary mb-10">{c.projectsTitle}</h2>
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-10">{c.projectsTitle}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* OGCP Card */}
             <Link
               to="/projects/ogcp"
-              className="group block p-6 border border-border-custom rounded bg-bg-primary hover:border-text-secondary transition-colors duration-200"
+              className="group block min-h-[220px] p-6 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2] hover:-translate-y-1 transition-all duration-200"
             >
               <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
                 {c.ogcpCardTitle}
@@ -142,7 +176,7 @@ export function Home() {
             {/* WalkingXiuxian Card */}
             <Link
               to="/projects/walking-xiuxian"
-              className="group block p-6 border border-border-custom rounded bg-bg-primary hover:border-text-secondary transition-colors duration-200"
+              className="group block min-h-[220px] p-6 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2] hover:-translate-y-1 transition-all duration-200"
             >
               <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
                 {c.walkingCardTitle}
@@ -155,14 +189,48 @@ export function Home() {
                 <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
+
+            {/* Xiaohongshu Card */}
+            <Link
+              to="/projects/xiaohongshu"
+              className="group block min-h-[220px] p-6 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2] hover:-translate-y-1 transition-all duration-200"
+            >
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
+                {c.xhsCardTitle}
+              </h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
+                {c.xhsCardDesc}
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
+                <span className="font-noto">查看详情</span>
+                <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+
+            {/* Infinite Academy Card */}
+            <Link
+              to="/projects/infinite-academy"
+              className="group block min-h-[220px] p-6 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2] hover:-translate-y-1 transition-all duration-200"
+            >
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
+                {c.academyCardTitle}
+              </h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
+                {c.academyCardDesc}
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
+                <span className="font-noto">查看详情</span>
+                <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Contact */}
-      <section className="bg-bg-primary py-16 md:py-20 px-5">
+      <section className="bg-bg-primary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto text-center">
-          <h2 className="font-noto font-bold text-xl md:text-2xl text-text-primary mb-6">{c.contactTitle}</h2>
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-6">{c.contactTitle}</h2>
           <p className="font-noto text-base text-text-secondary mb-8">{c.contactDesc}</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <a href={`mailto:${c.email}`} className="inline-flex items-center gap-2 text-text-primary hover:text-text-secondary transition-colors duration-200 group">

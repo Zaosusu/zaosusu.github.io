@@ -3,8 +3,8 @@ import { useLang } from '../context/LanguageContext';
 export function Footer() {
   const { lang } = useLang();
   return (
-    <footer className="bg-bg-primary py-8 px-5 border-t border-border-custom">
-      <div className="max-w-content mx-auto text-center">
+    <footer className="bg-bg-primary py-10 px-5 border-t border-border-custom">
+      <div className="max-w-content mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
         <p className="font-noto text-sm text-text-muted">
           © {new Date().getFullYear()} 阿早 · Zaosusu
         </p>
