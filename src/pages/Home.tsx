@@ -9,6 +9,13 @@ const t = {
     heroSubtitle: '独立AI研究者 · 开源实践者',
     heroDesc: '15年商业历练后转型技术，相信"不依赖人"的系统才是未来。',
     heroCta: '查看项目',
+    currentTitle: '现在在做什么',
+    currentItems: [
+      { label: '商业产品', title: '走路修仙', desc: '跨端计步修仙 App，Android / iOS / 小程序待正式运营，已入围 WAIC FutureTech 复赛。' },
+      { label: 'AI研究', title: 'OpenGuitarChordProject', desc: '开源吉他和弦识别项目，推进音频AI、数据集和六线谱生成方向。' },
+      { label: '内容工具链', title: '无限学园', desc: 'Godot 4 视觉小说/养成项目，配套 React 编辑器与本地 AIGC 内容资产生产管线。' },
+      { label: '商业自动化', title: '小红书蒲公英达人筛选系统', desc: '面向品牌投放的达人采集、筛选、分析与批量邀约工具。' },
+    ],
     aboutTitle: '关于我',
     aboutIntro: '我叫阿早，过去15年做过导演、MCN操盘手、淘宝店主，写过10万多字的行业研报，也曾是网易、腾讯、美图秀秀的内容供应商。2022年供应链崩盘让我意识到：依赖人的系统永远是脆弱的。有了时间和资源，我决定做一件"不依赖人"的事——学AI，做开源。',
     aboutGoal: '2026-2030年目标：考研CS，发表论文，成为能做深度研究的独立AI研究者。',
@@ -38,6 +45,13 @@ const t = {
     heroSubtitle: 'Independent AI Researcher · Open Source Practitioner',
     heroDesc: '15 years in business before pivoting to tech. Believing systems that don\'t depend on people are the future.',
     heroCta: 'View Projects',
+    currentTitle: 'What I Am Building Now',
+    currentItems: [
+      { label: 'Commercial Product', title: 'WalkingXiuxian', desc: 'Cross-platform pedometer xianxia app, pending official rollout on Android / iOS / mini program, selected for the WAIC FutureTech semifinal.' },
+      { label: 'AI Research', title: 'OpenGuitarChordProject', desc: 'Open-source guitar chord recognition project advancing audio AI, datasets, and tablature generation.' },
+      { label: 'Content Toolchain', title: 'Infinite Academy', desc: 'Godot 4 visual novel / simulation project with a React editor and local AIGC content-asset pipeline.' },
+      { label: 'Business Automation', title: 'Xiaohongshu KOL Filter', desc: 'Creator collection, filtering, analytics, and batch invitation tool for brand campaigns.' },
+    ],
     aboutTitle: 'About Me',
     aboutIntro: "I'm Zaosusu. Over the past 15 years I've been a director, MCN operator, and e-commerce seller. I wrote 100,000+ words of industry research and was a content supplier for NetEase, Tencent, and Meitu. In 2022, a supply chain collapse taught me: systems that depend on people are always fragile. With time and resources, I decided to build something that doesn't depend on people — learn AI, build open-source.",
     aboutGoal: '2026-2030 Goal: Apply for CS graduate school, publish papers, and become an independent AI researcher capable of deep research.',
@@ -96,16 +110,14 @@ export function Home() {
           </div>
           <div className="relative">
             <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 shadow-2xl shadow-black/30">
-              <div className="grid grid-cols-2 gap-3 mb-5">
-                {['2012-2022', '2019-2025', '2026', '2026-2030'].map((item) => (
-                  <div key={item} className="rounded border border-border-custom bg-bg-primary/80 p-4">
-                    <span className="font-inter text-xs text-text-muted">{item}</span>
-                  </div>
-                ))}
+              <div className="flex items-center justify-between gap-4 mb-5">
+                <h2 className="font-noto font-bold text-lg text-text-primary">{c.currentTitle}</h2>
+                <span className="h-px flex-1 bg-gradient-to-r from-[#6cbcb2]/60 to-transparent" />
               </div>
               <div className="space-y-3">
-                {c.timeline.slice(0, 3).map((item) => (
-                  <div key={item.year} className="rounded border border-border-custom bg-bg-primary/70 p-4">
+                {c.currentItems.map((item) => (
+                  <div key={item.label} className="rounded border border-border-custom bg-bg-primary/70 p-4 hover:border-[#6cbcb2]/50 transition-colors">
+                    <span className="font-noto text-xs text-[#9bd8cf]">{item.label}</span>
                     <h3 className="font-noto text-sm font-bold text-text-primary mb-1">{item.title}</h3>
                     <p className="font-noto text-xs leading-relaxed text-text-secondary">{item.desc}</p>
                   </div>
