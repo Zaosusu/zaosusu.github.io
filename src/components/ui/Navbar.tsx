@@ -8,14 +8,14 @@ const navt = {
     home: '阿早',
     ogcp: 'OGCP',
     walking: '走路修仙',
-    xhs: '小红书筛选',
+    xhs: '小红书自动邀约系统',
     academy: '无限学园',
   },
   en: {
     home: 'Zaosusu',
     ogcp: 'OGCP',
     walking: 'WalkingXiuxian',
-    xhs: 'XHS Filter',
+    xhs: 'XHS Auto-Invite',
     academy: 'Infinite Academy',
   },
 };

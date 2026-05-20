@@ -11,15 +11,31 @@ const t = {
     heroDesc: '跨端计步修仙 App。Flutter + FastAPI，事件驱动架构，增量云同步。',
     status: '商业化上线准备中 · Android / iOS / 小程序待正式运营',
     heroWebsite: '访问项目官网',
+    awardsBadge: '赛事与认可',
+    awardsTitle: '赛事与认可',
     waicBadge: 'WAIC 复赛入围',
-    waicTitle: '入围 WAIC FutureTech 复赛',
-    waicDesc: '走路修仙目前已进入 WAIC 相关赛事复赛。WAIC 即 World Artificial Intelligence Conference，中文为世界人工智能大会，是自 2018 年起在上海举办的人工智能大会，覆盖会议论坛、展览展示、赛事评奖、应用体验和创新孵化等板块。',
-    waicFormat: '本次参赛采用 600 → 160 → 30 的递进筛选机制：约 600 个项目进入初筛，约 160 个项目进入复赛，最终约 30 个项目进入更高阶段竞争。走路修仙已从第一轮筛选中突围，进入复赛阶段。',
+    waicTitle: 'WAIC FutureTech 复赛',
+    waicDesc: '世界人工智能大会 FutureTech 赛道，采用 600→160→30 递进筛选机制，已入围复赛。',
+    waicLink: 'https://www.worldaic.com.cn/',
     waicSteps: [
       { count: '600', label: '初筛项目' },
       { count: '160', label: '复赛入围' },
       { count: '30', label: '最终阶段' },
     ],
+    jinjiBadge: '金鸡湖大赛入围',
+    jinjiTitle: '第十五届金鸡湖创新创业大赛',
+    jinjiDesc: '苏州工业园区主办，聚焦国家战略新兴产业和未来产业，服务全球早期科创企业。已入围，待正式参赛。',
+    jinjiLink: 'https://1000.sandlake.com/',
+    opcBadge: 'OPC 菁英训练营',
+    opcTitle: '南京市人工智能 OPC 菁英训练营',
+    opcDesc: '政府认可的培训+赛事项目，采用 171→24→10 递进筛选机制。',
+    opcLink: 'https://qyfw.nanjingdata.cn:10443/information/information-detail?infoId=3446',
+    opcSteps: [
+      { count: '171', label: '报名项目' },
+      { count: '24', label: '初赛入围' },
+      { count: '10', label: '决赛名额' },
+    ],
+    viewLink: '查看官网',
     archTitle: '技术架构',
     archDesc: '整体采用前后端分离 + 自建后端持久化的三层架构。前端 Flutter 负责传感器数据采集与本地状态管理；后端 FastAPI 提供 RESTful API 与 WebSocket 实时通道；认证与业务数据全部自建，部署在国内可访问的服务器。',
     archLayers: [
@@ -70,15 +86,31 @@ const t = {
     heroDesc: 'Cross-platform pedometer xianxia app. Flutter + FastAPI, event-driven architecture, incremental cloud sync.',
     status: 'Commercial launch preparation · Android / iOS / mini program pending official rollout',
     heroWebsite: 'Visit Project Website',
+    awardsBadge: 'Awards & Recognition',
+    awardsTitle: 'Awards & Recognition',
     waicBadge: 'WAIC Semifinalist',
-    waicTitle: 'Selected for the WAIC FutureTech Semifinal',
-    waicDesc: 'WalkingXiuxian has advanced to the semifinal stage of a WAIC-related competition. WAIC stands for World Artificial Intelligence Conference, an AI conference held annually in Shanghai since 2018, covering forums, exhibitions, awards, application experiences, and innovation incubation.',
-    waicFormat: 'The competition follows a 600 → 160 → 30 funnel: around 600 projects entered the initial screening, around 160 advanced to the semifinal, and around 30 move into the next high-stakes stage. WalkingXiuxian has passed the first selection round and entered the semifinal.',
+    waicTitle: 'WAIC FutureTech Semifinal',
+    waicDesc: 'World Artificial Intelligence Conference FutureTech track with a 600→160→30 funnel. Selected for the semifinal.',
+    waicLink: 'https://www.worldaic.com.cn/',
     waicSteps: [
       { count: '600', label: 'Initial projects' },
       { count: '160', label: 'Semifinalists' },
-      { count: '30', label: 'Final-stage projects' },
+      { count: '30', label: 'Final stage' },
     ],
+    jinjiBadge: 'Jinji Lake Finalist',
+    jinjiTitle: '15th Jinji Lake Innovation Competition',
+    jinjiDesc: 'Hosted by Suzhou Industrial Park, focusing on strategic emerging and future industries. Qualified to compete.',
+    jinjiLink: 'https://1000.sandlake.com/',
+    opcBadge: 'OPC Elite Camp',
+    opcTitle: 'Nanjing AI OPC Elite Training Camp',
+    opcDesc: 'A government-recognized training and competition program with a 171→24→10 funnel.',
+    opcLink: 'https://qyfw.nanjingdata.cn:10443/information/information-detail?infoId=3446',
+    opcSteps: [
+      { count: '171', label: 'Projects' },
+      { count: '24', label: 'Shortlisted' },
+      { count: '10', label: 'Finalists' },
+    ],
+    viewLink: 'View Website',
     archTitle: 'Architecture',
     archDesc: 'Three-layer architecture: frontend-backend separation + self-hosted persistence. Flutter handles sensor data and local state; FastAPI provides RESTful API and WebSocket; auth and business data fully self-hosted on domestic-accessible servers.',
     archLayers: [
@@ -170,7 +202,7 @@ export function WalkingXiuxian() {
           <p className="font-noto text-sm md:text-base text-text-muted mb-6 max-w-lg mx-auto">
             {c.heroDesc}
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-5">
+          <div className="flex items-center justify-center mb-5">
             <a
               href="https://www.walkingxiuxian.cn"
               target="_blank"
@@ -180,10 +212,6 @@ export function WalkingXiuxian() {
               <ExternalLink className="w-4 h-4" />
               <span className="font-noto text-sm">{c.heroWebsite}</span>
             </a>
-            <span className="inline-flex items-center gap-2 px-4 py-3 border border-border-custom bg-bg-secondary/70 rounded text-xs text-text-secondary">
-              <Trophy className="w-4 h-4 text-[#9bd8cf]" />
-              <span>{c.waicBadge}</span>
-            </span>
           </div>
           <span className="inline-block px-4 py-1.5 border border-[#6cbcb2]/40 bg-[#6cbcb2]/10 rounded text-xs text-[#9bd8cf]">
             {c.status}
@@ -191,24 +219,72 @@ export function WalkingXiuxian() {
         </div>
       </section>
 
-      {/* WAIC */}
+      {/* Awards & Recognition */}
       <section className="bg-bg-primary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
-          <div className="rounded border border-[#6cbcb2]/40 bg-bg-secondary/80 p-5 md:p-8">
-            <div className="flex items-center gap-2 text-[#9bd8cf] mb-4">
-              <Trophy className="w-5 h-5" />
-              <span className="font-noto text-sm">{c.waicBadge}</span>
+          <div className="flex items-center gap-2 text-[#9bd8cf] mb-4">
+            <Trophy className="w-5 h-5" />
+            <span className="font-noto text-sm">{c.awardsBadge}</span>
+          </div>
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-8">{c.awardsTitle}</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* WAIC */}
+            <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 md:p-6 flex flex-col">
+              <div className="flex items-center gap-2 text-[#9bd8cf] mb-3">
+                <Trophy className="w-4 h-4" />
+                <span className="font-noto text-xs">{c.waicBadge}</span>
+              </div>
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.waicTitle}</h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4 flex-grow">{c.waicDesc}</p>
+              <div className="grid grid-cols-3 gap-2 mb-4">
+                {c.waicSteps.map((step, i) => (
+                  <div key={step.count} className={`p-2 rounded border text-center ${i === 1 ? 'border-[#6cbcb2]/70 bg-[#6cbcb2]/10' : 'border-border-custom bg-bg-primary/70'}`}>
+                    <span className="font-inter font-bold text-xl text-text-primary">{step.count}</span>
+                    <p className="font-noto text-xs text-text-secondary mt-1">{step.label}</p>
+                  </div>
+                ))}
+              </div>
+              <a href={c.waicLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-[#9bd8cf] hover:text-[#6cbcb2] transition-colors">
+                <ExternalLink className="w-3 h-3" />
+                <span>{c.viewLink}</span>
+              </a>
             </div>
-            <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-5">{c.waicTitle}</h2>
-            <p className="font-noto text-base text-text-primary leading-relaxed mb-5">{c.waicDesc}</p>
-            <p className="font-noto text-sm text-text-secondary leading-relaxed mb-8">{c.waicFormat}</p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {c.waicSteps.map((step, i) => (
-                <div key={step.count} className={`p-5 rounded border ${i === 1 ? 'border-[#6cbcb2]/70 bg-[#6cbcb2]/10' : 'border-border-custom bg-bg-primary/70'}`}>
-                  <span className="font-inter font-bold text-3xl text-text-primary">{step.count}</span>
-                  <p className="font-noto text-sm text-text-secondary mt-2">{step.label}</p>
-                </div>
-              ))}
+
+            {/* Jinji Lake */}
+            <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 md:p-6 flex flex-col">
+              <div className="flex items-center gap-2 text-[#9bd8cf] mb-3">
+                <Trophy className="w-4 h-4" />
+                <span className="font-noto text-xs">{c.jinjiBadge}</span>
+              </div>
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.jinjiTitle}</h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4 flex-grow">{c.jinjiDesc}</p>
+              <a href={c.jinjiLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-[#9bd8cf] hover:text-[#6cbcb2] transition-colors">
+                <ExternalLink className="w-3 h-3" />
+                <span>{c.viewLink}</span>
+              </a>
+            </div>
+
+            {/* OPC */}
+            <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 md:p-6 flex flex-col">
+              <div className="flex items-center gap-2 text-[#9bd8cf] mb-3">
+                <Trophy className="w-4 h-4" />
+                <span className="font-noto text-xs">{c.opcBadge}</span>
+              </div>
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.opcTitle}</h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4 flex-grow">{c.opcDesc}</p>
+              <div className="grid grid-cols-3 gap-2 mb-4">
+                {c.opcSteps.map((step, i) => (
+                  <div key={step.count} className={`p-2 rounded border text-center ${i === 1 ? 'border-[#6cbcb2]/70 bg-[#6cbcb2]/10' : 'border-border-custom bg-bg-primary/70'}`}>
+                    <span className="font-inter font-bold text-xl text-text-primary">{step.count}</span>
+                    <p className="font-noto text-xs text-text-secondary mt-1">{step.label}</p>
+                  </div>
+                ))}
+              </div>
+              <a href={c.opcLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-[#9bd8cf] hover:text-[#6cbcb2] transition-colors">
+                <ExternalLink className="w-3 h-3" />
+                <span>{c.viewLink}</span>
+              </a>
             </div>
           </div>
         </div>

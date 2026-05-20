@@ -16,8 +16,8 @@ import { Footer } from '../sections/Footer';
 const t = {
   zh: {
     back: '返回首页',
-    title: '小红书蒲公英达人筛选系统',
-    subtitle: 'Xiaohongshu KOL Filter',
+    title: '小红书自动邀约系统',
+    subtitle: 'Xiaohongshu Auto-Invite System',
     desc: '面向品牌投放的达人采集、筛选、分析与批量邀约工具。后端基于 FastAPI，结合蒲公英 API 与小红书浏览器自动化，沉淀可复用的达人数据资产。',
     status: '内部工具 · 已完成模块化重构与邀约流程',
     overviewTitle: '项目定位',
@@ -56,8 +56,8 @@ const t = {
   },
   en: {
     back: 'Back to Home',
-    title: 'Xiaohongshu KOL Filter',
-    subtitle: 'PGY Creator Discovery System',
+    title: 'Xiaohongshu Auto-Invite System',
+    subtitle: 'XHS Auto-Invite System',
     desc: 'A brand-campaign tool for creator collection, filtering, analytics, and batch invitation. Built with FastAPI, combining PGY APIs with logged-in Xiaohongshu browser automation.',
     status: 'Internal tool · Modular crawler and invitation workflow implemented',
     overviewTitle: 'Positioning',
