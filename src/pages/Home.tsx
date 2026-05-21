@@ -56,7 +56,7 @@ const t = {
     timeline: [
       { year: '2012—2016', title: '月亮阶段', desc: '南艺戏文毕业。毕业作品入围金鸡百花短片单元与CIFF。组建13人拍摄团队，2016年导演长片《不良女主播》。' },
       { year: '2017—2022', title: '六便士阶段', desc: '放下艺术理想，做女团、MCN操盘。网易/腾讯/美图 KOL供应商，写cosplay行业研报。创立三坑服饰品牌，考取证券/基金从业资格证。' },
-      { year: '2022—2026', title: '刀锋阶段', desc: '三坑供应链崩盘后，意识到依赖人的系统是脆弱的，决定做不依赖人的事——越过刀锋，走上觉醒之路。从零自学编程，独立开发开源项目。2026年提出OPC（One Person Company）模型。' },
+      { year: '2022—2026', title: '刀锋阶段', desc: '三坑供应链崩盘后，意识到依赖人的系统是脆弱的，决定做不依赖人的事——越过刀锋，走上觉醒之路。从零自学编程，独立开发开源项目。' },
       { year: '2026—2030', title: '月亮与六便士', desc: '考研CS。AI工具开发与金融研究并行。目标：独立AI研究者——月亮与六便士，全都要。' },
     ],
     projectsTitle: '沙之书',
@@ -125,7 +125,7 @@ const t = {
     timeline: [
       { year: '2012–2016', title: 'The Moon', desc: 'Graduated from NUA, playwriting & screenwriting. Graduation film selected for Golden Rooster & Hundred Flowers Short Film Unit and CIFF. Led a 13-person crew. Directed feature film "Bad Female Streamer" in 2016.' },
       { year: '2017–2022', title: 'The Sixpence', desc: 'Set aside artistic ideals. Girl-group operations, MCN management. KOL supplier for NetEase/Tencent/Meitu. Published cosplay industry research. Founded a "three-pit" fashion brand. Earned securities & fund qualifications in 2021.' },
-      { year: '2022–2026', title: "The Razor's Edge", desc: 'After the "three-pit" supply chain collapsed, realized people-dependent systems are fragile, and decided to build systems that don\'t depend on people — crossed the razor\'s edge, walked the path of awakening. Self-taught programming from scratch. Independently developed open-source projects. In 2026, proposed the OPC (One Person Company) model.' },
+      { year: '2022–2026', title: "The Razor's Edge", desc: 'After the "three-pit" supply chain collapsed, realized people-dependent systems are fragile, and decided to build systems that don\'t depend on people — crossed the razor\'s edge, walked the path of awakening. Self-taught programming from scratch. Independently developed open-source projects.' },
       { year: '2026–2030', title: 'Moon & Sixpence', desc: 'Applying for CS graduate school. Parallel tracks: AI tool development and financial research. Goal: independent AI researcher — the Moon and the Sixpence. Both.' },
     ],
     projectsTitle: 'The Book of Sand',
