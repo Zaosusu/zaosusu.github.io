@@ -9,24 +9,57 @@ const t = {
     heroSubtitle: '独立AI研究者 · 开源实践者',
     heroDesc: '15年商业历练后转型技术，相信"不依赖人"的系统才是未来。',
     heroCta: '查看项目',
-    currentTitle: '现在在做什么',
-    currentItems: [
-      { label: '商业产品', title: '走路修仙', desc: '跨端计步修仙 App，Android / iOS / 小程序待正式运营，已入围 WAIC FutureTech 复赛、金鸡湖创新创业大赛及南京市人工智能 OPC 菁英训练营。' },
-      { label: 'AI研究', title: 'OpenGuitarChordProject', desc: '开源吉他和弦识别项目，推进音频AI、数据集和六线谱生成方向。' },
-      { label: '内容工具链', title: '无限学园', desc: 'Godot 4 视觉小说/养成项目，配套 React 编辑器与本地 AIGC 内容资产生产管线。' },
-      { label: '商业自动化', title: '小红书自动邀约系统', desc: '面向品牌投放的达人采集、筛选、分析与批量邀约工具。' },
-    ],
-    aboutTitle: '关于我',
-    aboutIntro: '我叫阿早（早叔），过去15年做过导演、MCN操盘手、淘宝店主，写过10万多字的行业研报，也曾是网易、腾讯、美图秀秀等公司的KOC、KOL供应商，服务美图至今已经10年。2022年供应链崩盘让我意识到：依赖人的系统永远是脆弱的。有了时间和资源，我决定做一件"不依赖人"的事——学AI，做项目，走独立研究这条路。',
-    aboutGoal: '2026-2030年目标：考研CS，发表论文，成为能做深度研究的独立AI研究者。',
-    timelineTitle: '转型之路',
+    currentTitle: '我是谁',
+    keywordIntro: '极客 · 独立AI研究者 · 开源实践者。15年商业历练后转型技术，相信"不依赖人的系统"才是未来。',
+    keywordQuote: '"我才知道原来我一直在找身份认同，现在找到了。" — 2026',
+    keywords: {
+      core: [
+        { text: '极客', color: 'orange' },
+        { text: '独立AI研究者', color: 'orange' },
+        { text: '不依赖人的系统', color: 'orange' },
+      ],
+      mid: [
+        { text: '开源实践者', color: 'teal' },
+        { text: '技术转型者', color: 'teal' },
+        { text: '长期主义', color: 'teal' },
+        { text: '先上线再完美', color: 'teal' },
+        { text: '风口卡位', color: 'teal' },
+        { text: '跨界整合', color: 'teal' },
+        { text: '14年找身份', color: 'teal' },
+        { text: '月亮与六便士', color: 'teal' },
+        { text: '愤怒驱动', color: 'teal' },
+        { text: '真诚', color: 'teal' },
+      ],
+      small: [
+        { text: '导演', color: 'gray' },
+        { text: 'MCN操盘手', color: 'gray' },
+        { text: '电商老板', color: 'gray' },
+        { text: '音频AI', color: 'gray' },
+        { text: '数据集', color: 'gray' },
+        { text: '一人公司', color: 'gray' },
+        { text: '厚脸皮', color: 'gray' },
+        { text: '考研CS', color: 'gray' },
+        { text: '南京', color: 'gray' },
+        { text: '南艺', color: 'gray' },
+        { text: '吴宇清', color: 'gray' },
+        { text: '摇滚', color: 'gray' },
+        { text: '700天', color: 'gray' },
+        { text: '10倍', color: 'gray' },
+        { text: '黑暗森林', color: 'gray' },
+        { text: '流量洼地', color: 'gray' },
+      ],
+    },
+    aboutTitle: '纳尔齐斯与歌尔德蒙',
+    aboutIntro: '我是阿早，覃翘（早叔）。<br/><br/>高中时我出版了第一本书<a href="https://www.gxwenlian.com/show/35/8157" target="_blank" rel="noopener noreferrer" class="text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors">《生活是这样子》</a>，中国文联出版社，桂林市作协还举办了作品研讨会。<br/><br/>大学时我在南艺学戏文，写小说、组乐队、追诗歌和摇滚。两次从南京<a href="https://www.douban.com/doulist/25983139/" target="_blank" rel="noopener noreferrer" class="text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors">徒步去镇江迷笛音乐节</a>，六十多公里。在livehouse办过演出，还邀请过<a href="https://www.douban.com/group/topic/8472196/" target="_blank" rel="noopener noreferrer" class="text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors">木马乐队</a>来南京。<br/><br/>毕业作品<a href="https://movie.douban.com/subject/20266518/" target="_blank" rel="noopener noreferrer" class="text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors">《南京长江大桥有多少灯柱》</a>（21分钟）入围金鸡百花短片单元和CIFF。毕业后我没有离开影视行业，从婚庆干起，带十三人的团队全南京跑单，拍宣传片、MV。2015年参演电影<a href="https://movie.douban.com/subject/26671359/" target="_blank" rel="noopener noreferrer" class="text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors">《消灭大学生》</a>，饰演郭小亮。同年编剧作品《激情游戏》备案。2016年导演了长片<a href="https://movie.douban.com/subject/26806828/" target="_blank" rel="noopener noreferrer" class="text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors">《不良女主播》</a>（65分钟）。同年11月26日，主办<a href="https://www.douyu.com/cms/detail/new_list/4447.shtml" target="_blank" rel="noopener noreferrer" class="text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors">GCS动漫展</a>，南京新庄国际展览中心C厅。<br/><br/>那几年，追的是月亮。<br/><br/>2017年，月亮死了。我放下它，转身去追六便士。<br/><br/>做<a href="https://music.163.com/#/artist/desc?id=12126321" target="_blank" rel="noopener noreferrer" class="text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors">女团</a>运营、网红经济和MCN操盘，成为抖音内容培训讲师，多家MCN的内容负责人。2017年开始签约coser，之后陆续跟网易、腾讯、美图等平台建立KOC、KOL供应合作，服务美图至今十年。2019年写<a href="https://www.zhihu.com/column/c_83841941" target="_blank" rel="noopener noreferrer" class="text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors">二次元cosplay行业研报</a>。2020年开三坑服饰原创定制店。2021年考取证券从业和基金从业资格证。2022年投资的公司上线数字藏品平台。<br/><br/>但我始终在那些身份之外。赚钱的事干了不少，却没有一件让我觉得"这就是我"。2022年，三坑供应链崩盘。那套依赖人的商业系统在我面前碎掉了。我意识到，凡是依赖人的，都是脆弱的。<br/><br/>我决定做不依赖人的事——AI与金融。从零学编程，查文档、看源码、在社区里问。做开源项目，错了重来，上线迭代。<br/><br/>2026年，我确认了自己的身份：**一个用AI和技术解决问题的极客**。OPC（One Person Company）圣体——一人加AI，就是完整团队。<br/><br/>月亮和六便士。两个都要——纳尔齐斯与歌尔德蒙和解了。',
+    aboutGoal: '2026-2030年目标：考研CS，深耕AI独立研究。AI工具开发与金融投资并行。目标：成为能做深度研究的独立AI研究者。',
+    timelineTitle: '人生是旷野，不是轨道',
     timeline: [
-      { year: '2012-2022', title: '商业实践', desc: '影视、MCN、电商。积累认知，但看清「依赖人」的脆弱性' },
-      { year: '2019-2025', title: '财务积累', desc: 'ToB业务爆发期带来主要资本积累；股市验证周期理论，做到稳定盈利' },
-      { year: '2026', title: 'AI研究启动', desc: 'OpenGuitarChordProject立项。开始系统学习CS/数学/AI。准备2030考研' },
-      { year: '2026-2030', title: '独立研究者之路', desc: '推进项目，发表论文，开源数据集和工具。目标：成为能做深度研究的独立AI研究者' },
+      { year: '2012—2016', title: '月亮阶段', desc: '南艺戏文毕业。毕业作品入围金鸡百花短片单元与CIFF。组建13人拍摄团队，2016年导演长片《不良女主播》。' },
+      { year: '2017—2022', title: '六便士阶段', desc: '放下艺术理想，做女团、MCN操盘。网易/腾讯/美图 KOL供应商，写cosplay行业研报。创立三坑服饰品牌，考取证券/基金从业资格证。' },
+      { year: '2022—2026', title: '刀锋阶段', desc: '三坑供应链崩盘后，意识到依赖人的系统是脆弱的，决定做不依赖人的事——越过刀锋，走上觉醒之路。从零自学编程，独立开发开源项目。2026年提出OPC（One Person Company）模型。' },
+      { year: '2026—2030', title: '月亮与六便士', desc: '考研CS。AI工具开发与金融研究并行。目标：独立AI研究者。' },
     ],
-    projectsTitle: '项目',
+    projectsTitle: '沙之书',
     ogcpCardTitle: 'OpenGuitarChordProject',
     ogcpCardDesc: '开源吉他和弦识别项目。996样本物理感知数据集，目标是从音频自动识别和弦并生成六线谱。',
     walkingCardTitle: '走路修仙',
@@ -45,24 +78,57 @@ const t = {
     heroSubtitle: 'Independent AI Researcher · Open Source Practitioner',
     heroDesc: '15 years in business before pivoting to tech. Believing systems that don\'t depend on people are the future.',
     heroCta: 'View Projects',
-    currentTitle: 'What I Am Building Now',
-    currentItems: [
-      { label: 'Commercial Product', title: 'WalkingXiuxian', desc: 'Cross-platform pedometer xianxia app, pending official rollout on Android / iOS / mini program, selected for the WAIC FutureTech semifinal, Jinji Lake Innovation Competition, and Nanjing AI OPC Elite Training Camp.' },
-      { label: 'AI Research', title: 'OpenGuitarChordProject', desc: 'Open-source guitar chord recognition project advancing audio AI, datasets, and tablature generation.' },
-      { label: 'Content Toolchain', title: 'Infinite Academy', desc: 'Godot 4 visual novel / simulation project with a React editor and local AIGC content-asset pipeline.' },
-      { label: 'Business Automation', title: 'Xiaohongshu Auto-Invite System', desc: 'Creator collection, filtering, analytics, and batch invitation tool for brand campaigns.' },
-    ],
-    aboutTitle: 'About Me',
-    aboutIntro: "I'm Zaosusu. Over the past 15 years I've been a director, MCN operator, and e-commerce seller. I wrote 100,000+ words of industry research and was a content supplier for NetEase, Tencent, and Meitu. In 2022, a supply chain collapse taught me: systems that depend on people are always fragile. With time and resources, I decided to build something that doesn't depend on people — learn AI, build open-source.",
-    aboutGoal: '2026-2030 Goal: Apply for CS graduate school, publish papers, and become an independent AI researcher capable of deep research.',
-    timelineTitle: 'The Transition',
+    currentTitle: 'Who I Am',
+    keywordIntro: 'Geek · Independent AI Researcher · Open Source Practitioner. 15 years in business before pivoting to tech. Believing systems that don\'t depend on people are the future.',
+    keywordQuote: '"I finally realized I\'ve been searching for my identity all along. Now I\'ve found it." — 2026',
+    keywords: {
+      core: [
+        { text: 'Geek', color: 'orange' },
+        { text: 'Independent AI Researcher', color: 'orange' },
+        { text: 'Systems Without People', color: 'orange' },
+      ],
+      mid: [
+        { text: 'Open Source', color: 'teal' },
+        { text: 'Tech Transition', color: 'teal' },
+        { text: 'Long-termism', color: 'teal' },
+        { text: 'Ship First', color: 'teal' },
+        { text: 'Early Mover', color: 'teal' },
+        { text: 'Cross-domain', color: 'teal' },
+        { text: '14-Year Search', color: 'teal' },
+        { text: 'Moon & Sixpence', color: 'teal' },
+        { text: 'Anger Driven', color: 'teal' },
+        { text: 'Authentic', color: 'teal' },
+      ],
+      small: [
+        { text: 'Director', color: 'gray' },
+        { text: 'MCN Operator', color: 'gray' },
+        { text: 'E-commerce', color: 'gray' },
+        { text: 'Audio AI', color: 'gray' },
+        { text: 'Dataset', color: 'gray' },
+        { text: 'One-Person Co', color: 'gray' },
+        { text: 'Thick-skinned', color: 'gray' },
+        { text: 'CS Grad School', color: 'gray' },
+        { text: 'Nanjing', color: 'gray' },
+        { text: 'NUA', color: 'gray' },
+        { text: 'Wu Yuqing', color: 'gray' },
+        { text: 'Rock', color: 'gray' },
+        { text: '700 Days', color: 'gray' },
+        { text: '10x', color: 'gray' },
+        { text: 'Dark Forest', color: 'gray' },
+        { text: 'Traffic Niche', color: 'gray' },
+      ],
+    },
+    aboutTitle: 'Narcissus and Goldmund',
+    aboutIntro: "I'm Zaosusu (Zao Shu), Qin Qiao.\n\nIn high school I published my first book, <a href=\"https://www.gxwenlian.com/show/35/8157\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors\">*Life Is Like This*</a>, through China Federation of Literary and Art Circles Press. The Guilin Writers Association held a seminar for it.\n\nI studied playwriting and screenwriting at NUA. Wrote novels, formed bands, drifted between poetry and rock'n'roll. <a href=\"https://www.douban.com/doulist/25983139/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors\">Hiked 60+ km from Nanjing to Zhenjiang for the Midi Music Festival</a> twice, played at livehouses, and invited the band <a href=\"https://www.douban.com/group/topic/8472196/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors\">Muma</a> to Nanjing.\n\nMy graduation film <a href=\"https://movie.douban.com/subject/20266518/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors\">\"How Many Lamp Posts on the Nanjing Yangtze River Bridge\"</a> (21 min) was selected for the Golden Rooster & Hundred Flowers Short Film Unit and CIFF. After graduation I didn't leave the film industry. I started with wedding videography, led a 13-person crew across Nanjing, shot promotional videos and music videos. In 2015 I acted in the film <a href=\"https://movie.douban.com/subject/26671359/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors\">*Eliminate College Students*</a>, playing Guo Xiaoliang. That same year my screenplay *Passion Game* was filed for record. In 2016 I directed the feature film <a href=\"https://movie.douban.com/subject/26806828/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors\">\"Bad Female Streamer\"</a> (65 min). On November 26 of the same year, I organized the <a href=\"https://www.douyu.com/cms/detail/new_list/4447.shtml\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors\">GCS Anime Expo</a> at Hall C of Nanjing Xinzhuang International Exhibition Center.<br/><br/>Those years, I was chasing the Moon.\n\nIn 2017, the Moon died. I set it aside and turned to chase the Sixpence. I did <a href=\"https://music.163.com/#/artist/desc?id=12126321\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors\">girl-group</a> operations, influencer economy and MCN management, became a Douyin content training instructor, and served as content lead for multiple MCNs. In 2017 I started signing cosplayers, and gradually built KOC/KOL supply partnerships with NetEase, Tencent, Meitu, and other platforms — I've been serving Meitu for ten years now. In 2019 I wrote <a href=\"https://www.zhihu.com/column/c_83841941\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-[#9bd8cf] underline decoration-[#6cbcb2] hover:text-[#6cbcb2] hover:decoration-[#9bd8cf] transition-colors\">cosplay industry research reports</a>. In 2020 I founded a three-pit fashion original-design brand. In 2021 I earned my securities and fund qualifications. In 2022 a company I invested in launched a digital collectibles platform.\n\nBut I was never truly at home in those identities. I made money, but none of it felt like \'this is me.\' In 2022, the three-pit supply chain collapsed. The people-dependent business system fell apart before my eyes. I realized: any system that depends on people is fragile.\n\nI decided to build things that don't depend on people — AI and finance. I taught myself programming from scratch. Read docs, read source code, asked questions in communities. Worked on open-source projects. Failed, restarted, shipped, iterated.\n\nIn 2026, I confirmed my identity: **a geek who solves problems with AI and technology**. OPC (One Person Company) — one person plus AI is a complete team.\n\nThe Moon and the Sixpence — Narcissus and Goldmund reconciled.",
+    aboutGoal: '2026-2030 Goal: Apply for CS graduate school, pursue independent AI research. Parallel tracks: AI tool development and financial investment. Goal: become an independent AI researcher capable of deep research.',
+    timelineTitle: 'Life is a Wilderness, Not a Track',
     timeline: [
-      { year: '2012–2022', title: 'Business Practice', desc: 'Film, MCN, e-commerce. Built experience, but realized the fragility of people-dependent systems.' },
-      { year: '2019–2025', title: 'Financial Independence', desc: 'ToB business boom drove major wealth accumulation. Validated cycle theory in the stock market.' },
-      { year: '2026', title: 'AI Research Begins', desc: 'OpenGuitarChordProject founded. Started systematic study of CS, math, and AI. Preparing for grad school in 2030.' },
-      { year: '2026–2030', title: 'Path to Independent Researcher', desc: 'Advance projects, publish papers, open-source datasets and tools. Goal: become a deep-research independent AI researcher.' },
+      { year: '2012–2016', title: 'The Moon', desc: 'Graduated from NUA, playwriting & screenwriting. Graduation film selected for Golden Rooster & Hundred Flowers Short Film Unit and CIFF. Led a 13-person crew. Directed feature film "Bad Female Streamer" in 2016.' },
+      { year: '2017–2022', title: 'The Sixpence', desc: 'Set aside artistic ideals. Girl-group operations, MCN management. KOL supplier for NetEase/Tencent/Meitu. Published cosplay industry research. Founded a "three-pit" fashion brand. Earned securities & fund qualifications in 2021.' },
+      { year: '2022–2026', title: "The Razor's Edge", desc: 'After the "three-pit" supply chain collapsed, realized people-dependent systems are fragile, and decided to build systems that don\'t depend on people — crossed the razor\'s edge, walked the path of awakening. Self-taught programming from scratch. Independently developed open-source projects. In 2026, proposed the OPC (One Person Company) model.' },
+      { year: '2026–2030', title: 'Moon & Sixpence', desc: 'Applying for CS graduate school. Parallel tracks: AI tool development and financial research. Goal: independent AI researcher.' },
     ],
-    projectsTitle: 'Projects',
+    projectsTitle: 'The Book of Sand',
     ogcpCardTitle: 'OpenGuitarChordProject',
     ogcpCardDesc: 'Open-source guitar chord recognition. 996-sample physics-aware dataset. Goal: recognize chords from audio and generate guitar tablature.',
     walkingCardTitle: 'WalkingXiuxian',
@@ -108,33 +174,50 @@ export function Home() {
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
-          <div className="relative">
-            <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 shadow-2xl shadow-black/30">
-              <div className="flex items-center justify-between gap-4 mb-5">
-                <h2 className="font-noto font-bold text-lg text-text-primary">{c.currentTitle}</h2>
-                <span className="h-px flex-1 bg-gradient-to-r from-[#6cbcb2]/60 to-transparent" />
-              </div>
-              <div className="space-y-3">
-                {c.currentItems.map((item) => (
-                  <div key={item.label} className="rounded border border-border-custom bg-bg-primary/70 p-4 hover:border-[#6cbcb2]/50 transition-colors">
-                    <span className="font-noto text-xs text-[#9bd8cf]">{item.label}</span>
-                    <h3 className="font-noto text-sm font-bold text-text-primary mb-1">{item.title}</h3>
-                    <p className="font-noto text-xs leading-relaxed text-text-secondary">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
+          <div className="relative flex flex-col">
+            <div className="flex items-center justify-between gap-4 mb-5">
+              <h2 className="font-noto font-bold text-lg text-text-primary">{c.currentTitle}</h2>
+              <span className="h-px flex-1 bg-gradient-to-r from-[#6cbcb2]/60 to-transparent" />
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* About */}
-      <section className="bg-bg-secondary py-16 md:py-24 px-5">
-        <div className="max-w-content mx-auto grid grid-cols-1 md:grid-cols-[0.35fr_0.65fr] gap-8 md:gap-14">
-          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary">{c.aboutTitle}</h2>
-          <div className="font-noto text-base text-text-primary leading-relaxed space-y-6 border-l border-border-custom pl-6">
-            <p>{c.aboutIntro}</p>
-            <p className="text-text-secondary">{c.aboutGoal}</p>
+            <p className="font-noto text-sm text-text-secondary leading-relaxed mb-5">
+              {c.keywordIntro}
+            </p>
+
+            <div className="flex flex-wrap gap-2 mb-6">
+              {c.keywords.core.map((k) => (
+                <span
+                  key={k.text}
+                  className={`inline-flex items-center rounded border px-3 py-1.5 text-base font-bold transition-all duration-200 hover:-translate-y-0.5 cursor-default ${
+                    k.color === 'orange'
+                      ? 'border-[#f4a261]/40 bg-[#f4a261]/10 text-[#f4a261] hover:border-[#f4a261]/70'
+                      : 'border-[#6cbcb2]/40 bg-[#6cbcb2]/10 text-[#6cbcb2] hover:border-[#6cbcb2]/70'
+                  }`}
+                >
+                  {k.text}
+                </span>
+              ))}
+              {c.keywords.mid.map((k) => (
+                <span
+                  key={k.text}
+                  className="inline-flex items-center rounded border border-[#6cbcb2]/25 bg-[#6cbcb2]/5 text-[#9bd8cf] text-sm px-2.5 py-1 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#6cbcb2]/50 cursor-default"
+                >
+                  {k.text}
+                </span>
+              ))}
+              {c.keywords.small.map((k) => (
+                <span
+                  key={k.text}
+                  className="inline-flex items-center rounded border border-border-custom/50 bg-bg-primary/30 text-text-muted text-xs px-2 py-0.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-text-secondary/50 hover:text-text-secondary cursor-default"
+                >
+                  {k.text}
+                </span>
+              ))}
+            </div>
+
+            <p className="font-noto text-xs text-text-muted italic border-l-2 border-[#6cbcb2]/30 pl-3 leading-relaxed">
+              {c.keywordQuote}
+            </p>
           </div>
         </div>
       </section>
@@ -159,6 +242,17 @@ export function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About */}
+      <section className="bg-bg-secondary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-8">{c.aboutTitle}</h2>
+          <div className="font-noto text-base text-text-primary leading-relaxed space-y-6 border-l border-border-custom pl-6">
+            <p dangerouslySetInnerHTML={{ __html: c.aboutIntro.replace(/\n/g, '<br/>') }} />
+            <p className="text-text-secondary">{c.aboutGoal}</p>
           </div>
         </div>
       </section>
