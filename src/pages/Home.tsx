@@ -72,6 +72,11 @@ const t = {
     contactDesc: '如果你对我的研究或项目感兴趣，欢迎交流：',
     email: 'qinqiao2014@gmail.com',
     github: 'github.com/zaosusu',
+    socials: [
+      { name: '抖音', url: 'https://www.douyin.com/user/MS4wLjABAAAAV92gjs6tGrme_ENgc65WaPEIUWLfqA2KSTJdJxefKSM' },
+      { name: '小红书', url: 'https://www.xiaohongshu.com/user/profile/5e95c83c00000000010077a5' },
+      { name: 'B站', url: 'https://space.bilibili.com/31603890' },
+    ],
   },
   en: {
     heroTitle: 'Zaosusu',
@@ -141,6 +146,11 @@ const t = {
     contactDesc: 'If you are interested in my research or projects, feel free to reach out:',
     email: 'qinqiao2014@gmail.com',
     github: 'github.com/zaosusu',
+    socials: [
+      { name: 'Douyin', url: 'https://www.douyin.com/user/MS4wLjABAAAAV92gjs6tGrme_ENgc65WaPEIUWLfqA2KSTJdJxefKSM' },
+      { name: 'Xiaohongshu', url: 'https://www.xiaohongshu.com/user/profile/5e95c83c00000000010077a5' },
+      { name: 'Bilibili', url: 'https://space.bilibili.com/31603890' },
+    ],
   },
 };
 
@@ -163,6 +173,28 @@ export function Home() {
             <h1 className="font-inter font-bold text-5xl md:text-7xl text-text-primary tracking-tight mb-5">
               {c.heroTitle}
             </h1>
+            <div className="flex flex-wrap items-center gap-4 mb-7">
+              {c.socials.map((s) => {
+                const iconSrc =
+                  s.name === '抖音' || s.name === 'Douyin' ? '/tiktok.svg' :
+                  s.name === '小红书' || s.name === 'Xiaohongshu' ? '/xiaohongshu.svg' :
+                  '/bilibili.svg';
+                return (
+                  <a
+                    key={s.name}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-text-secondary hover:text-[#9bd8cf] transition-colors duration-200 group"
+                    title={s.name}
+                  >
+                    <img src={iconSrc} alt={s.name} className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" />
+                    <span className="font-noto border-b border-transparent group-hover:border-[#9bd8cf]">{s.name}</span>
+                    <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </a>
+                );
+              })}
+            </div>
             <p className="font-noto text-base md:text-lg text-text-secondary leading-relaxed mb-9 max-w-2xl">
               {c.heroDesc}
             </p>
@@ -348,6 +380,28 @@ export function Home() {
               <span className="font-noto text-sm border-b border-transparent group-hover:border-text-secondary">{c.github}</span>
               <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-5 mt-6">
+            {c.socials.map((s) => {
+              const iconSrc =
+                s.name === '抖音' || s.name === 'Douyin' ? '/tiktok.svg' :
+                s.name === '小红书' || s.name === 'Xiaohongshu' ? '/xiaohongshu.svg' :
+                '/bilibili.svg';
+              return (
+                <a
+                  key={s.name}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-text-secondary hover:text-[#9bd8cf] transition-colors duration-200 group"
+                  title={s.name}
+                >
+                  <img src={iconSrc} alt={s.name} className="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity" />
+                  <span className="font-noto border-b border-transparent group-hover:border-[#9bd8cf]">{s.name}</span>
+                  <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
