@@ -28,7 +28,7 @@ const t = {
     jinjiLink: 'https://1000.sandlake.com/',
     opcBadge: 'OPC 菁英训练营',
     opcTitle: '南京市人工智能 OPC 菁英训练营',
-    opcDesc: '政府认可的培训+赛事项目，采用 171→65→24→10 递进筛选机制。',
+    opcDesc: '政府认可的培训+赛事项目，历经初筛→复赛→决赛三轮淘汰，从171个项目中脱颖而出，成功获奖。',
     opcLink: 'https://qyfw.nanjingdata.cn:10443/information/information-detail?infoId=3446',
     opcSteps: [
       { count: '171', label: '报名项目' },
@@ -104,7 +104,7 @@ const t = {
     jinjiLink: 'https://1000.sandlake.com/',
     opcBadge: 'OPC Elite Camp',
     opcTitle: 'Nanjing AI OPC Elite Training Camp',
-    opcDesc: 'A government-recognized training and competition program with a 171→65→24→10 funnel.',
+    opcDesc: 'A government-recognized training and competition program. Survived three rounds of elimination from 171 projects to win a final award.',
     opcLink: 'https://qyfw.nanjingdata.cn:10443/information/information-detail?infoId=3446',
     opcSteps: [
       { count: '171', label: 'Projects' },
