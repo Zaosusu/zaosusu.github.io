@@ -277,7 +277,7 @@ export function WalkingXiuxian() {
               <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4 flex-grow">{c.opcDesc}</p>
               <div className="grid grid-cols-2 gap-2 mb-4">
                 {c.opcSteps.map((step, i) => (
-                  <div key={step.count} className={`p-2 rounded border text-center ${i === 2 ? 'border-[#6cbcb2]/70 bg-[#6cbcb2]/10' : 'border-border-custom bg-bg-primary/70'}`}>
+                  <div key={step.count} className={`p-2 rounded border text-center ${i === 3 ? 'border-[#6cbcb2]/70 bg-[#6cbcb2]/10' : 'border-border-custom bg-bg-primary/70'}`}>
                     <span className="font-inter font-bold text-xl text-text-primary">{step.count}</span>
                     <p className="font-noto text-xs text-text-secondary mt-1">{step.label}</p>
                   </div>
