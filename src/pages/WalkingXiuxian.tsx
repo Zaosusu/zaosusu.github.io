@@ -34,7 +34,7 @@ const t = {
       { count: '171', label: '报名项目' },
       { count: '65', label: '初赛入围' },
       { count: '24', label: '决赛' },
-      { count: '10', label: '最终获奖' },
+      { count: '8', label: '最终获奖' },
     ],
     viewLink: '查看官网',
     archTitle: '技术架构',
