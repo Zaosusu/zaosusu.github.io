@@ -15,7 +15,7 @@ const t = {
     awardsTitle: '赛事与认可',
     waicBadge: 'WAIC 复赛入围',
     waicTitle: 'WAIC FutureTech 复赛',
-    waicDesc: '世界人工智能大会 FutureTech 赛道，采用 700+→146→30 递进筛选机制，已入围复赛。',
+    waicDesc: '世界人工智能大会 FutureTech 赛道，历经700+→146→30递进筛选，突围进入复赛，最终获得赛区第七名，止步于此。',
     waicLink: 'https://www.worldaic.com.cn/',
     waicSteps: [
       { count: '700+', label: '初筛项目' },
@@ -91,7 +91,7 @@ const t = {
     awardsTitle: 'Awards & Recognition',
     waicBadge: 'WAIC Semifinalist',
     waicTitle: 'WAIC FutureTech Semifinal',
-    waicDesc: 'World Artificial Intelligence Conference FutureTech track with a 700+→146→30 funnel. Selected for the semifinal.',
+    waicDesc: 'World Artificial Intelligence Conference FutureTech track with a 700+→146→30 funnel. Advanced to the semifinals and finished 7th in the division.'
     waicLink: 'https://www.worldaic.com.cn/',
     waicSteps: [
       { count: '700+', label: 'Initial projects' },
