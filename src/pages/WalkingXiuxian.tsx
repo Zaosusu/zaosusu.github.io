@@ -91,7 +91,7 @@ const t = {
     awardsTitle: 'Awards & Recognition',
     waicBadge: 'WAIC Semifinalist',
     waicTitle: 'WAIC FutureTech Semifinal',
-    waicDesc: 'World Artificial Intelligence Conference FutureTech track with a 700+→146→30 funnel. Advanced to the semifinals and secured 7th place in the division.'
+    waicDesc: 'World Artificial Intelligence Conference FutureTech track with a 700+→146→30 funnel. Advanced to the semifinals and secured 7th place in the division.',
     waicLink: 'https://www.worldaic.com.cn/',
     waicSteps: [
       { count: '700+', label: 'Initial projects' },
