@@ -7,6 +7,7 @@ import { OGCPProject } from './pages/OGCPProject';
 import { WalkingXiuxian } from './pages/WalkingXiuxian';
 import { XiaohongshuProject } from './pages/XiaohongshuProject';
 import { InfiniteAcademyProject } from './pages/InfiniteAcademyProject';
+import { DuckEscapeProject } from './pages/DuckEscapeProject';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/projects/walking-xiuxian" element={<WalkingXiuxian />} />
             <Route path="/projects/xiaohongshu" element={<XiaohongshuProject />} />
             <Route path="/projects/infinite-academy" element={<InfiniteAcademyProject />} />
+            <Route path="/projects/duck-escape" element={<DuckEscapeProject />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>

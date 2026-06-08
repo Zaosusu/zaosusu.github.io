@@ -68,6 +68,8 @@ const t = {
     xhsCardDesc: '面向品牌投放的达人采集、筛选、分析与批量邀约工具。FastAPI + Playwright + SQLAlchemy。',
     academyCardTitle: '无限学园',
     academyCardDesc: 'Godot 4 视觉小说/养成项目，配套 React 剧情编辑器与本地 AIGC 驱动的内容资产生产管线。',
+    duckEscapeCardTitle: '逃鸭！南京！',
+    duckEscapeCardDesc: 'Canvas 文字冒险 + 潜行关卡混合游戏。双数值系统（体力×香气），六重结局，南京地标叙事。抖音AI创变者大赛一等奖。',
     contactTitle: '联系我',
     contactDesc: '如果你对我的研究或项目感兴趣，欢迎交流：',
     email: 'qinqiao2014@gmail.com',
@@ -142,6 +144,8 @@ const t = {
     xhsCardDesc: 'Creator discovery, filtering, analytics, and batch invitation tool for brand campaigns. FastAPI + Playwright + SQLAlchemy.',
     academyCardTitle: 'Infinite Academy',
     academyCardDesc: 'Godot 4 visual novel / simulation prototype with a React story editor and a local AIGC content-asset pipeline.',
+    duckEscapeCardTitle: 'Duck Escape: Nanjing',
+    duckEscapeCardDesc: 'Canvas text adventure + stealth level hybrid. Dual-value system (stamina × aroma), six endings, Nanjing landmark narrative. Douyin AI Innovator Competition First Prize.',
     contactTitle: 'Contact',
     contactDesc: 'If you are interested in my research or projects, feel free to reach out:',
     email: 'qinqiao2014@gmail.com',
@@ -293,7 +297,7 @@ export function Home() {
       <section id="projects" className="bg-bg-secondary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-10">{c.projectsTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* OGCP Card */}
             <Link
               to="/projects/ogcp"
@@ -355,6 +359,23 @@ export function Home() {
               </h3>
               <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
                 {c.academyCardDesc}
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
+                <span className="font-noto">查看详情</span>
+                <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+
+            {/* Duck Escape Card */}
+            <Link
+              to="/projects/duck-escape"
+              className="group block min-h-[220px] p-6 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2] hover:-translate-y-1 transition-all duration-200"
+            >
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
+                {c.duckEscapeCardTitle}
+              </h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
+                {c.duckEscapeCardDesc}
               </p>
               <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
                 <span className="font-noto">查看详情</span>

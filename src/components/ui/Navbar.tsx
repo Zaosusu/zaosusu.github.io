@@ -1,37 +1,56 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { useLang } from '../../context/LanguageContext';
 
 const navt = {
   zh: {
     home: '阿早',
+    projects: '项目',
     ogcp: 'OGCP',
     walking: '走路修仙',
     xhs: '小红书自动邀约系统',
     academy: '无限学园',
+    duck: '逃鸭南京',
   },
   en: {
     home: 'Zaosusu',
+    projects: 'Projects',
     ogcp: 'OGCP',
     walking: 'WalkingXiuxian',
     xhs: 'XHS Auto-Invite',
     academy: 'Infinite Academy',
+    duck: 'Duck Escape',
   },
 };
+
+const projectLinks = [
+  { path: '/projects/ogcp', key: 'ogcp' as const },
+  { path: '/projects/walking-xiuxian', key: 'walking' as const },
+  { path: '/projects/xiaohongshu', key: 'xhs' as const },
+  { path: '/projects/infinite-academy', key: 'academy' as const },
+  { path: '/projects/duck-escape', key: 'duck' as const },
+];
 
 export function Navbar() {
   const { lang, toggle } = useLang();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const c = navt[lang];
 
-  const linkClass = (path: string) =>
-    `font-noto text-sm transition-colors duration-200 ${
-      location.pathname === path
-        ? 'text-text-primary border-b border-[#6cbcb2] pb-0.5'
-        : 'text-text-muted hover:text-[#9bd8cf]'
-    }`;
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
+
+  const isProjectPage = projectLinks.some((p) => p.path === location.pathname);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-bg-primary/72 backdrop-blur-xl border-b border-border-custom/80">
@@ -47,18 +66,39 @@ export function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6">
-          <Link to="/projects/ogcp" className={linkClass('/projects/ogcp')}>
-            {c.ogcp}
-          </Link>
-          <Link to="/projects/walking-xiuxian" className={linkClass('/projects/walking-xiuxian')}>
-            {c.walking}
-          </Link>
-          <Link to="/projects/xiaohongshu" className={linkClass('/projects/xiaohongshu')}>
-            {c.xhs}
-          </Link>
-          <Link to="/projects/infinite-academy" className={linkClass('/projects/infinite-academy')}>
-            {c.academy}
-          </Link>
+          {/* Projects Dropdown */}
+          <div className="relative" ref={dropdownRef}>
+            <button
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className={`flex items-center gap-1 font-noto text-sm transition-colors duration-200 ${
+                isProjectPage ? 'text-text-primary' : 'text-text-muted hover:text-[#9bd8cf]'
+              }`}
+            >
+              {c.projects}
+              <ChevronDown
+                className={`w-3.5 h-3.5 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
+            {dropdownOpen && (
+              <div className="absolute top-full left-0 mt-2 w-48 rounded border border-border-custom bg-bg-secondary shadow-lg py-1">
+                {projectLinks.map((p) => (
+                  <Link
+                    key={p.path}
+                    to={p.path}
+                    className={`block px-4 py-2 text-sm transition-colors ${
+                      location.pathname === p.path
+                        ? 'text-text-primary bg-[#6cbcb2]/10'
+                        : 'text-text-muted hover:text-[#9bd8cf] hover:bg-bg-primary/50'
+                    }`}
+                    onClick={() => setDropdownOpen(false)}
+                  >
+                    {c[p.key]}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
           <button
             onClick={toggle}
             className="font-inter text-xs text-text-muted hover:text-text-primary border border-border-custom bg-bg-secondary/70 px-3 py-1.5 rounded transition-colors duration-200"
@@ -88,34 +128,18 @@ export function Navbar() {
       {/* Mobile Menu */}
       {mobileOpen && (
         <div className="md:hidden bg-bg-primary/95 backdrop-blur-xl border-t border-border-custom px-5 py-4 space-y-3">
-          <Link
-            to="/projects/ogcp"
-            className={`block font-noto text-sm ${location.pathname === '/projects/ogcp' ? 'text-text-primary' : 'text-text-muted'}`}
-            onClick={() => setMobileOpen(false)}
-          >
-            {c.ogcp}
-          </Link>
-          <Link
-            to="/projects/walking-xiuxian"
-            className={`block font-noto text-sm ${location.pathname === '/projects/walking-xiuxian' ? 'text-text-primary' : 'text-text-muted'}`}
-            onClick={() => setMobileOpen(false)}
-          >
-            {c.walking}
-          </Link>
-          <Link
-            to="/projects/xiaohongshu"
-            className={`block font-noto text-sm ${location.pathname === '/projects/xiaohongshu' ? 'text-text-primary' : 'text-text-muted'}`}
-            onClick={() => setMobileOpen(false)}
-          >
-            {c.xhs}
-          </Link>
-          <Link
-            to="/projects/infinite-academy"
-            className={`block font-noto text-sm ${location.pathname === '/projects/infinite-academy' ? 'text-text-primary' : 'text-text-muted'}`}
-            onClick={() => setMobileOpen(false)}
-          >
-            {c.academy}
-          </Link>
+          {projectLinks.map((p) => (
+            <Link
+              key={p.path}
+              to={p.path}
+              className={`block font-noto text-sm ${
+                location.pathname === p.path ? 'text-text-primary' : 'text-text-muted'
+              }`}
+              onClick={() => setMobileOpen(false)}
+            >
+              {c[p.key]}
+            </Link>
+          ))}
         </div>
       )}
     </nav>

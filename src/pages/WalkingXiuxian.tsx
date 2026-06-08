@@ -9,7 +9,7 @@ const t = {
     heroTitle: '走路修仙',
     heroSubtitle: 'WalkingXiuxian',
     heroDesc: '跨端计步修仙 App。Flutter + FastAPI，事件驱动架构，增量云同步。',
-    status: '商业化上线准备中 · Android / iOS / 小程序待正式运营',
+    status: '正式运营中 · Android / iOS / 小程序全平台上线',
     heroWebsite: '访问项目官网',
     awardsBadge: '赛事与认可',
     awardsTitle: '赛事与认可',
@@ -20,6 +20,7 @@ const t = {
     waicSteps: [
       { count: '700+', label: '初筛项目' },
       { count: '146', label: '复赛入围' },
+      { count: '7', label: '赛区名次' },
       { count: '30', label: '最终阶段' },
     ],
     jinjiBadge: '金鸡湖大赛入围',
@@ -85,7 +86,7 @@ const t = {
     heroTitle: '走路修仙',
     heroSubtitle: 'WalkingXiuxian',
     heroDesc: 'Cross-platform pedometer xianxia app. Flutter + FastAPI, event-driven architecture, incremental cloud sync.',
-    status: 'Commercial launch preparation · Android / iOS / mini program pending official rollout',
+    status: 'Officially live · Android / iOS / mini program all platforms',
     heroWebsite: 'Visit Project Website',
     awardsBadge: 'Awards & Recognition',
     awardsTitle: 'Awards & Recognition',
@@ -96,6 +97,7 @@ const t = {
     waicSteps: [
       { count: '700+', label: 'Initial projects' },
       { count: '146', label: 'Semifinalists' },
+      { count: '7', label: 'Division rank' },
       { count: '30', label: 'Final stage' },
     ],
     jinjiBadge: 'Jinji Lake Finalist',
@@ -231,6 +233,28 @@ export function WalkingXiuxian() {
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-8">{c.awardsTitle}</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* OPC */}
+            <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 md:p-6 flex flex-col">
+              <div className="flex items-center gap-2 text-[#9bd8cf] mb-3">
+                <Trophy className="w-4 h-4" />
+                <span className="font-noto text-xs">{c.opcBadge}</span>
+              </div>
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.opcTitle}</h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4 flex-grow">{c.opcDesc}</p>
+              <div className="grid grid-cols-2 gap-2 mb-4">
+                {c.opcSteps.map((step, i) => (
+                  <div key={step.count} className={`p-2 rounded border text-center ${i === 3 ? 'border-[#6cbcb2]/70 bg-[#6cbcb2]/10' : 'border-border-custom bg-bg-primary/70'}`}>
+                    <span className="font-inter font-bold text-xl text-text-primary">{step.count}</span>
+                    <p className="font-noto text-xs text-text-secondary mt-1">{step.label}</p>
+                  </div>
+                ))}
+              </div>
+              <a href={c.opcLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-[#9bd8cf] hover:text-[#6cbcb2] transition-colors">
+                <ExternalLink className="w-3 h-3" />
+                <span>{c.viewLink}</span>
+              </a>
+            </div>
+
             {/* WAIC */}
             <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 md:p-6 flex flex-col">
               <div className="flex items-center gap-2 text-[#9bd8cf] mb-3">
@@ -241,7 +265,7 @@ export function WalkingXiuxian() {
               <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4 flex-grow">{c.waicDesc}</p>
               <div className="grid grid-cols-2 gap-2 mb-4">
                 {c.waicSteps.map((step, i) => (
-                  <div key={step.count} className={`p-2 rounded border text-center ${i === 1 ? 'border-[#6cbcb2]/70 bg-[#6cbcb2]/10' : 'border-border-custom bg-bg-primary/70'}`}>
+                  <div key={step.count} className={`p-2 rounded border text-center ${i === 2 ? 'border-[#6cbcb2]/70 bg-[#6cbcb2]/10' : 'border-border-custom bg-bg-primary/70'}`}>
                     <span className="font-inter font-bold text-xl text-text-primary">{step.count}</span>
                     <p className="font-noto text-xs text-text-secondary mt-1">{step.label}</p>
                   </div>
@@ -262,28 +286,6 @@ export function WalkingXiuxian() {
               <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.jinjiTitle}</h3>
               <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4 flex-grow">{c.jinjiDesc}</p>
               <a href={c.jinjiLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-[#9bd8cf] hover:text-[#6cbcb2] transition-colors">
-                <ExternalLink className="w-3 h-3" />
-                <span>{c.viewLink}</span>
-              </a>
-            </div>
-
-            {/* OPC */}
-            <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 md:p-6 flex flex-col">
-              <div className="flex items-center gap-2 text-[#9bd8cf] mb-3">
-                <Trophy className="w-4 h-4" />
-                <span className="font-noto text-xs">{c.opcBadge}</span>
-              </div>
-              <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.opcTitle}</h3>
-              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4 flex-grow">{c.opcDesc}</p>
-              <div className="grid grid-cols-2 gap-2 mb-4">
-                {c.opcSteps.map((step, i) => (
-                  <div key={step.count} className={`p-2 rounded border text-center ${i === 3 ? 'border-[#6cbcb2]/70 bg-[#6cbcb2]/10' : 'border-border-custom bg-bg-primary/70'}`}>
-                    <span className="font-inter font-bold text-xl text-text-primary">{step.count}</span>
-                    <p className="font-noto text-xs text-text-secondary mt-1">{step.label}</p>
-                  </div>
-                ))}
-              </div>
-              <a href={c.opcLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-[#9bd8cf] hover:text-[#6cbcb2] transition-colors">
                 <ExternalLink className="w-3 h-3" />
                 <span>{c.viewLink}</span>
               </a>
