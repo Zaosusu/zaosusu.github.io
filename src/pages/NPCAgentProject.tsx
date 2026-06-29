@@ -1,4 +1,4 @@
-import { ExternalLink, ArrowLeft, Trophy, Code2, Database, Server, Box, Activity, Zap, Globe, Layout, Users, GitBranch, Layers, Shield } from 'lucide-react';
+import { ExternalLink, ArrowLeft, ArrowRight, Trophy, Code2, Database, Server, Box, Activity, Zap, Globe, Layout, Users, GitBranch, Layers, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
@@ -61,6 +61,7 @@ const t = {
       { name: '张天华', role: '剧情' },
       { name: '张芷萱', role: '剧情' },
     ],
+    navPrev: '上一个：逃鸭！南京！',
     contactTitle: '联系',
     contactDesc: '对技术实现感兴趣？欢迎交流：',
     email: 'qinqiao2014@gmail.com',
@@ -122,6 +123,7 @@ const t = {
       { name: 'Zhang Tianhua', role: 'Story' },
       { name: 'Zhang Zhixuan', role: 'Story' },
     ],
+    navPrev: 'Prev: Duck Escape: Nanjing',
     contactTitle: 'Contact',
     contactDesc: 'Interested in the technical implementation? Feel free to reach out:',
     email: 'qinqiao2014@gmail.com',
@@ -301,6 +303,20 @@ export function NPCAgentProject() {
           <a href={`mailto:${c.email}`} className="inline-flex items-center gap-2 text-text-primary hover:text-text-secondary transition-colors duration-200 group">
             <span className="font-noto text-sm border-b border-transparent group-hover:border-text-secondary">{c.email}</span>
           </a>
+        </div>
+      </section>
+
+      {/* Navigation */}
+      <section className="bg-bg-secondary border-t border-border-custom py-6 px-5">
+        <div className="max-w-content mx-auto flex justify-between items-center">
+          <Link
+            to="/projects/duck-escape"
+            className="inline-flex items-center gap-2 font-noto text-sm text-text-muted hover:text-[#9bd8cf] transition-colors group"
+          >
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <span>{c.navPrev}</span>
+          </Link>
+          <span />
         </div>
       </section>
 

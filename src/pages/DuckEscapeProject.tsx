@@ -386,6 +386,26 @@ export function DuckEscapeProject() {
         </div>
       </section>
 
+      {/* Navigation */}
+      <section className="bg-bg-secondary border-t border-border-custom py-6 px-5">
+        <div className="max-w-content mx-auto flex justify-between items-center">
+          <Link
+            to="/projects/infinite-academy"
+            className="inline-flex items-center gap-2 font-noto text-sm text-text-muted hover:text-[#9bd8cf] transition-colors group"
+          >
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <span>{c.navPrev}</span>
+          </Link>
+          <Link
+            to="/projects/npc-agent"
+            className="inline-flex items-center gap-2 font-noto text-sm text-text-muted hover:text-[#9bd8cf] transition-colors group"
+          >
+            <span>{c.navNext}</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

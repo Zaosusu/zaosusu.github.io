@@ -1,5 +1,6 @@
 import {
   ArrowLeft,
+  ArrowRight,
   Boxes,
   Code2,
   Database,
@@ -73,6 +74,8 @@ const t = {
       '支持角色库、NPC 管理、剧情线选择和导入已有模块。',
       '导入模块时会检测多故事结构并给出兼容性提示。',
     ],
+    navPrev: '',
+    navNext: '下一个：逃鸭！南京！',
     contactTitle: '联系',
     contactDesc: '对互动叙事、工具链或 Godot 内容管线感兴趣，欢迎交流：',
     email: 'qinqiao2014@gmail.com',
@@ -135,6 +138,7 @@ const t = {
       'Manage character database, NPCs, storyline selection, and module imports.',
       'Detect multi-story module structures and surface compatibility warnings on import.',
     ],
+    navNext: 'Next: Duck Escape: Nanjing',
     contactTitle: 'Contact',
     contactDesc: 'Interested in interactive narrative, tooling, or Godot content pipelines? Reach out:',
     email: 'qinqiao2014@gmail.com',
@@ -313,6 +317,34 @@ export function InfiniteAcademyProject() {
             <span className="font-noto text-sm border-b border-transparent group-hover:border-text-secondary">{c.email}</span>
             <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
           </a>
+        </div>
+      </section>
+
+      {/* Navigation */}
+      <section className="bg-bg-secondary border-t border-border-custom py-6 px-5">
+        <div className="max-w-content mx-auto flex justify-between items-center">
+          <span />
+          <Link
+            to="/projects/duck-escape"
+            className="inline-flex items-center gap-2 font-noto text-sm text-text-muted hover:text-[#9bd8cf] transition-colors group"
+          >
+            <span>{c.navNext}</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+      </section>
+
+      {/* Navigation */}
+      <section className="bg-bg-secondary border-t border-border-custom py-6 px-5">
+        <div className="max-w-content mx-auto flex justify-between items-center">
+          <span />
+          <Link
+            to="/projects/duck-escape"
+            className="inline-flex items-center gap-2 font-noto text-sm text-text-muted hover:text-[#9bd8cf] transition-colors group"
+          >
+            <span>{c.navNext}</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </section>
 

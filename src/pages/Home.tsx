@@ -59,6 +59,13 @@ const t = {
       { year: '2022—2026', title: '刀锋阶段', desc: '三坑供应链崩盘后，意识到依赖人的系统是脆弱的，决定做不依赖人的事——越过刀锋，走上觉醒之路。从零自学编程，独立开发开源项目。' },
       { year: '2026—2030', title: '月亮与六便士', desc: '考研CS。AI工具开发与金融研究并行。目标：独立AI研究者——月亮与六便士，全都要。' },
     ],
+    threadTitle: '一条线',
+    threadDesc: '从原型探索到产品验证，再到系统化框架。',
+    threadSteps: [
+      { label: '原型探索', project: '无限学园', path: '/projects/infinite-academy', color: 'green' },
+      { label: '产品验证', project: '逃鸭！南京！', path: '/projects/duck-escape', color: 'orange' },
+      { label: '系统化框架', project: '通用NPC Agent底座', path: '/projects/npc-agent', color: 'teal' },
+    ],
     projectsTitle: '沙之书',
     ogcpCardTitle: 'OpenGuitarChordProject',
     ogcpCardDesc: '开源吉他和弦识别项目。996样本物理感知数据集，目标是从音频自动识别和弦并生成六线谱。',
@@ -67,11 +74,14 @@ const t = {
     xhsCardTitle: '小红书自动邀约系统',
     xhsCardDesc: '面向品牌投放的达人采集、筛选、分析与批量邀约工具。FastAPI + Playwright + SQLAlchemy。',
     academyCardTitle: '无限学园',
-    academyCardDesc: 'Godot 4 视觉小说/养成项目，配套 React 剧情编辑器与本地 AIGC 驱动的内容资产生产管线。',
+    academyCardTag: '原型探索',
+    academyCardDesc: 'Godot 4 视觉小说/养成原型。探索编辑器 + AIGC 管线驱动的开发模式，React 剧情编辑器让叙事内容可配置、可迭代，验证了一条不靠硬编码的内容生产路径。',
     duckEscapeCardTitle: '逃鸭！南京！',
-    duckEscapeCardDesc: '没有一只鸭子能逃出南京——但你可以试试。文字冒险 + 小游戏混合玩法，四维度数值驱动，55个剧情节点，6种结局。抖音AI创变者大赛一等奖。',
+    duckEscapeCardTag: '产品验证',
+    duckEscapeCardDesc: '基于无限学院的编辑器工作流，团队配合完成了一款完整的文字冒险游戏。55 个剧情节点、6 种结局、四维度数值驱动，验证了编辑器 + 团队协作这种模式做完整产品的可行性。',
     npcAgentCardTitle: '通用 NPC Agent',
-    npcAgentCardDesc: '验证通用 NPC Agent 如何热插拔进入不同游戏/故事世界。FastAPI + LangChain，AGENT BUILDER HACKATHON 南京站一等奖。',
+    npcAgentCardTag: '系统化框架',
+    npcAgentCardDesc: '从逃鸭的实践中发现，每次接入新世界都需要大量人工配置与调优。于是把这套人工的复杂工作自动化，做成通用 NPC Agent 底座——Agent 自己读取世界设定、校验规则、管理状态，实现热插拔。',
     contactTitle: '联系我',
     contactDesc: '如果你对我的研究或项目感兴趣，欢迎交流：',
     email: 'qinqiao2014@gmail.com',
@@ -137,6 +147,13 @@ const t = {
       { year: '2022–2026', title: "The Razor's Edge", desc: 'After the "three-pit" supply chain collapsed, realized people-dependent systems are fragile, and decided to build systems that don\'t depend on people — crossed the razor\'s edge, walked the path of awakening. Self-taught programming from scratch. Independently developed open-source projects.' },
       { year: '2026–2030', title: 'Moon & Sixpence', desc: 'Applying for CS graduate school. Parallel tracks: AI tool development and financial research. Goal: independent AI researcher — the Moon and the Sixpence. Both.' },
     ],
+    threadTitle: 'One Thread',
+    threadDesc: 'From prototype exploration to product validation, to a systemized framework.',
+    threadSteps: [
+      { label: 'Prototype', project: 'Infinite Academy', path: '/projects/infinite-academy', color: 'green' },
+      { label: 'Validation', project: 'Duck Escape', path: '/projects/duck-escape', color: 'orange' },
+      { label: 'Framework', project: 'NPC Agent Base', path: '/projects/npc-agent', color: 'teal' },
+    ],
     projectsTitle: 'The Book of Sand',
     ogcpCardTitle: 'OpenGuitarChordProject',
     ogcpCardDesc: 'Open-source guitar chord recognition. 996-sample physics-aware dataset. Goal: recognize chords from audio and generate guitar tablature.',
@@ -145,11 +162,14 @@ const t = {
     xhsCardTitle: 'Xiaohongshu Auto-Invite System',
     xhsCardDesc: 'Creator discovery, filtering, analytics, and batch invitation tool for brand campaigns. FastAPI + Playwright + SQLAlchemy.',
     academyCardTitle: 'Infinite Academy',
-    academyCardDesc: 'Godot 4 visual novel / simulation prototype with a React story editor and a local AIGC content-asset pipeline.',
+    academyCardTag: 'Prototype',
+    academyCardDesc: 'Godot 4 visual novel / simulation prototype. Exploring an editor + AIGC pipeline-driven development mode. React story editor makes narrative content configurable and iterable, validating a non-hardcoded content production path.'
     duckEscapeCardTitle: 'Duck Escape: Nanjing',
-    duckEscapeCardDesc: 'No duck can escape Nanjing — but you can try. Text adventure + mini-game hybrid with four-dimension stat-driven narrative, 55 story nodes and 6 endings. Douyin AI Innovator Competition First Prize.',
+    duckEscapeCardTag: 'Validation',
+    duckEscapeCardDesc: 'Using Infinite Academy\'s editor workflow, the team collaborated to ship a complete text adventure. 55 story nodes, 6 endings, four-dimension stat-driven. Validated that editor + team collaboration can deliver a full product.',
     npcAgentCardTitle: 'Universal NPC Agent',
-    npcAgentCardDesc: 'Validating how universal NPC Agents can hot-plug into different game/story worlds. FastAPI + LangChain. AGENT BUILDER HACKATHON Nanjing First Prize.',
+    npcAgentCardTag: 'Framework',
+    npcAgentCardDesc: "From Duck Escape practice we found each new world required heavy manual configuration and tuning. So we automated that manual complexity into a universal NPC Agent base — Agents read world settings, validate rules, manage state themselves, enabling hot-plug."
     contactTitle: 'Contact',
     contactDesc: 'If you are interested in my research or projects, feel free to reach out:',
     email: 'qinqiao2014@gmail.com',
@@ -297,6 +317,28 @@ export function Home() {
         </div>
       </section>
 
+      {/* Thread Line */}
+      <section className="bg-bg-secondary py-12 md:py-16 px-5 border-b border-border-custom">
+        <div className="max-w-content mx-auto">
+          <h2 className="font-noto font-bold text-xl md:text-2xl text-text-primary mb-2 text-center">{c.threadTitle}</h2>
+          <p className="font-noto text-sm text-text-secondary text-center mb-8">{c.threadDesc}</p>
+          <div className="flex items-center justify-center">
+            {c.threadSteps.map((step, i) => (
+              <div key={i} className="flex items-center">
+                <Link to={step.path} className="flex flex-col items-center text-center group px-2 md:px-4">
+                  <span className={`inline-block w-3 h-3 rounded-full mb-2 ${step.color === 'green' ? 'bg-[#6cbcb2]' : step.color === 'orange' ? 'bg-[#f4a261]' : 'bg-[#9bd8cf]'}`} />
+                  <span className="font-noto text-xs text-text-muted group-hover:text-text-primary transition-colors">{step.label}</span>
+                  <span className="font-noto text-sm font-bold text-text-primary group-hover:text-[#9bd8cf] transition-colors">{step.project}</span>
+                </Link>
+                {i < c.threadSteps.length - 1 && (
+                  <span className="w-8 md:w-16 h-px bg-border-custom mx-1 md:mx-2" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Projects */}
       <section id="projects" className="bg-bg-secondary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
@@ -358,6 +400,9 @@ export function Home() {
               to="/projects/infinite-academy"
               className="group block min-h-[220px] p-6 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2] hover:-translate-y-1 transition-all duration-200"
             >
+              <span className="inline-block px-2 py-0.5 rounded text-xs font-noto mb-2 bg-[#6cbcb2]/10 text-[#6cbcb2] border border-[#6cbcb2]/30">
+                {c.academyCardTag}
+              </span>
               <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
                 {c.academyCardTitle}
               </h3>
@@ -375,6 +420,9 @@ export function Home() {
               to="/projects/duck-escape"
               className="group block min-h-[220px] p-6 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2] hover:-translate-y-1 transition-all duration-200"
             >
+              <span className="inline-block px-2 py-0.5 rounded text-xs font-noto mb-2 bg-[#f4a261]/10 text-[#f4a261] border border-[#f4a261]/30">
+                {c.duckEscapeCardTag}
+              </span>
               <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
                 {c.duckEscapeCardTitle}
               </h3>
@@ -392,6 +440,9 @@ export function Home() {
               to="/projects/npc-agent"
               className="group block min-h-[220px] p-6 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2] hover:-translate-y-1 transition-all duration-200"
             >
+              <span className="inline-block px-2 py-0.5 rounded text-xs font-noto mb-2 bg-[#9bd8cf]/10 text-[#9bd8cf] border border-[#9bd8cf]/30">
+                {c.npcAgentCardTag}
+              </span>
               <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
                 {c.npcAgentCardTitle}
               </h3>
