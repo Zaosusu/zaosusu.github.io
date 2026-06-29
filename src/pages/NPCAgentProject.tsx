@@ -1,4 +1,4 @@
-import { ExternalLink, ArrowLeft, Trophy, Code2, Database, Server, Box, Activity, Zap, Globe, Layout, Users } from 'lucide-react';
+import { ExternalLink, ArrowLeft, Trophy, Code2, Database, Server, Box, Activity, Zap, Globe, Layout, Users, GitBranch, Layers, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
@@ -19,25 +19,32 @@ const t = {
     hackathonLink: 'https://luma.com/duqkma6w?tk=F2LgCx',
     viewLink: '查看赛事',
     archTitle: '技术架构',
-    archDesc: 'FastAPI 后端 + 浏览器操作台。核心编排：RouterAgent -> WorldBuilderAgent / NpcAgent -> StateValidatorAgent -> CommandExecutor。',
+    archDesc: '三层架构：API 层 → Agent Runtime 层 → 世界适配层。Agent Runtime 包含运行时链路、世界生成链路、外部项目接入链路三条独立编排。',
     archLayers: [
-      { title: 'API 层', desc: 'FastAPI · RESTful API · WebSocket · 静态文件服务' },
-      { title: 'Agent Runtime', desc: 'RouterAgent · NpcAgent · StateValidatorAgent · CommandExecutor · 确定性护栏层' },
-      { title: '世界适配层', desc: 'WorldAdapter · SandboxWorldAdapter · 热插拔 JSON 世界观' },
+      { title: 'API 层', desc: 'FastAPI · RESTful API · WebSocket · 静态文件服务 · Swagger 文档' },
+      { title: 'Agent Runtime', desc: '运行时链路：RouterAgent → NpcAgent → NpcProtocolReviewAgent → StateValidatorAgent → NpcReviewAgent。世界生成链路：WorldBuilderAgent → MechanicsDesignAgent → WorldReviewAgent → PlaytestAgent。接入链路：ProjectIntakeAgent → IntegrationAdapterAgent。' },
+      { title: '世界适配层', desc: 'WorldAdapter 热插拔协议 · SandboxWorldAdapter · Deterministic Guardrails Layer' },
     ],
-    modulesTitle: '核心模块',
+    pipelineTitle: '三条 Agent 编排链路',
+    pipelineDesc: '框架不是单一 Agent，而是三条独立编排链路的组合。',
+    pipelines: [
+      { icon: 'activity', title: '运行时链路（对话链路）', desc: 'RouterAgent.route_chat() 分发单聊/群聊 → NpcAgent.respond() 生成回复 → AgentLLMOutput schema gate 校验（valid 通过 / invalid 触发 NpcProtocolReviewAgent.repair_raw_output() 修复）→ WorldRuntimeGuardrail 拦截未登记地点（最多2次重试）→ StateValidatorAgent.apply()（CommandValidator.validate() → CommandExecutor.execute()）→ NpcReviewAgent.review()。群聊时每个 NPC 独立走完整链路。' },
+      { icon: 'globe', title: '世界生成链路（Quality Gate）', desc: 'RouterAgent 分发 → WorldBuilderAgent.generate() 初步决定世界状态字段 → _repair_world_config() → WorldGenerationProtocolTool.repair → SandboxWorldValidator.ensure_valid() 自动修复最低可运行字段 → MechanicsDesignAgent 整理 metadata.mechanics 并对齐 completion/action.effect → WorldReviewAgent.review() 一致性审查 → PlaytestAgent.simulate_adapter() 自动试玩 → 写入 metadata.quality_gate（validator_passed / world_review_passed / playtest_passed）。先修，再测。' },
+      { icon: 'git-branch', title: '外部项目接入链路', desc: 'RouterAgent 分发 → ProjectIntakeAgent.summarize() 分析外部项目描述、文档、API → IntegrationAdapterAgent.plan() 输出 adapter_plan → 转交 WorldBuilderAgent / WorldAdapter 开发。这条链路负责把已有游戏/设定/接口文档结构化，判断是需要 sandbox JSON 还是需要实现真实 WorldAdapter 映射外部 API。' },
+    ],
+    modulesTitle: '核心设计',
     modules: [
-      { icon: 'activity', title: 'Agent Runtime', desc: 'AgentRuntime 组装 WorldAdapter、LLMClient、MemoryStore、RuntimeSessionStore、CorrectiveRagPipeline、Planner、RouterAgent 等组件，提供 chat()、world_action()、autonomous_tick()、snapshot() 等入口。' },
-      { icon: 'globe', title: '多 Agent 层', desc: 'RouterAgent 负责对话路由；NpcAgent 处理单 NPC 回复；StateValidatorAgent 校验并执行 command；NpcProtocolReviewAgent 修复 LLM 输出协议漂移。' },
-      { icon: 'database', title: '记忆与 CRAG', desc: 'JsonVectorMemoryStore 提供长期检索记忆；CorrectiveRagPipeline 实现检索-评分-重写-再检索的 Corrective RAG 流程。' },
-      { icon: 'zap', title: 'Command 校验与执行', desc: 'CommandValidator 中心化校验 LLM command 合法性；CommandExecutor 中心化执行状态变更。支持 set_player、grant_item、complete_task、switch_npc、set_flag、run_world_action。' },
-      { icon: 'layout', title: 'Sandbox 世界', desc: 'SandboxWorldStore 管理世界配置；SandboxWorldValidator 保存前校验并修复；WorldBuilderAgent + MechanicsDesignAgent 生成世界；PlaytestAgent 自动试玩 quality gate。' },
-      { icon: 'box', title: '世界适配器', desc: 'WorldAdapter 是世界热插拔协议。SandboxWorldAdapter 实现 create_initial_state、build_system_prompt、build_human_prompt、record_player_message、apply_llm_output 等方法。' },
+      { icon: 'zap', title: '统一 JSON 输出协议与 Schema Gate', desc: 'NpcAgent.respond() 返回的必须是固定 JSON 结构（AgentLLMOutput：action_type / content / inner_thought / command / suggested_actions）。AgentLLMOutputProtocolTool 做确定性校验（不是让 LLM 自己判断），检测字段缺失、类型错误、字段漂移。校验失败触发 NpcProtocolReviewAgent：支持从 Markdown fenced JSON、普通 JSON、字段别名、纯文本四种格式恢复。修复后再校验；若仍失败，command 降级为 none，由 world adapter 生成兜底回复。' },
+      { icon: 'activity', title: '字段级规则校验与自动修复', desc: 'StateValidatorAgent 读取 CommandValidator 的规则定义做确定性校验：set_player 必须有 args.patch object；complete_task 的 task_id 必须在当前世界 tasks 中存在；switch_npc 的 npc_id 必须在当前世界 NPCs 中存在；grant_item 的 item 必须非空；set_flag 必须有 key；run_world_action 的 action_id 必须存在。不合法的 command 被降级为 {"name":"none","args":{}}，绝不会让非法状态变更进入 CommandExecutor 执行层。所有约束在代码层判断，不只写在 prompt 里。' },
+      { icon: 'shield', title: 'Deterministic Guardrails Layer（确定性护栏层）', desc: 'AgentLLMOutputProtocolTool（校验+修复 NPC 输出）、WorldGenerationProtocolTool（校验+修复世界生成）、CommandValidator（门卫，只判断不执行）、CommandExecutor（执行器，只执行已校验的）、SandboxWorldValidator（保存前自动修复最低可运行字段：补齐最低玩家字段、NPC、任务、action、completion、地点闭环）、WorldRuntimeGuardrail（运行时拦截未登记地点，NPC 引导去不存在地点时触发最多2次 LLM 重试，仍失败则返回安全地点引导）、evaluate_task_completions（代码判定任务完成，NPC 不允许直接写任务进度）。Agent / ReviewAgent 只提建议，最终合规/修复/执行必须落到确定性代码。' },
+      { icon: 'layout', title: 'Per-NPC 私有状态与群聊', desc: 'AgentRuntime 维护 npc_agents: dict[str, NpcAgent] 和 npc_sessions: dict[str, NpcRuntimeState]。每个 NPC id 懒加载一个 NpcAgent 实例，拥有独立 NpcRuntimeState（emotion、memories、goals、turn_count、last_reply）。adapter.build_system_prompt() 将当前 NPC 私有状态注入 prompt；output.new_memories 写入该 NPC 私有记忆，不广播到世界级 RAG。群聊时同一轮玩家输入触发多个 NPC 顺序回复，每个 NPC 独立经过 schema gate → guardrail → validator → executor → review 完整链路，command 统一经过 StateValidatorAgent 和 CommandExecutor。' },
+      { icon: 'box', title: '热插拔世界适配协议（WorldAdapter）', desc: 'WorldAdapter 定义统一接口：create_initial_state()、build_system_prompt()、build_human_prompt()、record_player_message()、apply_llm_output()、build_chat_response()、allowed_commands()、world_action_ids()、handle_world_action()。每个新世界只需实现这个协议即可接入，无需修改 Agent Runtime。SandboxWorldAdapter 实现了完整的 JSON 世界热插拔：data/worlds/{world_id}.json 加载后即运行。当前支持 command：none / set_player / grant_item / complete_task / switch_npc / set_flag / run_world_action。' },
+      { icon: 'layers', title: 'Corrective RAG 记忆系统', desc: 'JsonVectorMemoryStore 提供长期检索记忆（data/memory/{world_id}.vector.json）。CorrectiveRagPipeline 实现检索-评分-重写-再检索的 CRAG 流程：retrieve → grade → if unreliable 则 rewrite query → retrieve again → return RagContext。RuntimeSessionStore 实现运行态持久化：AgentSessionState（emotion、memories、goals、plan、quest_progress、world_state）和每个 NPC 的 NpcRuntimeState 保存为 data/sessions/{world_id}.session.json，支持跨进程重启恢复。' },
     ],
     stackTitle: '技术栈',
     stack: [
-      { icon: 'server', title: '后端', desc: 'Python · FastAPI · Uvicorn · LangChain · Pydantic' },
-      { icon: 'database', title: '数据层', desc: 'JSON Vector Memory · Runtime Session Store · 文件型持久化' },
+      { icon: 'server', title: '后端', desc: 'Python · FastAPI · Uvicorn · LangChain · Pydantic · OpenAI-Compatible LLM' },
+      { icon: 'database', title: '数据层', desc: 'JSON Vector Memory · Runtime Session Store · 文件型持久化 · Corrective RAG' },
       { icon: 'code', title: '前端', desc: 'HTML5 · CSS3 · Vanilla JS · 浏览器操作台' },
     ],
     linksTitle: '相关链接',
@@ -73,25 +80,32 @@ const t = {
     hackathonLink: 'https://luma.com/duqkma6w?tk=F2LgCx',
     viewLink: 'View Competition',
     archTitle: 'Architecture',
-    archDesc: 'FastAPI backend + browser console. Core orchestration: RouterAgent -> WorldBuilderAgent / NpcAgent -> StateValidatorAgent -> CommandExecutor.',
+    archDesc: 'Three-layer architecture: API Layer → Agent Runtime Layer → World Adapter Layer. Agent Runtime contains three independent orchestration chains: runtime chain, world generation chain, and external project intake chain.',
     archLayers: [
-      { title: 'API Layer', desc: 'FastAPI · RESTful API · WebSocket · Static file serving' },
-      { title: 'Agent Runtime', desc: 'RouterAgent · NpcAgent · StateValidatorAgent · CommandExecutor · Deterministic Guardrails Layer' },
-      { title: 'World Adapter', desc: 'WorldAdapter · SandboxWorldAdapter · Hot-pluggable JSON world views' },
+      { title: 'API Layer', desc: 'FastAPI · RESTful API · WebSocket · Static file serving · Swagger docs' },
+      { title: 'Agent Runtime', desc: 'Runtime chain: RouterAgent → NpcAgent → NpcProtocolReviewAgent → StateValidatorAgent → NpcReviewAgent. World generation chain: WorldBuilderAgent → MechanicsDesignAgent → WorldReviewAgent → PlaytestAgent. Intake chain: ProjectIntakeAgent → IntegrationAdapterAgent.' },
+      { title: 'World Adapter', desc: 'WorldAdapter hot-pluggable protocol · SandboxWorldAdapter · Deterministic Guardrails Layer' },
     ],
-    modulesTitle: 'Core Modules',
+    pipelineTitle: 'Three Agent Orchestration Chains',
+    pipelineDesc: 'The framework is not a single agent, but a combination of three independent orchestration chains.',
+    pipelines: [
+      { icon: 'activity', title: 'Runtime Chain (Dialogue Chain)', desc: 'RouterAgent.route_chat() dispatches single/group chat → NpcAgent.respond() generates reply → AgentLLMOutput schema gate validation (valid passes / invalid triggers NpcProtocolReviewAgent.repair_raw_output()) → WorldRuntimeGuardrail intercepts unregistered locations (max 2 retries) → StateValidatorAgent.apply() (CommandValidator.validate() → CommandExecutor.execute()) → NpcReviewAgent.review(). Each NPC independently walks the full chain in group chat.' },
+      { icon: 'globe', title: 'World Generation Chain (Quality Gate)', desc: 'RouterAgent dispatches → WorldBuilderAgent.generate() decides world state fields → _repair_world_config() → WorldGenerationProtocolTool.repair → SandboxWorldValidator.ensure_valid() auto-repairs minimum runnable fields → MechanicsDesignAgent organizes metadata.mechanics and aligns completion/action.effect → WorldReviewAgent.review() consistency check → PlaytestAgent.simulate_adapter() auto-playtest → writes metadata.quality_gate (validator_passed / world_review_passed / playtest_passed). Fix first, then test.' },
+      { icon: 'git-branch', title: 'External Project Intake Chain', desc: 'RouterAgent dispatches → ProjectIntakeAgent.summarize() analyzes external project description, documents, APIs → IntegrationAdapterAgent.plan() outputs adapter_plan → hands over to WorldBuilderAgent / WorldAdapter development. This chain structures existing games/settings/API docs and decides whether sandbox JSON or a real WorldAdapter mapping external APIs is needed.' },
+    ],
+    modulesTitle: 'Core Design',
     modules: [
-      { icon: 'activity', title: 'Agent Runtime', desc: 'AgentRuntime assembles WorldAdapter, LLMClient, MemoryStore, RuntimeSessionStore, CorrectiveRagPipeline, Planner, RouterAgent, etc. Provides chat(), world_action(), autonomous_tick(), snapshot() entry points.' },
-      { icon: 'globe', title: 'Multi-Agent Layer', desc: 'RouterAgent handles dialogue routing; NpcAgent handles single NPC responses; StateValidatorAgent validates and executes commands; NpcProtocolReviewAgent repairs LLM output protocol drift.' },
-      { icon: 'database', title: 'Memory & CRAG', desc: 'JsonVectorMemoryStore provides long-term retrieval memory; CorrectiveRagPipeline implements retrieve-grade-rewrite-retrieve Corrective RAG flow.' },
-      { icon: 'zap', title: 'Command Validation & Execution', desc: 'CommandValidator centrally validates LLM command legality; CommandExecutor centrally executes state changes. Supports set_player, grant_item, complete_task, switch_npc, set_flag, run_world_action.' },
-      { icon: 'layout', title: 'Sandbox World', desc: 'SandboxWorldStore manages world configs; SandboxWorldValidator validates and repairs before save; WorldBuilderAgent + MechanicsDesignAgent generate worlds; PlaytestAgent auto-playtests quality gate.' },
-      { icon: 'box', title: 'World Adapter', desc: 'WorldAdapter is the hot-pluggable world protocol. SandboxWorldAdapter implements create_initial_state, build_system_prompt, build_human_prompt, record_player_message, apply_llm_output, etc.' },
+      { icon: 'zap', title: 'Unified JSON Output Protocol & Schema Gate', desc: 'NpcAgent.respond() must return a fixed JSON structure (AgentLLMOutput: action_type / content / inner_thought / command / suggested_actions). AgentLLMOutputProtocolTool performs deterministic validation (not letting the LLM self-check), detecting missing fields, type errors, field drift. On validation failure, NpcProtocolReviewAgent triggers: supports recovery from Markdown fenced JSON, plain JSON, field aliases, and raw text. Re-validates after repair; if still failing, command downgrades to none, world adapter generates a fallback reply.' },
+      { icon: 'activity', title: 'Field-Level Rule Validation & Auto-Repair', desc: 'StateValidatorAgent reads CommandValidator rule definitions for deterministic checks: set_player must have args.patch object; complete_task task_id must exist in current world tasks; switch_npc npc_id must exist in current world NPCs; grant_item item must be non-empty; set_flag must have key; run_world_action action_id must exist. Invalid commands downgrade to {"name":"none","args":{}} — illegal state changes never enter the CommandExecutor execution layer. All constraints enforced in code, not just in prompts.' },
+      { icon: 'shield', title: 'Deterministic Guardrails Layer', desc: 'AgentLLMOutputProtocolTool (validate+repair NPC output), WorldGenerationProtocolTool (validate+repair world generation), CommandValidator (gatekeeper, judge only), CommandExecutor (executor, validated commands only), SandboxWorldValidator (auto-repair minimum runnable fields before save:补齐最低玩家字段、NPC、任务、action、completion、地点闭环), WorldRuntimeGuardrail (runtime interception of unregistered locations, triggers up to 2 LLM retries when NPC guides to non-existent locations, falls back to safe location guidance), evaluate_task_completions (code-based task completion, NPCs cannot directly write task progress). Agents propose; compliance/repair/execution must land in deterministic code.' },
+      { icon: 'layout', title: 'Per-NPC Private State & Group Chat', desc: 'AgentRuntime maintains npc_agents: dict[str, NpcAgent] and npc_sessions: dict[str, NpcRuntimeState]. Each NPC id lazily loads one NpcAgent instance with independent NpcRuntimeState (emotion, memories, goals, turn_count, last_reply). adapter.build_system_prompt() injects current NPC private state into prompt; output.new_memories writes to that NPC\'s private memory, not broadcast to world-level RAG. Group chat: one player input triggers multiple NPCs to respond sequentially, each independently through schema gate → guardrail → validator → executor → review, commands unified through StateValidatorAgent and CommandExecutor.' },
+      { icon: 'box', title: 'Hot-Pluggable World Adapter Protocol (WorldAdapter)', desc: 'WorldAdapter defines a unified interface: create_initial_state(), build_system_prompt(), build_human_prompt(), record_player_message(), apply_llm_output(), build_chat_response(), allowed_commands(), world_action_ids(), handle_world_action(). Each new world only needs to implement this protocol to plug in, no Agent Runtime modifications needed. SandboxWorldAdapter implements full JSON world hot-plug: load data/worlds/{world_id}.json and run. Current commands: none / set_player / grant_item / complete_task / switch_npc / set_flag / run_world_action.' },
+      { icon: 'layers', title: 'Corrective RAG Memory System', desc: 'JsonVectorMemoryStore provides long-term retrieval memory (data/memory/{world_id}.vector.json). CorrectiveRagPipeline implements retrieve-grade-rewrite-retrieve CRAG flow: retrieve → grade → if unreliable rewrite query → retrieve again → return RagContext. RuntimeSessionStore implements runtime persistence: AgentSessionState (emotion, memories, goals, plan, quest_progress, world_state) and each NPC\'s NpcRuntimeState saved to data/sessions/{world_id}.session.json, supporting cross-process restart recovery.' },
     ],
     stackTitle: 'Tech Stack',
     stack: [
-      { icon: 'server', title: 'Backend', desc: 'Python · FastAPI · Uvicorn · LangChain · Pydantic' },
-      { icon: 'database', title: 'Data Layer', desc: 'JSON Vector Memory · Runtime Session Store · File-based persistence' },
+      { icon: 'server', title: 'Backend', desc: 'Python · FastAPI · Uvicorn · LangChain · Pydantic · OpenAI-Compatible LLM' },
+      { icon: 'database', title: 'Data Layer', desc: 'JSON Vector Memory · Runtime Session Store · File-based persistence · Corrective RAG' },
       { icon: 'code', title: 'Frontend', desc: 'HTML5 · CSS3 · Vanilla JS · Browser console' },
     ],
     linksTitle: 'Links',
@@ -120,6 +134,10 @@ function ModIcon({ type }: { type: string }) {
   if (type === 'database') return <Database className="w-5 h-5" />;
   if (type === 'zap') return <Zap className="w-5 h-5" />;
   if (type === 'layout') return <Layout className="w-5 h-5" />;
+  if (type === 'box') return <Box className="w-5 h-5" />;
+  if (type === 'layers') return <Layers className="w-5 h-5" />;
+  if (type === 'shield') return <Shield className="w-5 h-5" />;
+  if (type === 'git-branch') return <GitBranch className="w-5 h-5" />;
   return <Box className="w-5 h-5" />;
 }
 
@@ -220,13 +238,32 @@ export function NPCAgentProject() {
         </div>
       </section>
 
-      {/* Core Modules */}
+      {/* Three Pipeline Chains */}
       <section className="bg-bg-primary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-4">{c.pipelineTitle}</h2>
+          <p className="font-noto text-base text-text-primary leading-relaxed mb-8">{c.pipelineDesc}</p>
+          <div className="grid grid-cols-1 gap-6">
+            {c.pipelines.map((p, i) => (
+              <div key={i} className="p-5 border border-border-custom rounded bg-bg-secondary hover:border-[#6cbcb2]/60 transition-colors">
+                <div className="flex items-center gap-2 text-text-primary mb-3">
+                  <ModIcon type={p.icon} />
+                  <h3 className="font-noto font-bold text-base">{p.title}</h3>
+                </div>
+                <p className="font-noto text-sm text-text-secondary leading-relaxed">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Core Modules */}
+      <section className="bg-bg-secondary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-8">{c.modulesTitle}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {c.modules.map((m, i) => (
-              <div key={i} className="p-5 border border-border-custom rounded bg-bg-secondary hover:border-[#6cbcb2]/60 transition-colors">
+              <div key={i} className="p-5 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2]/60 transition-colors">
                 <div className="flex items-center gap-2 text-text-primary mb-3">
                   <ModIcon type={m.icon} />
                   <h3 className="font-noto font-bold text-base">{m.title}</h3>
@@ -239,12 +276,12 @@ export function NPCAgentProject() {
       </section>
 
       {/* Tech Stack */}
-      <section className="bg-bg-secondary py-16 md:py-24 px-5">
+      <section className="bg-bg-primary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-8">{c.stackTitle}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {c.stack.map((s, i) => (
-              <div key={i} className="p-5 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2]/60 transition-colors">
+              <div key={i} className="p-5 border border-border-custom rounded bg-bg-secondary hover:border-[#6cbcb2]/60 transition-colors">
                 <div className="flex items-center gap-2 text-text-primary mb-3">
                   <StackIcon type={s.icon} />
                   <h3 className="font-noto font-bold text-base">{s.title}</h3>
@@ -257,7 +294,7 @@ export function NPCAgentProject() {
       </section>
 
       {/* Contact */}
-      <section className="bg-bg-primary py-16 md:py-24 px-5">
+      <section className="bg-bg-secondary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto text-center">
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-4">{c.contactTitle}</h2>
           <p className="font-noto text-base text-text-secondary mb-6">{c.contactDesc}</p>
