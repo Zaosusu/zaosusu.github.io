@@ -12,6 +12,7 @@ const navt = {
     xhs: '小红书自动邀约系统',
     academy: '无限学园',
     duck: '逃鸭南京',
+    npc: '通用NPC Agent',
   },
   en: {
     home: 'Zaosusu',
@@ -21,6 +22,7 @@ const navt = {
     xhs: 'XHS Auto-Invite',
     academy: 'Infinite Academy',
     duck: 'Duck Escape',
+    npc: 'NPC Agent',
   },
 };
 
@@ -30,6 +32,7 @@ const projectLinks = [
   { path: '/projects/xiaohongshu', key: 'xhs' as const },
   { path: '/projects/infinite-academy', key: 'academy' as const },
   { path: '/projects/duck-escape', key: 'duck' as const },
+  { path: '/projects/npc-agent', key: 'npc' as const },
 ];
 
 export function Navbar() {

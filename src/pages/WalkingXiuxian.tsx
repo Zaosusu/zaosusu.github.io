@@ -25,8 +25,14 @@ const t = {
     ],
     jinjiBadge: '金鸡湖大赛入围',
     jinjiTitle: '第十五届金鸡湖创新创业大赛',
-    jinjiDesc: '苏州工业园区主办，聚焦国家战略新兴产业和未来产业，服务全球早期科创企业。已入围，待正式参赛。',
+    jinjiDesc: '苏州工业园区主办，聚焦国家战略新兴产业和未来产业。成功入围并晋级至半决赛。',
     jinjiLink: 'https://1000.sandlake.com/',
+    jinjiSteps: [
+      { count: '入围', label: '通过初筛' },
+      { count: '复赛', label: '晋级成功' },
+      { count: '半决赛', label: '半决赛入围' },
+      { count: '决赛', label: '未晋级' },
+    ],
     opcBadge: 'OPC 菁英训练营',
     opcTitle: '南京市人工智能 OPC 菁英训练营',
     opcDesc: '政府认可的培训+赛事项目，历经初筛→复赛→决赛三轮淘汰，从171个项目中脱颖而出，成功获奖。',
@@ -102,8 +108,14 @@ const t = {
     ],
     jinjiBadge: 'Jinji Lake Finalist',
     jinjiTitle: '15th Jinji Lake Innovation Competition',
-    jinjiDesc: 'Hosted by Suzhou Industrial Park, focusing on strategic emerging and future industries. Qualified to compete.',
+    jinjiDesc: 'Hosted by Suzhou Industrial Park, focusing on strategic emerging and future industries. Successfully qualified and advanced to the semifinals.',
     jinjiLink: 'https://1000.sandlake.com/',
+    jinjiSteps: [
+      { count: 'Qualified', label: 'Initial screening' },
+      { count: 'Advanced', label: 'Preliminary round' },
+      { count: 'Semifinals', label: 'Semifinalist' },
+      { count: 'Finals', label: 'Not reached' },
+    ],
     opcBadge: 'OPC Elite Camp',
     opcTitle: 'Nanjing AI OPC Elite Training Camp',
     opcDesc: 'A government-recognized training and competition program. Survived three rounds of elimination from 171 projects to win a final award.',
@@ -285,6 +297,14 @@ export function WalkingXiuxian() {
               </div>
               <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.jinjiTitle}</h3>
               <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4 flex-grow">{c.jinjiDesc}</p>
+              <div className="grid grid-cols-2 gap-2 mb-4">
+                {c.jinjiSteps.map((step, i) => (
+                  <div key={step.count} className={`p-2 rounded border text-center ${i === 2 ? 'border-[#6cbcb2]/70 bg-[#6cbcb2]/10' : 'border-border-custom bg-bg-primary/70'}`}>
+                    <span className="font-inter font-bold text-xl text-text-primary">{step.count}</span>
+                    <p className="font-noto text-xs text-text-secondary mt-1">{step.label}</p>
+                  </div>
+                ))}
+              </div>
               <a href={c.jinjiLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-[#9bd8cf] hover:text-[#6cbcb2] transition-colors">
                 <ExternalLink className="w-3 h-3" />
                 <span>{c.viewLink}</span>

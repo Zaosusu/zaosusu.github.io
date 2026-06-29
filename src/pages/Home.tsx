@@ -70,6 +70,8 @@ const t = {
     academyCardDesc: 'Godot 4 视觉小说/养成项目，配套 React 剧情编辑器与本地 AIGC 驱动的内容资产生产管线。',
     duckEscapeCardTitle: '逃鸭！南京！',
     duckEscapeCardDesc: '没有一只鸭子能逃出南京——但你可以试试。文字冒险 + 小游戏混合玩法，四维度数值驱动，55个剧情节点，6种结局。抖音AI创变者大赛一等奖。',
+    npcAgentCardTitle: '通用 NPC Agent',
+    npcAgentCardDesc: '验证通用 NPC Agent 如何热插拔进入不同游戏/故事世界。FastAPI + LangChain，AGENT BUILDER HACKATHON 南京站一等奖。',
     contactTitle: '联系我',
     contactDesc: '如果你对我的研究或项目感兴趣，欢迎交流：',
     email: 'qinqiao2014@gmail.com',
@@ -146,6 +148,8 @@ const t = {
     academyCardDesc: 'Godot 4 visual novel / simulation prototype with a React story editor and a local AIGC content-asset pipeline.',
     duckEscapeCardTitle: 'Duck Escape: Nanjing',
     duckEscapeCardDesc: 'No duck can escape Nanjing — but you can try. Text adventure + mini-game hybrid with four-dimension stat-driven narrative, 55 story nodes and 6 endings. Douyin AI Innovator Competition First Prize.',
+    npcAgentCardTitle: 'Universal NPC Agent',
+    npcAgentCardDesc: 'Validating how universal NPC Agents can hot-plug into different game/story worlds. FastAPI + LangChain. AGENT BUILDER HACKATHON Nanjing First Prize.',
     contactTitle: 'Contact',
     contactDesc: 'If you are interested in my research or projects, feel free to reach out:',
     email: 'qinqiao2014@gmail.com',
@@ -376,6 +380,23 @@ export function Home() {
               </h3>
               <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
                 {c.duckEscapeCardDesc}
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
+                <span className="font-noto">查看详情</span>
+                <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+
+            {/* NPC Agent Card */}
+            <Link
+              to="/projects/npc-agent"
+              className="group block min-h-[220px] p-6 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2] hover:-translate-y-1 transition-all duration-200"
+            >
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
+                {c.npcAgentCardTitle}
+              </h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
+                {c.npcAgentCardDesc}
               </p>
               <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
                 <span className="font-noto">查看详情</span>
