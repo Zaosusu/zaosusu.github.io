@@ -1,4 +1,4 @@
-import { ExternalLink, ArrowLeft, Trophy, Code2, Database, Server, Smartphone, GitBranch, Box, Activity, Zap, Globe, Layout, Users } from 'lucide-react';
+import { ExternalLink, ArrowLeft, ArrowRight, Trophy, Code2, Database, Server, Smartphone, GitBranch, Box, Activity, Zap, Globe, Layout, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
@@ -84,6 +84,8 @@ const t = {
     contactTitle: '联系',
     contactDesc: '对技术实现感兴趣？欢迎交流：',
     email: 'qinqiao2014@gmail.com',
+    navPrev: '← 上一个：无限学园',
+    navNext: '下一个：NPC Agent →',
   },
   en: {
     back: 'Back to Home',
@@ -165,6 +167,8 @@ const t = {
     contactTitle: 'Contact',
     contactDesc: 'Interested in the technical implementation? Feel free to reach out:',
     email: 'qinqiao2014@gmail.com',
+    navPrev: '← Prev: Infinite Academy',
+    navNext: 'Next: NPC Agent →',
   },
 };
 

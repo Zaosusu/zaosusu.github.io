@@ -163,13 +163,13 @@ const t = {
     xhsCardDesc: 'Creator discovery, filtering, analytics, and batch invitation tool for brand campaigns. FastAPI + Playwright + SQLAlchemy.',
     academyCardTitle: 'Infinite Academy',
     academyCardTag: 'Prototype',
-    academyCardDesc: 'Godot 4 visual novel / simulation prototype. Exploring an editor + AIGC pipeline-driven development mode. React story editor makes narrative content configurable and iterable, validating a non-hardcoded content production path.'
+    academyCardDesc: 'Godot 4 visual novel / simulation prototype. Exploring an editor + AIGC pipeline-driven development mode. React story editor makes narrative content configurable and iterable, validating a non-hardcoded content production path.',
     duckEscapeCardTitle: 'Duck Escape: Nanjing',
     duckEscapeCardTag: 'Validation',
     duckEscapeCardDesc: 'Using Infinite Academy\'s editor workflow, the team collaborated to ship a complete text adventure. 55 story nodes, 6 endings, four-dimension stat-driven. Validated that editor + team collaboration can deliver a full product.',
     npcAgentCardTitle: 'Universal NPC Agent',
     npcAgentCardTag: 'Framework',
-    npcAgentCardDesc: "From Duck Escape practice we found each new world required heavy manual configuration and tuning. So we automated that manual complexity into a universal NPC Agent base — Agents read world settings, validate rules, manage state themselves, enabling hot-plug."
+    npcAgentCardDesc: "From Duck Escape practice we found each new world required heavy manual configuration and tuning. So we automated that manual complexity into a universal NPC Agent base — Agents read world settings, validate rules, manage state themselves, enabling hot-plug.",
     contactTitle: 'Contact',
     contactDesc: 'If you are interested in my research or projects, feel free to reach out:',
     email: 'qinqiao2014@gmail.com',
@@ -317,32 +317,13 @@ export function Home() {
         </div>
       </section>
 
-      {/* Thread Line */}
-      <section className="bg-bg-secondary py-12 md:py-16 px-5 border-b border-border-custom">
-        <div className="max-w-content mx-auto">
-          <h2 className="font-noto font-bold text-xl md:text-2xl text-text-primary mb-2 text-center">{c.threadTitle}</h2>
-          <p className="font-noto text-sm text-text-secondary text-center mb-8">{c.threadDesc}</p>
-          <div className="flex items-center justify-center">
-            {c.threadSteps.map((step, i) => (
-              <div key={i} className="flex items-center">
-                <Link to={step.path} className="flex flex-col items-center text-center group px-2 md:px-4">
-                  <span className={`inline-block w-3 h-3 rounded-full mb-2 ${step.color === 'green' ? 'bg-[#6cbcb2]' : step.color === 'orange' ? 'bg-[#f4a261]' : 'bg-[#9bd8cf]'}`} />
-                  <span className="font-noto text-xs text-text-muted group-hover:text-text-primary transition-colors">{step.label}</span>
-                  <span className="font-noto text-sm font-bold text-text-primary group-hover:text-[#9bd8cf] transition-colors">{step.project}</span>
-                </Link>
-                {i < c.threadSteps.length - 1 && (
-                  <span className="w-8 md:w-16 h-px bg-border-custom mx-1 md:mx-2" />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Projects */}
       <section id="projects" className="bg-bg-secondary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
-          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-10">{c.projectsTitle}</h2>
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-2">{c.projectsTitle}</h2>
+          <p className="font-noto text-sm text-text-secondary mb-8">{c.threadDesc}</p>
+
+          {/* Evolution thread line — aligned with the three evolution cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* OGCP Card */}
             <Link
@@ -394,7 +375,28 @@ export function Home() {
                 <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
+          </div>
 
+          {/* Evolution thread line — between row 1 and row 2 */}
+          <div className="hidden md:grid grid-cols-3 gap-6 my-6">
+            {c.threadSteps.map((step, i) => (
+              <div key={i} className="flex items-center">
+                <Link to={step.path} className="flex items-center gap-2 group shrink-0 whitespace-nowrap">
+                  <span className={`inline-block w-2.5 h-2.5 rounded-full ${step.color === 'green' ? 'bg-[#6cbcb2]' : step.color === 'orange' ? 'bg-[#f4a261]' : 'bg-[#9bd8cf]'}`} />
+                  <span className="font-noto text-xs text-text-muted group-hover:text-text-primary transition-colors">{step.label}</span>
+                  <span className="font-noto text-xs font-bold text-text-primary group-hover:text-[#9bd8cf] transition-colors hidden lg:inline">· {step.project}</span>
+                </Link>
+                {i < c.threadSteps.length - 1 && (
+                  <div className="flex-1 flex items-center mx-3">
+                    <span className="flex-1 h-px bg-border-custom" />
+                    <ArrowRight className="w-3 h-3 text-text-muted mx-1 shrink-0" />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Infinite Academy Card */}
             <Link
               to="/projects/infinite-academy"

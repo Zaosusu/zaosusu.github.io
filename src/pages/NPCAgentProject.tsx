@@ -1,4 +1,4 @@
-import { ExternalLink, ArrowLeft, ArrowRight, Trophy, Code2, Database, Server, Box, Activity, Zap, Globe, Layout, Users, GitBranch, Layers, Shield } from 'lucide-react';
+import { ExternalLink, ArrowLeft, Trophy, Code2, Database, Server, Box, Activity, Zap, Globe, Layout, Users, GitBranch, Layers, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
