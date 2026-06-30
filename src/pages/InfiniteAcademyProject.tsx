@@ -14,6 +14,8 @@ import {
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
+import { ImageLightbox } from '../components/ImageLightbox';
+import { useState } from 'react';
 
 const t = {
   zh: {
@@ -236,6 +238,9 @@ function Icon({ type }: { type: string }) {
 export function InfiniteAcademyProject() {
   const { lang } = useLang();
   const c = t[lang];
+  const [lightboxIndex, setLightboxIndex] = useState<number>(-1);
+  const galleryImages = c.gallery.map((item) => ({ src: item.src, alt: item.alt, title: item.title }));
+  const isLightboxOpen = lightboxIndex >= 0;
 
   return (
     <div className="min-h-screen bg-bg-primary pt-14">
@@ -301,12 +306,12 @@ export function InfiniteAcademyProject() {
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-2">{c.galleryTitle}</h2>
           <p className="font-noto text-base text-text-secondary mb-10">{c.galleryDesc}</p>
           <div className="space-y-8">
-            {c.gallery.map((item) => (
-              <div key={item.src} className="border border-border-custom rounded bg-bg-secondary overflow-hidden">
+            {c.gallery.map((item, idx) => (
+              <div key={item.src} className="border border-border-custom rounded bg-bg-secondary overflow-hidden cursor-pointer group" onClick={() => setLightboxIndex(idx)}>
                 <img
                   src={item.src}
                   alt={item.alt}
-                  className={`w-full ${item.portrait ? 'max-h-[500px] object-contain bg-bg-primary' : ''}`}
+                  className={`w-full ${item.portrait ? 'max-h-[500px] object-contain bg-bg-primary' : ''} group-hover:opacity-90 transition-opacity`}
                   loading="lazy"
                 />
                 <div className="p-4 md:p-5 border-t border-border-custom">
@@ -316,6 +321,14 @@ export function InfiniteAcademyProject() {
               </div>
             ))}
           </div>
+          <ImageLightbox
+            images={galleryImages}
+            currentIndex={lightboxIndex}
+            isOpen={isLightboxOpen}
+            onClose={() => setLightboxIndex(-1)}
+            onPrev={() => setLightboxIndex((prev) => (prev > 0 ? prev - 1 : galleryImages.length - 1))}
+            onNext={() => setLightboxIndex((prev) => (prev < galleryImages.length - 1 ? prev + 1 : 0))}
+          />
         </div>
       </section>
 

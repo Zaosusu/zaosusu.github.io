@@ -2,6 +2,8 @@ import { ExternalLink, ArrowLeft, ArrowRight, Trophy, Code2, Database, Server, S
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
+import { ImageLightbox } from '../components/ImageLightbox';
+import { useState } from 'react';
 
 const t = {
   zh: {
@@ -85,7 +87,19 @@ const t = {
     contactDesc: '对技术实现感兴趣？欢迎交流：',
     email: 'qinqiao2014@gmail.com',
     navPrev: '← 上一个：无限学园',
-    navNext: '下一个：NPC Agent →',
+    navNext: '下一个：通用NPC Agent底座 →',
+    galleryTitle: '配套编辑器',
+    galleryDesc: 'YaNanjing Framework 配套的可视化剧情编辑器，覆盖节点编辑、角色管理、结局配置、素材管理和数据分析全链路。',
+    gallery: [
+      { src: '/projects/duck-escape/editor-node-detail.png', alt: '剧情节点编辑', title: '剧情节点编辑', desc: '配置节点背景图、鸭子表情动画、对话文本和选项跳转逻辑。', portrait: false },
+      { src: '/projects/duck-escape/editor-node-dialogue.png', alt: '对话与跳转配置', title: '对话与跳转配置', desc: '逐行编写剧情对白，设置自动跳转节点和背景音乐。', portrait: false },
+      { src: '/projects/duck-escape/editor-character.png', alt: '角色管理', title: '角色管理', desc: '定义鸭子角色的头像、卡片图、描述和四维度初始属性。', portrait: false },
+      { src: '/projects/duck-escape/editor-ending.png', alt: '结局配置', title: '结局配置', desc: '配置结局ID、类型、展示图片和结局文本，支持好坏结局分类。', portrait: false },
+      { src: '/projects/duck-escape/editor-assets-image.png', alt: '图片素材管理', title: '图片素材管理', desc: '统一管理游戏背景图、角色立绘等美术资源的拖拽上传与路径引用。', portrait: false },
+      { src: '/projects/duck-escape/editor-assets-audio.png', alt: '音频素材管理', title: '音频素材管理', desc: 'BGM 和音效的上传、列表管理与在线试听。', portrait: false },
+      { src: '/projects/duck-escape/editor-config.png', alt: '属性配置', title: '属性配置', desc: '自定义游戏数值维度（体力/香气/警觉/魅力），设置图标、默认值和边界。', portrait: true },
+      { src: '/projects/duck-escape/editor-analytics.png', alt: '运营数据后台', title: '运营数据后台', desc: '可视化查看总用户、总开局、达成结局数等核心数据，追踪用户游玩路径。', portrait: false },
+    ],
   },
   en: {
     back: 'Back to Home',
@@ -168,7 +182,19 @@ const t = {
     contactDesc: 'Interested in the technical implementation? Feel free to reach out:',
     email: 'qinqiao2014@gmail.com',
     navPrev: '← Prev: Infinite Academy',
-    navNext: 'Next: NPC Agent →',
+    navNext: 'Next: Universal NPC Agent Base →',
+    galleryTitle: 'Companion Editor',
+    galleryDesc: 'The visual story editor bundled with YaNanjing Framework, covering node editing, character management, ending config, asset management, and analytics.',
+    gallery: [
+      { src: '/projects/duck-escape/editor-node-detail.png', alt: 'Story node editing', title: 'Story Node Editor', desc: 'Configure node background, duck expression animation, dialogue text, and choice jump logic.', portrait: false },
+      { src: '/projects/duck-escape/editor-node-dialogue.png', alt: 'Dialogue and jump config', title: 'Dialogue & Jump Config', desc: 'Write line-by-line dialogue, set auto-jump nodes and background music.', portrait: false },
+      { src: '/projects/duck-escape/editor-character.png', alt: 'Character management', title: 'Character Management', desc: 'Define duck avatars, card images, descriptions, and four-dimension initial stats.', portrait: false },
+      { src: '/projects/duck-escape/editor-ending.png', alt: 'Ending configuration', title: 'Ending Config', desc: 'Configure ending ID, type, display image, and ending text with good/bad classification.', portrait: false },
+      { src: '/projects/duck-escape/editor-assets-image.png', alt: 'Image asset management', title: 'Image Asset Management', desc: 'Unified drag-and-drop upload and path reference for backgrounds and character portraits.', portrait: false },
+      { src: '/projects/duck-escape/editor-assets-audio.png', alt: 'Audio asset management', title: 'Audio Asset Management', desc: 'BGM and sound effect upload, list management, and online preview.', portrait: false },
+      { src: '/projects/duck-escape/editor-config.png', alt: 'Stat configuration', title: 'Stat Configuration', desc: 'Customize game stat dimensions (stamina/scent/alertness/charm), icons, defaults, and bounds.', portrait: true },
+      { src: '/projects/duck-escape/editor-analytics.png', alt: 'Analytics dashboard', title: 'Analytics Dashboard', desc: 'Visualize total users, total starts, endings reached, and track player journey paths.', portrait: false },
+    ],
   },
 };
 
@@ -191,6 +217,9 @@ function StackIcon({ type }: { type: string }) {
 export function DuckEscapeProject() {
   const { lang } = useLang();
   const c = t[lang];
+  const [lightboxIndex, setLightboxIndex] = useState<number>(-1);
+  const galleryImages = c.gallery.map((item) => ({ src: item.src, alt: item.alt, title: item.title }));
+  const isLightboxOpen = lightboxIndex >= 0;
 
   return (
     <div className="min-h-screen bg-bg-primary pt-14">
@@ -288,6 +317,39 @@ export function DuckEscapeProject() {
           </div>
         </div>
       </section>
+
+      {/* Gallery */}
+      <section className="bg-bg-primary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-2">{c.galleryTitle}</h2>
+          <p className="font-noto text-base text-text-secondary mb-10">{c.galleryDesc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {c.gallery.map((item, idx) => (
+              <div key={item.src} className="border border-border-custom rounded bg-bg-secondary overflow-hidden cursor-pointer group" onClick={() => setLightboxIndex(idx)}>
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className={`w-full ${item.portrait ? 'max-h-[420px] object-contain bg-bg-primary' : ''} group-hover:opacity-90 transition-opacity`}
+                  loading="lazy"
+                />
+                <div className="p-4 border-t border-border-custom">
+                  <h3 className="font-noto font-bold text-sm text-text-primary mb-1">{item.title}</h3>
+                  <p className="font-noto text-xs text-text-secondary">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ImageLightbox
+        images={galleryImages}
+        currentIndex={lightboxIndex}
+        isOpen={isLightboxOpen}
+        onClose={() => setLightboxIndex(-1)}
+        onPrev={() => setLightboxIndex((prev) => (prev > 0 ? prev - 1 : galleryImages.length - 1))}
+        onNext={() => setLightboxIndex((prev) => (prev < galleryImages.length - 1 ? prev + 1 : 0))}
+      />
 
       {/* Core Modules */}
       <section className="bg-bg-primary py-16 md:py-24 px-5">

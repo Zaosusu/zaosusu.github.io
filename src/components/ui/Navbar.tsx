@@ -12,7 +12,7 @@ const navt = {
     xhs: '小红书自动邀约系统',
     academy: '无限学园',
     duck: '逃鸭南京',
-    npc: '通用NPC Agent',
+    npc: '通用NPC Agent底座',
   },
   en: {
     home: 'Zaosusu',
@@ -22,7 +22,7 @@ const navt = {
     xhs: 'XHS Auto-Invite',
     academy: 'Infinite Academy',
     duck: 'Duck Escape',
-    npc: 'NPC Agent',
+    npc: 'Universal NPC Agent Base',
   },
 };
 
