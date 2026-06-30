@@ -79,6 +79,45 @@ const t = {
     contactTitle: '联系',
     contactDesc: '对互动叙事、工具链或 Godot 内容管线感兴趣，欢迎交流：',
     email: 'qinqiao2014@gmail.com',
+    galleryTitle: '工作流展示',
+    galleryDesc: '从 React 编辑器到 Godot 运行时的完整链路',
+    gallery: [
+      {
+        src: '/projects/infinite-academy/editor-graph.png',
+        alt: '节点式剧情编辑器总览',
+        title: '节点式剧情编辑器',
+        desc: 'React 实现的节点画布，支持多剧情线、章节管理和分支结局配置。',
+        portrait: false,
+      },
+      {
+        src: '/projects/infinite-academy/editor-dialogue.png',
+        alt: '对白与立绘控制',
+        title: '对白与立绘控制',
+        desc: '逐行编辑剧情对白，配置说话人、背景图、BGM 和立绘显示/隐藏控制。',
+        portrait: false,
+      },
+      {
+        src: '/projects/infinite-academy/editor-character.png',
+        alt: '角色与 NPC 管理',
+        title: '角色与 NPC 管理',
+        desc: '定义主角设定、NPC 档案和立绘资源路径，编辑器自动识别 Godot 资源目录。',
+        portrait: true,
+      },
+      {
+        src: '/projects/infinite-academy/game-relationship.png',
+        alt: '羁绊与养成系统',
+        title: '羁绊与养成系统',
+        desc: 'Godot 运行时中的角色关系界面，显示羁绊度、忽视度、NPC 威胁等数值。',
+        portrait: false,
+      },
+      {
+        src: '/projects/infinite-academy/game-vn-scene.png',
+        alt: '视觉小说演出',
+        title: '视觉小说演出',
+        desc: '最终游戏画面：背景、角色立绘、对话文字框和自动播放控制的完整 VN 体验。',
+        portrait: false,
+      },
+    ],
   },
   en: {
     back: 'Back to Home',
@@ -142,6 +181,45 @@ const t = {
     contactTitle: 'Contact',
     contactDesc: 'Interested in interactive narrative, tooling, or Godot content pipelines? Reach out:',
     email: 'qinqiao2014@gmail.com',
+    galleryTitle: 'Workflow Gallery',
+    galleryDesc: 'From React editor to Godot runtime: the complete pipeline in action',
+    gallery: [
+      {
+        src: '/projects/infinite-academy/editor-graph.png',
+        alt: 'Node-based story editor overview',
+        title: 'Node-Based Story Editor',
+        desc: 'React-powered node canvas supporting multiple storylines, chapter management, and branching endings.',
+        portrait: false,
+      },
+      {
+        src: '/projects/infinite-academy/editor-dialogue.png',
+        alt: 'Dialogue and sprite control',
+        title: 'Dialogue & Sprite Control',
+        desc: 'Line-by-line dialogue editing with speaker, background, BGM, and sprite visibility controls.',
+        portrait: false,
+      },
+      {
+        src: '/projects/infinite-academy/editor-character.png',
+        alt: 'Character and NPC management',
+        title: 'Character & NPC Management',
+        desc: 'Define protagonist settings, NPC profiles, and sprite resource paths. Auto-detects Godot resource folders.',
+        portrait: true,
+      },
+      {
+        src: '/projects/infinite-academy/game-relationship.png',
+        alt: 'Relationship and simulation system',
+        title: 'Bond & Simulation System',
+        desc: 'In-game relationship UI showing bond level, neglect, NPC threat, and daily action choices.',
+        portrait: false,
+      },
+      {
+        src: '/projects/infinite-academy/game-vn-scene.png',
+        alt: 'Visual novel scene',
+        title: 'Visual Novel Presentation',
+        desc: 'Final game screen: background art, character sprites, dialogue text box, and auto-play controls.',
+        portrait: false,
+      },
+    ],
   },
 };
 
@@ -219,6 +297,29 @@ export function InfiniteAcademyProject() {
       </section>
 
       <section className="bg-bg-primary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-2">{c.galleryTitle}</h2>
+          <p className="font-noto text-base text-text-secondary mb-10">{c.galleryDesc}</p>
+          <div className="space-y-8">
+            {c.gallery.map((item) => (
+              <div key={item.src} className="border border-border-custom rounded bg-bg-secondary overflow-hidden">
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className={`w-full ${item.portrait ? 'max-h-[500px] object-contain bg-bg-primary' : ''}`}
+                  loading="lazy"
+                />
+                <div className="p-4 md:p-5 border-t border-border-custom">
+                  <h3 className="font-noto font-bold text-sm text-text-primary mb-1">{item.title}</h3>
+                  <p className="font-noto text-xs text-text-secondary">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-bg-secondary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-6">{c.aigcTitle}</h2>
           <p className="font-noto text-base text-text-primary leading-relaxed rounded border border-border-custom bg-bg-secondary/70 p-5 md:p-8 mb-8">
