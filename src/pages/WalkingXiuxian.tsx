@@ -1,4 +1,4 @@
-import { ExternalLink, ArrowLeft, Smartphone, Server, Cloud, GitBranch, Database, WifiOff, Activity, Trophy } from 'lucide-react';
+import { ExternalLink, ArrowLeft, Smartphone, Server, Cloud, GitBranch, Database, WifiOff, Activity, Trophy, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
@@ -11,6 +11,8 @@ const t = {
     heroDesc: '跨端计步修仙 App。Flutter + FastAPI，事件驱动架构，增量云同步。',
     status: '正式运营中 · Android / iOS / 小程序全平台上线',
     heroWebsite: '访问项目官网',
+    videoTitle: '产品宣传片',
+    videoDesc: '2030年，穿戴设备普及，虚拟现实交互成为主流。走路修仙就在做这样的数字基建——你走的每一步皆是修为，一个真实地点可能成为另一个世界的入口。',
     awardsBadge: '赛事与认可',
     awardsTitle: '赛事与认可',
     waicBadge: 'WAIC 复赛入围',
@@ -94,6 +96,8 @@ const t = {
     heroDesc: 'Cross-platform pedometer xianxia app. Flutter + FastAPI, event-driven architecture, incremental cloud sync.',
     status: 'Officially live · Android / iOS / mini program all platforms',
     heroWebsite: 'Visit Project Website',
+    videoTitle: 'Promotional Video',
+    videoDesc: 'By 2030, wearable devices will be ubiquitous and VR/AR interaction will be mainstream. WalkingXiuxian is building this digital infrastructure — every step you take is cultivation, and every real-world location can be the entrance to another world.',
     awardsBadge: 'Awards & Recognition',
     awardsTitle: 'Awards & Recognition',
     waicBadge: 'WAIC Semifinalist',
@@ -232,6 +236,28 @@ export function WalkingXiuxian() {
           <span className="inline-block px-4 py-1.5 border border-[#6cbcb2]/40 bg-[#6cbcb2]/10 rounded text-xs text-[#9bd8cf]">
             {c.status}
           </span>
+        </div>
+      </section>
+
+      {/* Promotional Video */}
+      <section className="bg-bg-secondary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <div className="flex items-center gap-2 text-[#9bd8cf] mb-4">
+            <Play className="w-5 h-5" />
+            <span className="font-noto text-sm">{c.videoTitle}</span>
+          </div>
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-6">{c.videoTitle}</h2>
+          <p className="font-noto text-base text-text-secondary mb-8 max-w-3xl">{c.videoDesc}</p>
+          <div className="rounded border border-border-custom overflow-hidden bg-bg-primary">
+            <video
+              controls
+              preload="metadata"
+              className="w-full aspect-video"
+              poster="/walking-logo.png"
+            >
+              <source src="/projects/walking-xiuxian/promo.mp4" type="video/mp4" />
+            </video>
+          </div>
         </div>
       </section>
 
