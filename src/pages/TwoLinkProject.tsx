@@ -1,4 +1,4 @@
-import { ExternalLink, ArrowLeft, Smartphone, Code2, Database, Server, Zap, Globe, Layout, MessageSquare, Mic, Image, Shield, CheckCircle, XCircle } from 'lucide-react';
+import { ExternalLink, ArrowLeft, Smartphone, Code2, Database, Server, Zap, Globe, Layout, MessageSquare, Mic, Image, Shield, CheckCircle, XCircle, Box, GitBranch, Activity, Layers, BookOpen, Cpu, HardDrive, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
@@ -10,8 +10,17 @@ const t = {
     heroSubtitle: 'AI虚拟角色 · 声音克隆 · 实时通话',
     heroDesc: '面向普通用户的AI虚拟角色伴侣工具。自定义角色、人设记忆、声音克隆、实时语音通话、角色图片生成，支持豆包聊天记录一键迁移。',
     status: '2026 · 产品化落地',
-    heroLink: '访问官网',
-    heroLinkUrl: 'https://2link.walkingxiuxian.cn',
+    heroLink: '打开应用',
+    heroLinkUrl: 'https://2link.walkingxiuxian.cn/',
+    commerceBadge: '商业化落地',
+    commerceTitle: '上线即盈利',
+    commerceDesc: '这不是一个停留在演示阶段的技术原型，而是一次真正的商业化落地探索。通过授权码模式 + 闲鱼自动获客 + 豆包迁移插件组合拳，上线第一天即实现盈利，首周营收突破 3000+。验证了 AI 陪伴产品的付费意愿与商业闭环可行性。',
+    commerceStats: [
+      { num: 'Day 1', label: '上线即盈利', desc: '授权码销售 + 闲鱼自动获客' },
+      { num: '3K+', label: '首周营收', desc: '商业化验证闭环跑通' },
+      { num: '∞', label: '高并发实战', desc: '服务器被洪峰冲死数次，经优化后稳定承载大量用户' },
+      { num: '6+', label: '多仓库协同', desc: '开源客户端 · 移动端 · Flutter · 后端 · 官网 · 插件' },
+    ],
     featuresBadge: '核心功能',
     featuresTitle: '一个页面完成角色创建、聊天和语音互动',
     featuresDesc: '2link 面向想快速拥有虚拟角色智能体的用户，把复杂的模型调用、角色配置和工具能力集中到一个轻量网页里。',
@@ -43,12 +52,68 @@ const t = {
     migratorTitle: '豆包聊天一键迁移',
     migratorDesc: '已有豆包聊天的用户，可以安装浏览器插件，一键把历史聊天和角色上下文同步到 2link，换平台不用从零重建。',
     migratorLink: '查看迁移助手',
+    techBadge: '技术实现',
+    techTitle: '技术实现',
+    techDesc: '2link 不是简单的模型前端套壳，而是一套包含 Agent 编排、本地记忆、多模态工具链和模型网关的完整客户端系统。',
+    openSourceBadge: '开源仓库',
+    openSourceTitle: '开源客户端仓库',
+    openSourceDesc: '开源客户端仓库 AGPL-3.0-only。包含浏览器前端、Electron 桌面壳、本地 Node API、Agent 编排、本地 SQLite 记忆和多模态工具入口。任何远程用户体系、授权、用量策略都属于部署方自己的服务边界，不在开源仓库中。',
+    openSourceItems: [
+      { label: 'UI 层', desc: '浏览器前端 + Electron 桌面壳' },
+      { label: '本地 API', desc: 'Node.js HTTP 服务，统一路由 /api/chat /api/image /api/tts /api/voice/clone' },
+      { label: 'Agent 编排', desc: '8 个独立 Agent：routerAgent · contextAgent · textAgent · imageAgent · voiceAgent · reviewAgent · memoryAgent · safetyAgent' },
+      { label: '本地数据', desc: 'SQLite：agents / messages / memories / memory_chunks / memory_chunks_fts / profile / model_config' },
+      { label: '模型通道', desc: '自部署 OpenAI-compatible / StepFun API，或部署方提供的远程模型接口' },
+      { label: 'License', desc: 'AGPL-3.0-only' },
+    ],
+    agentTitle: 'Agent 编排',
+    agentDesc: '后端统一编排入口 orchestrateCompanionTurn()，每个聊天回合由 8 个独立 Agent 协作完成：',
+    agents: [
+      { icon: 'layout', title: 'contextAgent', desc: '整理角色、人设、记忆和阻断事实，构建完整的上下文输入。' },
+      { icon: 'git-branch', title: 'routerAgent', desc: '判断本轮输出形态：纯文本 / 带图片 / 带语音，决定调用哪些工具。' },
+      { icon: 'message', title: 'textAgent', desc: '调用主回复生成逻辑，按场景生成 responseProfile 与 narrativeRhythm。' },
+      { icon: 'image', title: 'imageAgent', desc: '根据文本 Agent 结果生成图片工具计划，决定 image_only / text_before_image / image_then_text 交付顺序。' },
+      { icon: 'mic', title: 'voiceAgent', desc: '生成语音工具计划和情绪演绎指令，按优先级选择 clonedVoiceId > voice preset > modelConfig.audioVoice。' },
+      { icon: 'check', title: 'reviewAgent', desc: '复核输出通道内容，确保多模态输出符合角色设定和安全边界。' },
+      { icon: 'database', title: 'memoryAgent', desc: '规划记忆候选、摘要、安全提示写入，管理长期记忆的生命周期。' },
+      { icon: 'shield', title: 'safetyAgent', desc: '安全风险识别边界，危机表达优先进入安全回复，不触发语音娱乐化输出。' },
+    ],
+    pipelineTitle: '三条核心链路',
+    pipelineDesc: '从用户输入到多模态输出的完整数据流。',
+    pipelines: [
+      { icon: 'message', title: '聊天链路', desc: 'POST /api/chat → 解析 agent/character/modelConfig → 校验访问模式与额度 → 写入 user message → retrieveMemories() 召回长期记忆 → orchestrateCompanionTurn() → contextAgent → textAgent → routerAgent → imageAgent/voiceAgent → reviewAgent → finalizeChatTurn() → 返回 reply / orchestration / memory / quota' },
+      { icon: 'image', title: '图片链路', desc: 'orchestration.outputs[type=image] → imageAgent 决定交付顺序 → 前端调用 POST /api/image → server.js 选择模型通道 → remote model provider /api/image 或 src/tools/imageGeneration.js → /images/generations 或 /images/edits。参考图存在时走 step-image-edit-2。图片以 assistant message 写入 SQLite，metadata 保存 imageUrl / b64Json / prompt / seed / finishReason。' },
+      { icon: 'mic', title: '语音链路', desc: 'orchestration.outputs[type=voice] → 前端调用 POST /api/tts → voiceAgent 生成情绪演绎指令 → audioConfigFromModel() → remote model provider /api/tts 或 src/tools/speechSynthesis.js → /audio/speech。语音以 assistant message 写入 SQLite，metadata 保存 audio / transcript / voiceAgent。' },
+    ],
+    memoryTitle: '记忆与 RAG',
+    memoryDesc: '本地 SQLite 实现轻量级长期记忆，适合单机与桌面场景。',
+    memoryItems: [
+      { title: '数据层', desc: 'src/db.js + src/rag.js。SQLite 表：meta / profile / model_config / agents / messages / memories / memory_chunks / memory_chunks_fts。' },
+      { title: '检索策略', desc: 'FTS5 keyword score + hash embedding cosine similarity + importance + confidence + recency，多维度排序召回。' },
+      { title: '记忆切片', desc: 'memory_chunks 保存记忆切片与 hash embedding，memory_chunks_fts 提供全文检索能力。' },
+      { title: '压缩策略', desc: 'COMPANION_COMPRESSION_WINDOW=100 控制历史消息压缩窗口，避免上下文无限膨胀。' },
+    ],
+    modelTitle: '模型通道',
+    modelDesc: '三种运行模式，按用户能力和隐私需求选择。',
+    modelModes: [
+      { title: '自部署模型', desc: 'COMPANION_SELF_HOSTED=1。用户自行管理 Base URL、Model、API Key、Image API、Audio API。本地后端直接调用用户配置的 OpenAI-compatible 或 StepFun API。' },
+      { title: '远程模型接口', desc: 'COMPANION_OFFICIAL_BASE_URL。客户端连接部署方提供的远程模型接口。公开仓库只保留客户端侧配置和接口约定，不包含远程服务实现。' },
+      { title: '本地体验模式', desc: 'COMPANION_PUBLIC_FREE_ACCESS=0。未配置模型通道时仍可运行本地界面、角色、记忆和部分无模型能力。公共免费体验由本地配置控制。' },
+    ],
+    safetyTitle: '安全边界',
+    safetyDesc: '从模型调用到内容输出的多层防护。',
+    safetyItems: [
+      { title: '密钥隔离', desc: '浏览器前端不保存模型 API Key。真实 .env、本地数据库、访问令牌和用户数据属于运行环境资产。' },
+      { title: '危机响应', desc: '自伤、自杀等危机表达优先进入安全回复，不触发语音娱乐化输出。' },
+      { title: '高风险话题', desc: '医疗、法律、金融等高风险话题只做信息整理和边界提醒。' },
+      { title: '语音抑制', desc: 'Voice Agent 情绪识别 + 危机工作流检测，在敏感场景下自动抑制语音输出。' },
+    ],
     archBadge: '技术架构',
     archTitle: '技术架构',
     archDesc: '本地优先 + 云端分层 + 多端适配。浏览器端承担主要存储与交互，服务端负责模型中转、授权管理和主动消息调度。',
     archLayers: [
       { title: '前端层', desc: 'HTML5 · PWA · IndexedDB · Vanilla JS · 浏览器本地存储优先' },
-      { title: '模型中继层', desc: 'Node.js · Coze Bot API · OpenAI-Compatible · 后端relay统一中转 · 不暴露token' },
+      { title: '模型中继层', desc: 'Node.js · Coze Bot API · OpenAI-Compatible · 后端 relay 统一中转 · 不暴露 token' },
       { title: '服务端', desc: 'MySQL · 账号授权 · 云备份 · 主动消息调度(outbox) · 豆包迁移接口' },
     ],
     stackTitle: '技术栈',
@@ -57,11 +122,13 @@ const t = {
       { icon: 'server', title: '后端', desc: 'Node.js · Coze Bot API · OpenAI-Compatible Relay · MySQL' },
       { icon: 'smartphone', title: '移动端', desc: 'Flutter · 跨端适配 · 本地通知(计划)' },
     ],
-    linksTitle: '相关链接',
     contactTitle: '联系',
     contactDesc: '对产品或技术实现感兴趣？欢迎交流：',
     email: 'qinqiao2014@gmail.com',
-    navPrev: '上一个：通用NPC Agent底座',
+    repoLinks: [
+      { title: '开源客户端仓库', url: 'https://github.com/Zaosusu/virtual-companion-agent' },
+      { title: '豆包迁移插件', url: 'https://github.com/Zaosusu/Better_Doubao' },
+    ],
   },
   en: {
     back: 'Back to Home',
@@ -69,8 +136,17 @@ const t = {
     heroSubtitle: 'AI Character · Voice Clone · Real-time Call',
     heroDesc: 'An AI virtual character companion tool for everyday users. Custom roles, persona memory, voice cloning, real-time voice calls, character image generation, with one-click Doubao chat history migration.',
     status: '2026 · Product Launch',
-    heroLink: 'Visit Website',
-    heroLinkUrl: 'https://2link.walkingxiuxian.cn',
+    heroLink: 'Open App',
+    heroLinkUrl: 'https://2link.walkingxiuxian.cn/',
+    commerceBadge: 'Commercial Launch',
+    commerceTitle: 'Profitable from Day One',
+    commerceDesc: 'This is not a demo-stage prototype, but a real commercial exploration. Through the license code model + Xianyu auto-acquisition + Doubao migration plugin combination, it achieved profitability on launch day and surpassed 3000+ revenue in the first week, validating the willingness to pay and the commercial viability of AI companion products.',
+    commerceStats: [
+      { num: 'Day 1', label: 'Profitable on Launch', desc: 'License sales + Xianyu auto-acquisition' },
+      { num: '3K+', label: 'First Week Revenue', desc: 'Commercial validation loop closed' },
+      { num: '∞', label: 'High Concurrency', desc: 'Server crashed multiple times under traffic spikes; optimized to handle heavy load' },
+      { num: '6+', label: 'Multi-repo Collaboration', desc: 'Open client · Mobile · Flutter · Backend · Website · Plugin' },
+    ],
     featuresBadge: 'Core Features',
     featuresTitle: 'Create, Chat, and Voice-interact in One Page',
     featuresDesc: '2link targets users who want a virtual character agent quickly, bundling complex model calls, role configuration, and tool capabilities into a lightweight web app.',
@@ -102,6 +178,62 @@ const t = {
     migratorTitle: 'One-click Doubao Chat Migration',
     migratorDesc: 'Users with existing Doubao chats can install a browser extension to sync chat history and character context to 2link — no need to rebuild from scratch when switching platforms.',
     migratorLink: 'View Migration Helper',
+    techBadge: 'Technical Implementation',
+    techTitle: 'Technical Implementation',
+    techDesc: '2link is not a simple model frontend wrapper. It is a complete client-side system with Agent orchestration, local memory, multimodal toolchain, and model gateway.',
+    openSourceBadge: 'Open Source',
+    openSourceTitle: 'Open Source Client Repository',
+    openSourceDesc: 'Open source client repository under AGPL-3.0-only. Includes browser frontend, Electron desktop shell, local Node API, Agent orchestration, local SQLite memory, and multimodal tool entry. Any remote user system, licensing, and quota strategy belong to the deployer, not the open source repo.',
+    openSourceItems: [
+      { label: 'UI Layer', desc: 'Browser frontend + Electron desktop shell' },
+      { label: 'Local API', desc: 'Node.js HTTP service with unified routes: /api/chat /api/image /api/tts /api/voice/clone' },
+      { label: 'Agent Orchestration', desc: '8 independent agents: routerAgent · contextAgent · textAgent · imageAgent · voiceAgent · reviewAgent · memoryAgent · safetyAgent' },
+      { label: 'Local Storage', desc: 'SQLite: agents / messages / memories / memory_chunks / memory_chunks_fts / profile / model_config' },
+      { label: 'Model Gateway', desc: 'Self-hosted OpenAI-compatible / StepFun API, or deployer-provided remote model interface' },
+      { label: 'License', desc: 'AGPL-3.0-only' },
+    ],
+    agentTitle: 'Agent Orchestration',
+    agentDesc: 'Backend unified orchestration entry orchestrateCompanionTurn(). Every chat turn is completed by 8 independent agents:',
+    agents: [
+      { icon: 'layout', title: 'contextAgent', desc: 'Organizes role, persona, memories, and blocking facts into complete context input.' },
+      { icon: 'git-branch', title: 'routerAgent', desc: 'Decides output form: text-only / with image / with voice, determines which tools to invoke.' },
+      { icon: 'message', title: 'textAgent', desc: 'Invokes main reply generation logic, generates responseProfile and narrativeRhythm by scene.' },
+      { icon: 'image', title: 'imageAgent', desc: 'Generates image tool plan from text agent result, decides image_only / text_before_image / image_then_text delivery order.' },
+      { icon: 'mic', title: 'voiceAgent', desc: 'Generates voice tool plan and emotional direction instructions, selects clonedVoiceId > voice preset > modelConfig.audioVoice.' },
+      { icon: 'check', title: 'reviewAgent', desc: 'Reviews output channel content, ensures multimodal output matches role persona and safety boundaries.' },
+      { icon: 'database', title: 'memoryAgent', desc: 'Plans memory candidates, summaries, and safety notes for long-term memory lifecycle management.' },
+      { icon: 'shield', title: 'safetyAgent', desc: 'Safety risk identification boundary. Crisis expressions enter safe response first, suppress voice entertainment output.' },
+    ],
+    pipelineTitle: 'Three Core Chains',
+    pipelineDesc: 'Complete data flow from user input to multimodal output.',
+    pipelines: [
+      { icon: 'message', title: 'Chat Chain', desc: 'POST /api/chat → parse agent/character/modelConfig → validate access mode and quota → write user message → retrieveMemories() → orchestrateCompanionTurn() → contextAgent → textAgent → routerAgent → imageAgent/voiceAgent → reviewAgent → finalizeChatTurn() → return reply / orchestration / memory / quota' },
+      { icon: 'image', title: 'Image Chain', desc: 'orchestration.outputs[type=image] → imageAgent decides delivery order → frontend calls POST /api/image → server.js selects model channel → remote model provider /api/image or src/tools/imageGeneration.js → /images/generations or /images/edits. With reference image, uses step-image-edit-2. Image saved as assistant message in SQLite with metadata: imageUrl / b64Json / prompt / seed / finishReason.' },
+      { icon: 'mic', title: 'Voice Chain', desc: 'orchestration.outputs[type=voice] → frontend calls POST /api/tts → voiceAgent generates emotional direction → audioConfigFromModel() → remote model provider /api/tts or src/tools/speechSynthesis.js → /audio/speech. Voice saved as assistant message in SQLite with metadata: audio / transcript / voiceAgent.' },
+    ],
+    memoryTitle: 'Memory & RAG',
+    memoryDesc: 'Local SQLite implements lightweight long-term memory, suitable for single-machine and desktop scenarios.',
+    memoryItems: [
+      { title: 'Data Layer', desc: 'src/db.js + src/rag.js. SQLite tables: meta / profile / model_config / agents / messages / memories / memory_chunks / memory_chunks_fts.' },
+      { title: 'Retrieval Strategy', desc: 'FTS5 keyword score + hash embedding cosine similarity + importance + confidence + recency, multi-dimensional ranking and recall.' },
+      { title: 'Memory Chunking', desc: 'memory_chunks stores slices and hash embeddings; memory_chunks_fts provides full-text search capability.' },
+      { title: 'Compression', desc: 'COMPANION_COMPRESSION_WINDOW=100 controls history message compression window, preventing infinite context expansion.' },
+    ],
+    modelTitle: 'Model Gateway',
+    modelDesc: 'Three runtime modes selected by user capability and privacy needs.',
+    modelModes: [
+      { title: 'Self-hosted Model', desc: 'COMPANION_SELF_HOSTED=1. User manages Base URL, Model, API Key, Image API, Audio API. Local backend directly calls user-configured OpenAI-compatible or StepFun API.' },
+      { title: 'Remote Model Interface', desc: 'COMPANION_OFFICIAL_BASE_URL. Client connects to deployer-provided remote model interface. Open source repo only keeps client-side config and interface contract, not remote service implementation.' },
+      { title: 'Local Experience Mode', desc: 'COMPANION_PUBLIC_FREE_ACCESS=0. Runs local UI, roles, memory, and partial non-model capabilities without configured model channel. Public free access controlled by local config.' },
+    ],
+    safetyTitle: 'Safety Boundaries',
+    safetyDesc: 'Multi-layer protection from model invocation to content output.',
+    safetyItems: [
+      { title: 'Key Isolation', desc: 'Browser frontend does not store model API Key. Real .env, local database, access tokens, and user data are runtime environment assets.' },
+      { title: 'Crisis Response', desc: 'Self-harm and suicide crisis expressions enter safe response first, suppress voice entertainment output.' },
+      { title: 'High-risk Topics', desc: 'Medical, legal, and financial high-risk topics are limited to information organization and boundary reminders.' },
+      { title: 'Voice Suppression', desc: 'Voice Agent emotion recognition + crisis workflow detection, automatically suppresses voice output in sensitive scenarios.' },
+    ],
     archBadge: 'Architecture',
     archTitle: 'Architecture',
     archDesc: 'Local-first + Cloud layering + Multi-device. Browser handles primary storage and interaction; server handles model relay, licensing, and proactive messaging.',
@@ -116,11 +248,13 @@ const t = {
       { icon: 'server', title: 'Backend', desc: 'Node.js · Coze Bot API · OpenAI-Compatible Relay · MySQL' },
       { icon: 'smartphone', title: 'Mobile', desc: 'Flutter · Cross-platform · Local Notifications (planned)' },
     ],
-    linksTitle: 'Links',
     contactTitle: 'Contact',
     contactDesc: 'Interested in the product or technical implementation? Feel free to reach out:',
     email: 'qinqiao2014@gmail.com',
-    navPrev: 'Prev: Universal NPC Agent Base',
+    repoLinks: [
+      { title: 'Open Source Client', url: 'https://github.com/Zaosusu/virtual-companion-agent' },
+      { title: 'Doubao Migration Plugin', url: 'https://github.com/Zaosusu/Better_Doubao' },
+    ],
   },
 };
 
@@ -137,6 +271,25 @@ function FeatureIcon({ title }: { title: string }) {
   if (title.includes('图片') || title.includes('Image')) return <Image className="w-5 h-5" />;
   if (title.includes('本地') || title.includes('Storage')) return <Shield className="w-5 h-5" />;
   return <Zap className="w-5 h-5" />;
+}
+
+function AgentIcon({ type }: { type: string }) {
+  if (type === 'layout') return <Layout className="w-5 h-5" />;
+  if (type === 'git-branch') return <GitBranch className="w-5 h-5" />;
+  if (type === 'message') return <MessageSquare className="w-5 h-5" />;
+  if (type === 'image') return <Image className="w-5 h-5" />;
+  if (type === 'mic') return <Mic className="w-5 h-5" />;
+  if (type === 'check') return <CheckCircle className="w-5 h-5" />;
+  if (type === 'database') return <Database className="w-5 h-5" />;
+  if (type === 'shield') return <Shield className="w-5 h-5" />;
+  return <Box className="w-5 h-5" />;
+}
+
+function PipeIcon({ type }: { type: string }) {
+  if (type === 'message') return <MessageSquare className="w-5 h-5" />;
+  if (type === 'image') return <Image className="w-5 h-5" />;
+  if (type === 'mic') return <Mic className="w-5 h-5" />;
+  return <Activity className="w-5 h-5" />;
 }
 
 export function TwoLinkProject() {
@@ -192,6 +345,27 @@ export function TwoLinkProject() {
                 loading="lazy"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Commerce */}
+      <section className="bg-bg-primary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <div className="flex items-center gap-2 text-[#f4a261] mb-4">
+            <Zap className="w-5 h-5" />
+            <span className="font-noto text-sm">{c.commerceBadge}</span>
+          </div>
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-4">{c.commerceTitle}</h2>
+          <p className="font-noto text-base text-text-secondary mb-10 max-w-3xl">{c.commerceDesc}</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {c.commerceStats.map((stat, i) => (
+              <div key={i} className="p-5 border border-border-custom rounded bg-bg-secondary text-center">
+                <span className="block font-inter font-bold text-2xl md:text-3xl text-[#0f8b8d] mb-1">{stat.num}</span>
+                <span className="block font-noto font-bold text-sm text-text-primary mb-1">{stat.label}</span>
+                <span className="block font-noto text-xs text-text-secondary">{stat.desc}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -302,8 +476,123 @@ export function TwoLinkProject() {
         </div>
       </section>
 
-      {/* Architecture */}
+      {/* Technical Implementation */}
       <section className="bg-bg-secondary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <div className="flex items-center gap-2 text-[#6cbcb2] mb-4">
+            <Cpu className="w-5 h-5" />
+            <span className="font-noto text-sm">{c.techBadge}</span>
+          </div>
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-4">{c.techTitle}</h2>
+          <p className="font-noto text-base text-text-secondary mb-10 max-w-3xl">{c.techDesc}</p>
+
+          {/* Open Source */}
+          <div className="mb-12">
+            <div className="flex items-center gap-2 text-[#0f8b8d] mb-4">
+              <BookOpen className="w-5 h-5" />
+              <span className="font-noto text-sm">{c.openSourceBadge}</span>
+            </div>
+            <h3 className="font-noto font-bold text-xl text-text-primary mb-3">{c.openSourceTitle}</h3>
+            <p className="font-noto text-sm text-text-secondary leading-relaxed mb-6 max-w-3xl">{c.openSourceDesc}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {c.openSourceItems.map((item, i) => (
+                <div key={i} className="p-4 border border-border-custom rounded bg-bg-primary">
+                  <h4 className="font-noto font-bold text-sm text-text-primary mb-1">{item.label}</h4>
+                  <p className="font-noto text-xs text-text-secondary leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Agent Orchestration */}
+          <div className="mb-12">
+            <h3 className="font-noto font-bold text-xl text-text-primary mb-3">{c.agentTitle}</h3>
+            <p className="font-noto text-sm text-text-secondary leading-relaxed mb-6">{c.agentDesc}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {c.agents.map((agent, i) => (
+                <div key={i} className="p-4 border border-border-custom rounded bg-bg-primary hover:border-[#0f8b8d]/40 transition-colors">
+                  <div className="flex items-center gap-2 text-[#0f8b8d] mb-2">
+                    <AgentIcon type={agent.icon} />
+                    <h4 className="font-noto font-bold text-sm">{agent.title}</h4>
+                  </div>
+                  <p className="font-noto text-xs text-text-secondary leading-relaxed">{agent.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Three Core Chains */}
+          <div className="mb-12">
+            <h3 className="font-noto font-bold text-xl text-text-primary mb-3">{c.pipelineTitle}</h3>
+            <p className="font-noto text-sm text-text-secondary leading-relaxed mb-6">{c.pipelineDesc}</p>
+            <div className="grid grid-cols-1 gap-4">
+              {c.pipelines.map((p, i) => (
+                <div key={i} className="p-5 border border-border-custom rounded bg-bg-primary hover:border-[#0f8b8d]/40 transition-colors">
+                  <div className="flex items-center gap-2 text-[#0f8b8d] mb-3">
+                    <PipeIcon type={p.icon} />
+                    <h4 className="font-noto font-bold text-base">{p.title}</h4>
+                  </div>
+                  <p className="font-noto text-sm text-text-secondary leading-relaxed">{p.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Memory & RAG */}
+          <div className="mb-12">
+            <div className="flex items-center gap-2 text-[#9bd8cf] mb-3">
+              <HardDrive className="w-5 h-5" />
+              <h3 className="font-noto font-bold text-xl text-text-primary">{c.memoryTitle}</h3>
+            </div>
+            <p className="font-noto text-sm text-text-secondary leading-relaxed mb-6">{c.memoryDesc}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {c.memoryItems.map((item, i) => (
+                <div key={i} className="p-4 border border-border-custom rounded bg-bg-primary">
+                  <h4 className="font-noto font-bold text-sm text-text-primary mb-1">{item.title}</h4>
+                  <p className="font-noto text-xs text-text-secondary leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Model Gateway */}
+          <div className="mb-12">
+            <div className="flex items-center gap-2 text-[#f4a261] mb-3">
+              <Layers className="w-5 h-5" />
+              <h3 className="font-noto font-bold text-xl text-text-primary">{c.modelTitle}</h3>
+            </div>
+            <p className="font-noto text-sm text-text-secondary leading-relaxed mb-6">{c.modelDesc}</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {c.modelModes.map((mode, i) => (
+                <div key={i} className="p-4 border border-border-custom rounded bg-bg-primary">
+                  <h4 className="font-noto font-bold text-sm text-text-primary mb-1">{mode.title}</h4>
+                  <p className="font-noto text-xs text-text-secondary leading-relaxed">{mode.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Safety */}
+          <div>
+            <div className="flex items-center gap-2 text-[#f4a261] mb-3">
+              <Lock className="w-5 h-5" />
+              <h3 className="font-noto font-bold text-xl text-text-primary">{c.safetyTitle}</h3>
+            </div>
+            <p className="font-noto text-sm text-text-secondary leading-relaxed mb-6">{c.safetyDesc}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {c.safetyItems.map((item, i) => (
+                <div key={i} className="p-4 border border-border-custom rounded bg-bg-primary">
+                  <h4 className="font-noto font-bold text-sm text-text-primary mb-1">{item.title}</h4>
+                  <p className="font-noto text-xs text-text-secondary leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Architecture */}
+      <section className="bg-bg-primary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
           <div className="flex items-center gap-2 text-[#6cbcb2] mb-4">
             <Layout className="w-5 h-5" />
@@ -313,7 +602,7 @@ export function TwoLinkProject() {
           <p className="font-noto text-base text-text-primary leading-relaxed mb-8">{c.archDesc}</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {c.archLayers.map((l, i) => (
-              <div key={i} className="p-5 border border-border-custom rounded bg-bg-primary hover:border-[#0f8b8d]/40 transition-colors">
+              <div key={i} className="p-5 border border-border-custom rounded bg-bg-secondary hover:border-[#0f8b8d]/40 transition-colors">
                 <h3 className="font-noto font-bold text-base text-text-primary mb-2">{l.title}</h3>
                 <p className="font-noto text-sm text-text-secondary leading-relaxed">{l.desc}</p>
               </div>
@@ -323,12 +612,12 @@ export function TwoLinkProject() {
       </section>
 
       {/* Tech Stack */}
-      <section className="bg-bg-primary py-16 md:py-24 px-5">
+      <section className="bg-bg-secondary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-8">{c.stackTitle}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {c.stack.map((s, i) => (
-              <div key={i} className="p-5 border border-border-custom rounded bg-bg-secondary hover:border-[#0f8b8d]/40 transition-colors">
+              <div key={i} className="p-5 border border-border-custom rounded bg-bg-primary hover:border-[#0f8b8d]/40 transition-colors">
                 <div className="flex items-center gap-2 text-text-primary mb-3">
                   <StackIcon type={s.icon} />
                   <h3 className="font-noto font-bold text-base">{s.title}</h3>
@@ -341,7 +630,7 @@ export function TwoLinkProject() {
       </section>
 
       {/* Contact */}
-      <section className="bg-bg-secondary py-16 md:py-24 px-5">
+      <section className="bg-bg-primary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto text-center">
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-4">{c.contactTitle}</h2>
           <p className="font-noto text-base text-text-secondary mb-6">{c.contactDesc}</p>
@@ -351,17 +640,25 @@ export function TwoLinkProject() {
         </div>
       </section>
 
-      {/* Navigation */}
-      <section className="bg-bg-secondary border-t border-border-custom py-6 px-5">
-        <div className="max-w-content mx-auto flex justify-between items-center">
-          <Link
-            to="/projects/npc-agent"
-            className="inline-flex items-center gap-2 font-noto text-sm text-text-muted hover:text-[#9bd8cf] transition-colors group"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span>{c.navPrev}</span>
-          </Link>
-          <span />
+      {/* Open Source Repos */}
+      <section className="bg-bg-secondary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-4">GitHub</h2>
+          <p className="font-noto text-sm text-text-secondary mb-6">公开仓库可直接访问，技术架构可被社区复用。</p>
+          <div className="flex flex-wrap gap-3">
+            {c.repoLinks.map((repo, i) => (
+              <a
+                key={i}
+                href={repo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded border border-border-custom bg-bg-primary text-sm text-text-primary hover:border-[#0f8b8d]/40 hover:text-[#0f8b8d] transition-colors"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                <span className="font-noto">{repo.title}</span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 

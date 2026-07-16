@@ -66,6 +66,8 @@ const t = {
       { label: '产品验证', project: '逃鸭！南京！', path: '/projects/duck-escape', color: 'orange' },
       { label: '系统化框架', project: '通用NPC Agent底座', path: '/projects/npc-agent', color: 'teal' },
     ],
+    productTitle: '产品',
+    productDesc: '从研究到产品的落地。',
     projectsTitle: '沙之书',
     ogcpCardTitle: 'OpenGuitarChordProject',
     ogcpCardDesc: '开源吉他和弦识别项目。996样本物理感知数据集，目标是从音频自动识别和弦并生成六线谱。',
@@ -157,6 +159,8 @@ const t = {
       { label: 'Validation', project: 'Duck Escape', path: '/projects/duck-escape', color: 'orange' },
       { label: 'Framework', project: 'NPC Agent Base', path: '/projects/npc-agent', color: 'teal' },
     ],
+    productTitle: 'Products',
+    productDesc: 'From research to product.',
     projectsTitle: 'The Book of Sand',
     ogcpCardTitle: 'OpenGuitarChordProject',
     ogcpCardDesc: 'Open-source guitar chord recognition. 996-sample physics-aware dataset. Goal: recognize chords from audio and generate guitar tablature.',
@@ -323,6 +327,35 @@ export function Home() {
         </div>
       </section>
 
+      {/* Product */}
+      <section id="product" className="bg-bg-primary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-2">{c.productTitle}</h2>
+          <p className="font-noto text-sm text-text-secondary mb-8">{c.productDesc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* 2link Card */}
+            <Link
+              to="/projects/2link"
+              className="group block min-h-[220px] p-6 border border-border-custom rounded bg-bg-secondary hover:border-[#0f8b8d] hover:-translate-y-1 transition-all duration-200"
+            >
+              <span className="inline-block px-2 py-0.5 rounded text-xs font-noto mb-2 bg-[#0f8b8d]/10 text-[#0f8b8d] border border-[#0f8b8d]/30">
+                {c.twoLinkCardTag}
+              </span>
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
+                {c.twoLinkCardTitle}
+              </h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
+                {c.twoLinkCardDesc}
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
+                <span className="font-noto">查看详情</span>
+                <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Projects */}
       <section id="projects" className="bg-bg-secondary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
@@ -330,7 +363,7 @@ export function Home() {
           <p className="font-noto text-sm text-text-secondary mb-8">{c.threadDesc}</p>
 
           {/* Evolution thread line — aligned with the three evolution cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* OGCP Card */}
             <Link
               to="/projects/ogcp"
@@ -358,26 +391,6 @@ export function Home() {
               </h3>
               <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
                 {c.walkingCardDesc}
-              </p>
-              <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
-                <span className="font-noto">查看详情</span>
-                <ArrowRight className="w-3 h-3" />
-              </span>
-            </Link>
-
-            {/* 2link Card */}
-            <Link
-              to="/projects/2link"
-              className="group block min-h-[220px] p-6 border border-border-custom rounded bg-bg-primary hover:border-[#0f8b8d] hover:-translate-y-1 transition-all duration-200"
-            >
-              <span className="inline-block px-2 py-0.5 rounded text-xs font-noto mb-2 bg-[#0f8b8d]/10 text-[#0f8b8d] border border-[#0f8b8d]/30">
-                {c.twoLinkCardTag}
-              </span>
-              <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
-                {c.twoLinkCardTitle}
-              </h3>
-              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
-                {c.twoLinkCardDesc}
               </p>
               <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
                 <span className="font-noto">查看详情</span>
