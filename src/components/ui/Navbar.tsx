@@ -13,6 +13,7 @@ const navt = {
     academy: '无限学园',
     duck: '逃鸭南京',
     npc: '通用NPC Agent底座',
+    twolink: '2link虚拟角色智能体',
   },
   en: {
     home: 'Zaosusu',
@@ -23,6 +24,7 @@ const navt = {
     academy: 'Infinite Academy',
     duck: 'Duck Escape',
     npc: 'Universal NPC Agent Base',
+    twolink: '2link Virtual Character Agent',
   },
 };
 
@@ -33,6 +35,7 @@ const projectLinks = [
   { path: '/projects/infinite-academy', key: 'academy' as const },
   { path: '/projects/duck-escape', key: 'duck' as const },
   { path: '/projects/npc-agent', key: 'npc' as const },
+  { path: '/projects/2link', key: 'twolink' as const },
 ];
 
 export function Navbar() {

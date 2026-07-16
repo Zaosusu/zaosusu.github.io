@@ -9,6 +9,7 @@ import { XiaohongshuProject } from './pages/XiaohongshuProject';
 import { InfiniteAcademyProject } from './pages/InfiniteAcademyProject';
 import { DuckEscapeProject } from './pages/DuckEscapeProject';
 import { NPCAgentProject } from './pages/NPCAgentProject';
+import { TwoLinkProject } from './pages/TwoLinkProject';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/projects/infinite-academy" element={<InfiniteAcademyProject />} />
             <Route path="/projects/duck-escape" element={<DuckEscapeProject />} />
             <Route path="/projects/npc-agent" element={<NPCAgentProject />} />
+            <Route path="/projects/2link" element={<TwoLinkProject />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>

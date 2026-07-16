@@ -82,6 +82,9 @@ const t = {
     npcAgentCardTitle: '通用NPC Agent底座',
     npcAgentCardTag: '系统化框架',
     npcAgentCardDesc: '从逃鸭的实践中发现，每次接入新世界都需要大量人工配置与调优。于是把这套人工的复杂工作自动化，做成通用NPC Agent底座——Agent 自己读取世界设定、校验规则、管理状态，实现热插拔。',
+    twoLinkCardTitle: '2link 虚拟角色智能体',
+    twoLinkCardTag: '产品落地',
+    twoLinkCardDesc: '面向普通用户的AI虚拟角色伴侣工具。自定义角色、人设记忆、声音克隆、实时语音通话、角色图片生成，支持豆包聊天记录一键迁移。',
     contactTitle: '联系我',
     contactDesc: '如果你对我的研究或项目感兴趣，欢迎交流：',
     email: 'qinqiao2014@gmail.com',
@@ -170,6 +173,9 @@ const t = {
     npcAgentCardTitle: 'Universal NPC Agent Base',
     npcAgentCardTag: 'Framework',
     npcAgentCardDesc: "From Duck Escape practice we found each new world required heavy manual configuration and tuning. So we automated that manual complexity into a universal NPC Agent Base — Agents read world settings, validate rules, manage state themselves, enabling hot-plug.",
+    twoLinkCardTitle: '2link Virtual Character Agent',
+    twoLinkCardTag: 'Product Launch',
+    twoLinkCardDesc: 'An AI virtual character companion tool for everyday users. Custom roles, persona memory, voice cloning, real-time voice calls, character image generation, with one-click Doubao chat history migration.',
     contactTitle: 'Contact',
     contactDesc: 'If you are interested in my research or projects, feel free to reach out:',
     email: 'qinqiao2014@gmail.com',
@@ -324,7 +330,7 @@ export function Home() {
           <p className="font-noto text-sm text-text-secondary mb-8">{c.threadDesc}</p>
 
           {/* Evolution thread line — aligned with the three evolution cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* OGCP Card */}
             <Link
               to="/projects/ogcp"
@@ -352,6 +358,26 @@ export function Home() {
               </h3>
               <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
                 {c.walkingCardDesc}
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
+                <span className="font-noto">查看详情</span>
+                <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+
+            {/* 2link Card */}
+            <Link
+              to="/projects/2link"
+              className="group block min-h-[220px] p-6 border border-border-custom rounded bg-bg-primary hover:border-[#0f8b8d] hover:-translate-y-1 transition-all duration-200"
+            >
+              <span className="inline-block px-2 py-0.5 rounded text-xs font-noto mb-2 bg-[#0f8b8d]/10 text-[#0f8b8d] border border-[#0f8b8d]/30">
+                {c.twoLinkCardTag}
+              </span>
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
+                {c.twoLinkCardTitle}
+              </h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
+                {c.twoLinkCardDesc}
               </p>
               <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
                 <span className="font-noto">查看详情</span>
