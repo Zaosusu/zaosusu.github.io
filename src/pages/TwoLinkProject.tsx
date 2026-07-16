@@ -1,4 +1,4 @@
-import { ExternalLink, ArrowLeft, Smartphone, Code2, Database, Server, Zap, Globe, Layout, MessageSquare, Mic, Image, Shield, CheckCircle, XCircle, Box, GitBranch, Activity, Layers, BookOpen, Cpu, HardDrive, Lock } from 'lucide-react';
+import { ExternalLink, ArrowLeft, Smartphone, Code2, Database, Server, Zap, Globe, Layout, MessageSquare, Mic, Image, Shield, CheckCircle, XCircle, Box, GitBranch, Activity, Layers, Cpu, HardDrive, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
@@ -11,15 +11,21 @@ const t = {
     heroDesc: '面向普通用户的AI虚拟角色伴侣工具。自定义角色、人设记忆、声音克隆、实时语音通话、角色图片生成，支持豆包聊天记录一键迁移。',
     status: '2026 · 产品化落地',
     heroLink: '打开应用',
-    heroLinkUrl: 'https://2link.walkingxiuxian.cn/',
+    heroLinkUrl: 'https://2link.walkingxiuxian.cn/index',
     commerceBadge: '商业化落地',
     commerceTitle: '上线即盈利',
-    commerceDesc: '这不是一个停留在演示阶段的技术原型，而是一次真正的商业化落地探索。通过授权码模式 + 闲鱼自动获客 + 豆包迁移插件组合拳，上线第一天即实现盈利，首周营收突破 3000+。验证了 AI 陪伴产品的付费意愿与商业闭环可行性。',
+    commerceDesc: '这不是一个停留在演示阶段的技术原型，而是一次真正的商业化落地探索。自媒体宣传引流 → 闲鱼成交授权码 → 豆包迁移插件降低换平台成本，上线第一天即实现盈利，首周营收突破 3000+。验证了 AI 陪伴产品的付费意愿与商业闭环可行性。',
     commerceStats: [
-      { num: 'Day 1', label: '上线即盈利', desc: '授权码销售 + 闲鱼自动获客' },
-      { num: '3K+', label: '首周营收', desc: '商业化验证闭环跑通' },
-      { num: '∞', label: '高并发实战', desc: '服务器被洪峰冲死数次，经优化后稳定承载大量用户' },
-      { num: '6+', label: '多仓库协同', desc: '开源客户端 · 移动端 · Flutter · 后端 · 官网 · 插件' },
+      { num: 'Day 1', label: '上线即盈利', desc: '自媒体引流 + 闲鱼成交' },
+      { num: '3K+', label: '首周营收', desc: '商业闭环验证跑通' },
+    ],
+    highConcurrencyBadge: '高并发实战',
+    highConcurrencyTitle: '从洪峰崩溃到稳定承载',
+    highConcurrencyDesc: '产品上线后经历多次用户洪峰冲击，服务器被冲死过数次。每次崩溃后复盘日志、定位瓶颈、逐层优化——从连接池、请求排队到 Agent 编排并发控制——最终从崩溃走向稳定，从容承载大量并发用户。',
+    highConcurrencyItems: [
+      { title: '洪峰冲击', desc: '上线初期多次遭遇突发大量用户同时涌入，服务器进程被冲死，服务中断。' },
+      { title: '逐层优化', desc: '复盘崩溃日志，定位瓶颈：连接池耗尽、请求堆积、Agent编排阻塞。逐步优化各层并发控制与资源管理。' },
+      { title: '稳定承载', desc: '优化后从容应对高峰流量，不再因用户涌入而崩溃。' },
     ],
     featuresBadge: '核心功能',
     featuresTitle: '一个页面完成角色创建、聊天和语音互动',
@@ -54,17 +60,20 @@ const t = {
     migratorLink: '查看迁移助手',
     techBadge: '技术实现',
     techTitle: '技术实现',
-    techDesc: '2link 不是简单的模型前端套壳，而是一套包含 Agent 编排、本地记忆、多模态工具链和模型网关的完整客户端系统。',
-    openSourceBadge: '开源仓库',
-    openSourceTitle: '开源客户端仓库',
-    openSourceDesc: '开源客户端仓库 AGPL-3.0-only。包含浏览器前端、Electron 桌面壳、本地 Node API、Agent 编排、本地 SQLite 记忆和多模态工具入口。任何远程用户体系、授权、用量策略都属于部署方自己的服务边界，不在开源仓库中。',
-    openSourceItems: [
-      { label: 'UI 层', desc: '浏览器前端 + Electron 桌面壳' },
-      { label: '本地 API', desc: 'Node.js HTTP 服务，统一路由 /api/chat /api/image /api/tts /api/voice/clone' },
-      { label: 'Agent 编排', desc: '8 个独立 Agent：routerAgent · contextAgent · textAgent · imageAgent · voiceAgent · reviewAgent · memoryAgent · safetyAgent' },
-      { label: '本地数据', desc: 'SQLite：agents / messages / memories / memory_chunks / memory_chunks_fts / profile / model_config' },
-      { label: '模型通道', desc: '自部署 OpenAI-compatible / StepFun API，或部署方提供的远程模型接口' },
-      { label: 'License', desc: 'AGPL-3.0-only' },
+    techDesc: '2link 不是简单的模型前端套壳，而是多端协同、包含 Agent 编排、本地记忆、多模态工具链和模型网关的完整系统。',
+    clientsTitle: '多端客户端',
+    clientsDesc: '同一个产品，四种形态覆盖不同用户场景，各自独立运行又共享 Agent 编排和角色协议。',
+    clients: [
+      { icon: 'desktop', title: '桌面端（开源）', desc: '浏览器前端 + Electron 桌面壳 + 本地 Node API + SQLite。自部署模型或远程模型接口。AGPL-3.0-only 开源。', tag: '开源', repo: 'https://github.com/Zaosusu/virtual-companion-agent' },
+      { icon: 'phone', title: '手机 H5/PWA（生产主力）', desc: 'IndexedDB 本地存储 + server-relay Agent 编排 + license-backend 授权网关。生产环境 systemd 部署，支持云备份与主动消息。', tag: '私有', repo: '' },
+      { icon: 'smartphone', title: 'Android Flutter 客户端', desc: '完全独立运行的 Flutter 原生 App。用户自配 API Key 直连模型，本地 CRAG 记忆 + 加密备份 + 指纹锁。无服务器依赖。', tag: '私有', repo: '' },
+      { icon: 'server', title: '授权网关后端', desc: 'Node.js · 账号注册/登录 · 授权码管理 · 额度计量 · 模型中转(chat/image/TTS/voice) · 管理后台 · 审计日志。API Key 服务端隔离，前端不暴露。', tag: '私有', repo: '' },
+    ],
+    pluginsTitle: '插件与工具',
+    pluginsDesc: '产品周边的两个开源工具，降低用户换平台成本并增强豆包体验。',
+    plugins: [
+      { icon: 'plug', title: 'Better Doubao — 豆包增强插件', desc: 'Chrome & Edge 浏览器扩展（Manifest V3）。五大功能：消息快速定位（导航+书签）、对话文件夹管理（彩色标签+拖拽）、语料板（跨对话文本片段采集）、导出（PDF/TXT/Markdown）、LaTeX 公式下载。已上架 Edge 插件商店。MIT 开源。', tag: '开源', repo: 'https://github.com/Zaosusu/Better_Doubao' },
+      { icon: 'bot', title: '闲鱼 AI 客服 Bot', desc: '7×24 自动值守闲鱼店铺。多专家路由：意图分类 → 议价专家（阶梯议价）/ 技术专家 / 默认客服。LLM 自动回复带上下文，模拟真人打字节奏。GPL-3.0 开源。', tag: '开源', repo: 'https://github.com/Zaosusu/XianyuAutoAgent' },
     ],
     agentTitle: 'Agent 编排',
     agentDesc: '后端统一编排入口 orchestrateCompanionTurn()，每个聊天回合由 8 个独立 Agent 协作完成：',
@@ -137,15 +146,21 @@ const t = {
     heroDesc: 'An AI virtual character companion tool for everyday users. Custom roles, persona memory, voice cloning, real-time voice calls, character image generation, with one-click Doubao chat history migration.',
     status: '2026 · Product Launch',
     heroLink: 'Open App',
-    heroLinkUrl: 'https://2link.walkingxiuxian.cn/',
+    heroLinkUrl: 'https://2link.walkingxiuxian.cn/index',
     commerceBadge: 'Commercial Launch',
     commerceTitle: 'Profitable from Day One',
-    commerceDesc: 'This is not a demo-stage prototype, but a real commercial exploration. Through the license code model + Xianyu auto-acquisition + Doubao migration plugin combination, it achieved profitability on launch day and surpassed 3000+ revenue in the first week, validating the willingness to pay and the commercial viability of AI companion products.',
+    commerceDesc: 'This is not a demo-stage prototype, but a real commercial exploration. Social media promotion → Xianyu marketplace transactions for license codes → Doubao migration plugin lowers switching cost. Profitable on launch day, first-week revenue surpassed 3000+, validating the willingness to pay and the commercial viability of AI companion products.',
     commerceStats: [
-      { num: 'Day 1', label: 'Profitable on Launch', desc: 'License sales + Xianyu auto-acquisition' },
-      { num: '3K+', label: 'First Week Revenue', desc: 'Commercial validation loop closed' },
-      { num: '∞', label: 'High Concurrency', desc: 'Server crashed multiple times under traffic spikes; optimized to handle heavy load' },
-      { num: '6+', label: 'Multi-repo Collaboration', desc: 'Open client · Mobile · Flutter · Backend · Website · Plugin' },
+      { num: 'Day 1', label: 'Profitable on Launch', desc: 'Social media traffic + Xianyu sales' },
+      { num: '3K+', label: 'First Week Revenue', desc: 'Commercial loop validated' },
+    ],
+    highConcurrencyBadge: 'High Concurrency',
+    highConcurrencyTitle: 'From Traffic Spikes to Stable',
+    highConcurrencyDesc: 'After launch, the product experienced multiple traffic spikes that crashed the server. Each crash was followed by log review, bottleneck identification, and layer-by-layer optimization — from connection pools, request queuing, to Agent orchestration concurrency control — ultimately going from crash-prone to stable under heavy load.',
+    highConcurrencyItems: [
+      { title: 'Traffic Spikes', desc: 'Multiple surges of simultaneous users crashed server processes, causing service interruptions.' },
+      { title: 'Layer-by-layer Optimization', desc: 'Reviewed crash logs, identified bottlenecks: connection pool exhaustion, request pileup, Agent orchestration blocking. Gradually optimized concurrency control at each layer.' },
+      { title: 'Stable Under Load', desc: 'After optimization, handles peak traffic calmly. No more crashes from user surges.' },
     ],
     featuresBadge: 'Core Features',
     featuresTitle: 'Create, Chat, and Voice-interact in One Page',
@@ -180,17 +195,20 @@ const t = {
     migratorLink: 'View Migration Helper',
     techBadge: 'Technical Implementation',
     techTitle: 'Technical Implementation',
-    techDesc: '2link is not a simple model frontend wrapper. It is a complete client-side system with Agent orchestration, local memory, multimodal toolchain, and model gateway.',
-    openSourceBadge: 'Open Source',
-    openSourceTitle: 'Open Source Client Repository',
-    openSourceDesc: 'Open source client repository under AGPL-3.0-only. Includes browser frontend, Electron desktop shell, local Node API, Agent orchestration, local SQLite memory, and multimodal tool entry. Any remote user system, licensing, and quota strategy belong to the deployer, not the open source repo.',
-    openSourceItems: [
-      { label: 'UI Layer', desc: 'Browser frontend + Electron desktop shell' },
-      { label: 'Local API', desc: 'Node.js HTTP service with unified routes: /api/chat /api/image /api/tts /api/voice/clone' },
-      { label: 'Agent Orchestration', desc: '8 independent agents: routerAgent · contextAgent · textAgent · imageAgent · voiceAgent · reviewAgent · memoryAgent · safetyAgent' },
-      { label: 'Local Storage', desc: 'SQLite: agents / messages / memories / memory_chunks / memory_chunks_fts / profile / model_config' },
-      { label: 'Model Gateway', desc: 'Self-hosted OpenAI-compatible / StepFun API, or deployer-provided remote model interface' },
-      { label: 'License', desc: 'AGPL-3.0-only' },
+    techDesc: '2link is not a simple model frontend wrapper. It is a multi-platform, multi-repo collaborative system with Agent orchestration, local memory, multimodal toolchain, and model gateway.',
+    clientsTitle: 'Multi-platform Clients',
+    clientsDesc: 'One product, four forms covering different user scenarios. Each runs independently yet shares Agent orchestration and character protocols.',
+    clients: [
+      { icon: 'desktop', title: 'Desktop Client (Open Source)', desc: 'Browser frontend + Electron shell + local Node API + SQLite. Self-hosted or remote model proxy. AGPL-3.0-only.', tag: 'Open Source', repo: 'https://github.com/Zaosusu/virtual-companion-agent' },
+      { icon: 'phone', title: 'Mobile H5/PWA (Production)', desc: 'IndexedDB local storage + server-relay Agent orchestration + license-backend auth gateway. systemd deployment, cloud backup, proactive messaging.', tag: 'Private', repo: '' },
+      { icon: 'smartphone', title: 'Android Flutter Client', desc: 'Fully standalone Flutter native app. User configures own API Key, direct model connection. Local CRAG memory + encrypted backup + biometric lock. No server dependency.', tag: 'Private', repo: '' },
+      { icon: 'server', title: 'License Gateway Backend', desc: 'Node.js · Account registration/login · License code management · Quota metering · Model relay (chat/image/TTS/voice) · Admin dashboard · Audit logs. API Key isolated on server side.', tag: 'Private', repo: '' },
+    ],
+    pluginsTitle: 'Plugins & Tools',
+    pluginsDesc: 'Two open-source tools around the product: lowering switching cost and enhancing Doubao experience.',
+    plugins: [
+      { icon: 'plug', title: 'Better Doubao — Doubao Enhancement Plugin', desc: 'Chrome & Edge browser extension (Manifest V3). 5 features: Quick Locator (message navigation + bookmarks), Folder Manager (colored tags + drag-drop), Corpus Board (cross-conversation text snippets), Export (PDF/TXT/Markdown), LaTeX Downloader. Published on Edge Add-ons store. MIT license.', tag: 'Open Source', repo: 'https://github.com/Zaosusu/Better_Doubao' },
+      { icon: 'bot', title: 'Xianyu AI Customer Service Bot', desc: '7×24 automated shop attendant for Xianyu marketplace. Multi-expert routing: intent classification → price expert (tiered negotiation) / tech expert / default agent. LLM auto-reply with context, simulated human typing rhythm. GPL-3.0.', tag: 'Open Source', repo: 'https://github.com/Zaosusu/XianyuAutoAgent' },
     ],
     agentTitle: 'Agent Orchestration',
     agentDesc: 'Backend unified orchestration entry orchestrateCompanionTurn(). Every chat turn is completed by 8 independent agents:',
@@ -357,13 +375,33 @@ export function TwoLinkProject() {
             <span className="font-noto text-sm">{c.commerceBadge}</span>
           </div>
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-4">{c.commerceTitle}</h2>
-          <p className="font-noto text-base text-text-secondary mb-10 max-w-3xl">{c.commerceDesc}</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <p className="font-noto text-base text-text-secondary mb-8 max-w-3xl">{c.commerceDesc}</p>
+          <div className="grid grid-cols-2 gap-6">
             {c.commerceStats.map((stat, i) => (
-              <div key={i} className="p-5 border border-border-custom rounded bg-bg-secondary text-center">
-                <span className="block font-inter font-bold text-2xl md:text-3xl text-[#0f8b8d] mb-1">{stat.num}</span>
-                <span className="block font-noto font-bold text-sm text-text-primary mb-1">{stat.label}</span>
-                <span className="block font-noto text-xs text-text-secondary">{stat.desc}</span>
+              <div key={i} className="p-6 border border-[#0f8b8d]/30 rounded bg-bg-secondary text-center">
+                <span className="block font-inter font-bold text-3xl md:text-4xl text-[#0f8b8d] mb-2">{stat.num}</span>
+                <span className="block font-noto font-bold text-base text-text-primary mb-1">{stat.label}</span>
+                <span className="block font-noto text-sm text-text-secondary">{stat.desc}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* High Concurrency */}
+      <section className="bg-bg-secondary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <div className="flex items-center gap-2 text-[#f4a261] mb-4">
+            <Shield className="w-5 h-5" />
+            <span className="font-noto text-sm">{c.highConcurrencyBadge}</span>
+          </div>
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-4">{c.highConcurrencyTitle}</h2>
+          <p className="font-noto text-base text-text-secondary mb-10 max-w-3xl">{c.highConcurrencyDesc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {c.highConcurrencyItems.map((item, i) => (
+              <div key={i} className="p-6 border border-border-custom rounded bg-bg-primary">
+                <h3 className="font-noto font-bold text-base text-text-primary mb-2">{item.title}</h3>
+                <p className="font-noto text-sm text-text-secondary leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -486,19 +524,47 @@ export function TwoLinkProject() {
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-4">{c.techTitle}</h2>
           <p className="font-noto text-base text-text-secondary mb-10 max-w-3xl">{c.techDesc}</p>
 
-          {/* Open Source */}
+          {/* Multi-platform Clients */}
           <div className="mb-12">
-            <div className="flex items-center gap-2 text-[#0f8b8d] mb-4">
-              <BookOpen className="w-5 h-5" />
-              <span className="font-noto text-sm">{c.openSourceBadge}</span>
+            <h3 className="font-noto font-bold text-xl text-text-primary mb-3">{c.clientsTitle}</h3>
+            <p className="font-noto text-sm text-text-secondary leading-relaxed mb-6">{c.clientsDesc}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {c.clients.map((client, i) => (
+                <div key={i} className="p-5 border border-border-custom rounded bg-bg-primary hover:border-[#0f8b8d]/40 transition-colors">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className={`inline-block px-2 py-0.5 rounded text-xs font-noto ${client.tag === '开源' || client.tag === 'Open Source' ? 'bg-[#0f8b8d]/10 text-[#0f8b8d] border border-[#0f8b8d]/30' : 'bg-text-muted/10 text-text-muted border border-text-muted/30'}`}>{client.tag}</span>
+                    <h4 className="font-noto font-bold text-base text-text-primary">{client.title}</h4>
+                  </div>
+                  <p className="font-noto text-sm text-text-secondary leading-relaxed">{client.desc}</p>
+                  {client.repo && (
+                    <a href={client.repo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 mt-3 text-xs text-[#0f8b8d] hover:text-[#096466] transition-colors">
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span className="font-noto">GitHub</span>
+                    </a>
+                  )}
+                </div>
+              ))}
             </div>
-            <h3 className="font-noto font-bold text-xl text-text-primary mb-3">{c.openSourceTitle}</h3>
-            <p className="font-noto text-sm text-text-secondary leading-relaxed mb-6 max-w-3xl">{c.openSourceDesc}</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {c.openSourceItems.map((item, i) => (
-                <div key={i} className="p-4 border border-border-custom rounded bg-bg-primary">
-                  <h4 className="font-noto font-bold text-sm text-text-primary mb-1">{item.label}</h4>
-                  <p className="font-noto text-xs text-text-secondary leading-relaxed">{item.desc}</p>
+          </div>
+
+          {/* Plugins & Tools */}
+          <div className="mb-12">
+            <h3 className="font-noto font-bold text-xl text-text-primary mb-3">{c.pluginsTitle}</h3>
+            <p className="font-noto text-sm text-text-secondary leading-relaxed mb-6">{c.pluginsDesc}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {c.plugins.map((plugin, i) => (
+                <div key={i} className="p-5 border border-[#0f8b8d]/30 rounded bg-bg-primary hover:border-[#0f8b8d] transition-colors">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="inline-block px-2 py-0.5 rounded text-xs font-noto bg-[#0f8b8d]/10 text-[#0f8b8d] border border-[#0f8b8d]/30">{plugin.tag}</span>
+                    <h4 className="font-noto font-bold text-base text-text-primary">{plugin.title}</h4>
+                  </div>
+                  <p className="font-noto text-sm text-text-secondary leading-relaxed">{plugin.desc}</p>
+                  {plugin.repo && (
+                    <a href={plugin.repo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 mt-3 text-xs text-[#0f8b8d] hover:text-[#096466] transition-colors">
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span className="font-noto">GitHub</span>
+                    </a>
+                  )}
                 </div>
               ))}
             </div>
