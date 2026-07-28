@@ -75,10 +75,13 @@ const t = {
     ],
     projectsTitle: '沙之书',
     ogcpCardTitle: 'OpenGuitarChordProject',
+    ogcpCardTag: '音频AI',
     ogcpCardDesc: '开源吉他和弦识别项目。996样本物理感知数据集，目标是从音频自动识别和弦并生成六线谱。',
     walkingCardTitle: '走路修仙',
+    walkingCardTag: '跨端App',
     walkingCardDesc: '将真实步数转化为修仙修为的跨端App。Flutter + FastAPI，21阶境界系统，Android 真机计步验证通过。',
     xhsCardTitle: '小红书自动邀约系统',
+    xhsCardTag: '自动化工具',
     xhsCardDesc: '面向品牌投放的达人采集、筛选、分析与批量邀约工具。FastAPI + Playwright + SQLAlchemy。',
     academyCardTitle: '无限学园',
     academyCardTag: '原型探索',
@@ -89,6 +92,9 @@ const t = {
     npcAgentCardTitle: '通用NPC Agent底座',
     npcAgentCardTag: '系统化框架',
     npcAgentCardDesc: '从逃鸭的实践中发现，每次接入新世界都需要大量人工配置与调优。于是把这套人工的复杂工作自动化，做成通用NPC Agent底座——Agent 自己读取世界设定、校验规则、管理状态，实现热插拔。',
+    distanceCardTitle: 'distance',
+    distanceCardTag: '空间计算',
+    distanceCardDesc: 'AI 原生的动态关系宇宙。将社交关系转化为 3D 宇宙，每个人都是一颗星球。基于 WebSpatial SDK 的 PICO VR 空间计算。',
     twoLinkCardTitle: '2link 虚拟角色智能体',
     twoLinkCardTag: '产品落地',
     twoLinkCardDesc: '面向普通用户的AI虚拟角色伴侣工具。自定义角色、人设记忆、声音克隆、实时语音通话、角色图片生成，支持豆包聊天记录一键迁移。',
@@ -187,6 +193,9 @@ const t = {
     npcAgentCardTitle: 'Universal NPC Agent Base',
     npcAgentCardTag: 'Framework',
     npcAgentCardDesc: "From Duck Escape practice we found each new world required heavy manual configuration and tuning. So we automated that manual complexity into a universal NPC Agent Base — Agents read world settings, validate rules, manage state themselves, enabling hot-plug.",
+    distanceCardTitle: 'distance',
+    distanceCardTag: 'AdventureX 2026 · PICO Track 2nd Place',
+    distanceCardDesc: 'An AI-native dynamic relationship universe. Transform social relationships into a 3D cosmos where everyone is a planet. Built with WebSpatial SDK for PICO VR spatial computing.',
     twoLinkCardTitle: '2link Virtual Character Agent',
     twoLinkCardTag: 'Product Launch',
     twoLinkCardDesc: 'An AI virtual character companion tool for everyday users. Custom roles, persona memory, voice cloning, real-time voice calls, character image generation, with one-click Doubao chat history migration.',
@@ -350,6 +359,9 @@ export function Home() {
               to="/projects/ogcp"
               className="group block min-h-[220px] p-6 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2] hover:-translate-y-1 transition-all duration-200"
             >
+              <span className="inline-block px-2 py-0.5 rounded text-xs font-noto mb-2 bg-[#5d477f]/10 text-[#5d477f] border border-[#5d477f]/30">
+                {c.ogcpCardTag}
+              </span>
               <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
                 {c.ogcpCardTitle}
               </h3>
@@ -367,6 +379,9 @@ export function Home() {
               to="/projects/walking-xiuxian"
               className="group block min-h-[220px] p-6 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2] hover:-translate-y-1 transition-all duration-200"
             >
+              <span className="inline-block px-2 py-0.5 rounded text-xs font-noto mb-2 bg-[#2a9d8f]/10 text-[#2a9d8f] border border-[#2a9d8f]/30">
+                {c.walkingCardTag}
+              </span>
               <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
                 {c.walkingCardTitle}
               </h3>
@@ -384,6 +399,9 @@ export function Home() {
               to="/projects/xiaohongshu"
               className="group block min-h-[220px] p-6 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2] hover:-translate-y-1 transition-all duration-200"
             >
+              <span className="inline-block px-2 py-0.5 rounded text-xs font-noto mb-2 bg-[#e76f51]/10 text-[#e76f51] border border-[#e76f51]/30">
+                {c.xhsCardTag}
+              </span>
               <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
                 {c.xhsCardTitle}
               </h3>
@@ -478,7 +496,7 @@ export function Home() {
             </Link>
           </div>
 
-          {/* 2link — new row */}
+          {/* 2link + distance — new row */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
             {/* 2link Card */}
             <Link
@@ -493,6 +511,26 @@ export function Home() {
               </h3>
               <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
                 {c.twoLinkCardDesc}
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
+                <span className="font-noto">查看详情</span>
+                <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+
+            {/* distance Card */}
+            <Link
+              to="/projects/distance"
+              className="group block min-h-[220px] p-6 border border-[#e9818d]/30 rounded bg-bg-primary hover:border-[#e9818d] hover:-translate-y-1 transition-all duration-200"
+            >
+              <span className="inline-block px-2 py-0.5 rounded text-xs font-noto mb-2 bg-[#e9818d]/10 text-[#e9818d] border border-[#e9818d]/30">
+                {c.distanceCardTag}
+              </span>
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
+                {c.distanceCardTitle}
+              </h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
+                {c.distanceCardDesc}
               </p>
               <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
                 <span className="font-noto">查看详情</span>

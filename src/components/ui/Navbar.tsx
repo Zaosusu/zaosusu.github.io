@@ -14,6 +14,7 @@ const navt = {
     duck: '逃鸭南京',
     npc: '通用NPC Agent底座',
     twolink: '2link虚拟角色智能体',
+    distance: 'distance',
   },
   en: {
     home: 'Zaosusu',
@@ -25,6 +26,7 @@ const navt = {
     duck: 'Duck Escape',
     npc: 'Universal NPC Agent Base',
     twolink: '2link Virtual Character Agent',
+    distance: 'distance',
   },
 };
 
@@ -36,6 +38,7 @@ const projectLinks = [
   { path: '/projects/duck-escape', key: 'duck' as const },
   { path: '/projects/npc-agent', key: 'npc' as const },
   { path: '/projects/2link', key: 'twolink' as const },
+  { path: '/projects/distance', key: 'distance' as const },
 ];
 
 export function Navbar() {
