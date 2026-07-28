@@ -3,7 +3,59 @@ import { Github, Mail, ExternalLink, ArrowRight, Sparkles } from 'lucide-react';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
 
-const t = {
+type Translation = {
+  heroTitle: string;
+  heroSubtitle: string;
+  heroDesc: string;
+  heroCta: string;
+  currentTitle: string;
+  keywordIntro: string;
+  keywordQuote: string;
+  keywords: { core: { text: string; color: string }[]; mid: { text: string; color: string }[]; small: { text: string; color: string }[] };
+  aboutTitle: string;
+  aboutIntro: string;
+  aboutGoal: string;
+  timelineTitle: string;
+  timeline: { year: string; title: string; desc: string }[];
+  threadTitle: string;
+  threadDesc: string;
+  threadSteps: { label: string; project: string; path: string; color: string }[];
+  productTitle: string;
+  productDesc: string;
+  commerceStats: { num: string; label: string; desc: string }[];
+  projectsTitle: string;
+  ogcpCardTitle: string;
+  ogcpCardTag: string;
+  ogcpCardDesc: string;
+  walkingCardTitle: string;
+  walkingCardTag: string;
+  walkingCardDesc: string;
+  xhsCardTitle: string;
+  xhsCardTag: string;
+  xhsCardDesc: string;
+  academyCardTitle: string;
+  academyCardTag: string;
+  academyCardDesc: string;
+  duckEscapeCardTitle: string;
+  duckEscapeCardTag: string;
+  duckEscapeCardDesc: string;
+  npcAgentCardTitle: string;
+  npcAgentCardTag: string;
+  npcAgentCardDesc: string;
+  distanceCardTitle: string;
+  distanceCardTag: string;
+  distanceCardDesc: string;
+  twoLinkCardTitle: string;
+  twoLinkCardTag: string;
+  twoLinkCardDesc: string;
+  contactTitle: string;
+  contactDesc: string;
+  email: string;
+  github: string;
+  socials: { name: string; url: string }[];
+};
+
+const t: Record<'zh' | 'en', Translation> = {
   zh: {
     heroTitle: '阿早',
     heroSubtitle: '独立AI研究者 · 开源实践者',
@@ -179,10 +231,13 @@ const t = {
     ],
     projectsTitle: 'The Book of Sand',
     ogcpCardTitle: 'OpenGuitarChordProject',
+    ogcpCardTag: 'Audio AI',
     ogcpCardDesc: 'Open-source guitar chord recognition. 996-sample physics-aware dataset. Goal: recognize chords from audio and generate guitar tablature.',
     walkingCardTitle: 'WalkingXiuxian',
+    walkingCardTag: 'Cross-platform App',
     walkingCardDesc: 'Turn real-world steps into cultivation power. Cross-platform Flutter App + FastAPI backend. 21-realm system. Verified on Android devices.',
     xhsCardTitle: 'Xiaohongshu Auto-Invite System',
+    xhsCardTag: 'Automation Tool',
     xhsCardDesc: 'Creator discovery, filtering, analytics, and batch invitation tool for brand campaigns. FastAPI + Playwright + SQLAlchemy.',
     academyCardTitle: 'Infinite Academy',
     academyCardTag: 'Prototype',

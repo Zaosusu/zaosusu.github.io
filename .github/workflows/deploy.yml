@@ -32,9 +32,7 @@ jobs:
         run: npm install
       
       - name: Build
-        run: |
-          npx tsc -b --verbose
-          npx vite build
+        run: npm run build
       
       - name: SPA fallback
         run: cp dist/index.html dist/404.html
