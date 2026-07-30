@@ -48,6 +48,7 @@ type Translation = {
   twoLinkCardTitle: string;
   twoLinkCardTag: string;
   twoLinkCardDesc: string;
+  awards: { title: string; desc: string }[];
   contactTitle: string;
   contactDesc: string;
   email: string;
@@ -150,6 +151,14 @@ const t: Record<'zh' | 'en', Translation> = {
     twoLinkCardTitle: '2link 虚拟角色智能体',
     twoLinkCardTag: '产品落地',
     twoLinkCardDesc: '面向普通用户的AI虚拟角色伴侣工具。自定义角色、人设记忆、声音克隆、实时语音通话、角色图片生成，支持豆包聊天记录一键迁移。',
+    awards: [
+      { title: 'ADVX PICO赛道 Web应用第二名', desc: '优胜奖' },
+      { title: 'WAIC 江浙赛区第七名', desc: '优秀奖' },
+      { title: '阶跃星辰 Agent Build 南京', desc: '一等奖' },
+      { title: '抖音AI创变者计划 金陵站', desc: '一等奖' },
+      { title: '南京OPC创新创业大赛', desc: '一等奖' },
+      { title: '苏州金鸡湖OPC半决赛', desc: '创业者' },
+    ],
     contactTitle: '联系我',
     contactDesc: '如果你对我的研究或项目感兴趣，欢迎交流：',
     email: 'qinqiao2014@gmail.com',
@@ -254,6 +263,14 @@ const t: Record<'zh' | 'en', Translation> = {
     twoLinkCardTitle: '2link Virtual Character Agent',
     twoLinkCardTag: 'Product Launch',
     twoLinkCardDesc: 'An AI virtual character companion tool for everyday users. Custom roles, persona memory, voice cloning, real-time voice calls, character image generation, with one-click Doubao chat history migration.',
+    awards: [
+      { title: 'ADVX PICO Track Web App', desc: '2nd Place' },
+      { title: 'WAIC Jiangzhe Region', desc: '7th Place · Excellence Award' },
+      { title: 'StepFun Agent Build Nanjing', desc: '1st Prize' },
+      { title: 'Douyin AI Innovator Plan Jinling', desc: '1st Prize' },
+      { title: 'Nanjing OPC Innovation Competition', desc: '1st Prize' },
+      { title: 'Suzhou Jinji Lake OPC Semi-final', desc: 'Entrepreneur' },
+    ],
     contactTitle: 'Contact',
     contactDesc: 'If you are interested in my research or projects, feel free to reach out:',
     email: 'qinqiao2014@gmail.com',
@@ -307,9 +324,20 @@ export function Home() {
                 );
               })}
             </div>
-            <p className="font-noto text-base md:text-lg text-text-secondary leading-relaxed mb-9 max-w-2xl">
+            <p className="font-noto text-base md:text-lg text-text-secondary leading-relaxed mb-6 max-w-2xl">
               {c.heroDesc}
             </p>
+            <div className="flex flex-wrap gap-2 mb-9">
+              {c.awards.map((award, i) => (
+                <div
+                  key={i}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#f4a261]/30 bg-[#f4a261]/8"
+                >
+                  <span className="font-noto text-xs text-[#f4a261] font-bold">{award.desc}</span>
+                  <span className="font-noto text-xs text-text-secondary">{award.title}</span>
+                </div>
+              ))}
+            </div>
             <button
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               className="inline-flex items-center gap-2 px-5 py-3 rounded border border-[#6cbcb2]/60 bg-[#6cbcb2]/12 text-text-primary hover:bg-[#6cbcb2]/18 hover:border-[#9bd8cf] transition-colors duration-200 cursor-pointer"
