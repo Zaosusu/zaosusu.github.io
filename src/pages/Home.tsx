@@ -299,9 +299,16 @@ export function Home() {
               <Sparkles className="w-3.5 h-3.5" />
               <span className="font-noto">{c.heroSubtitle}</span>
             </div>
-            <h1 className="font-inter font-bold text-5xl md:text-7xl text-text-primary tracking-tight mb-5">
-              {c.heroTitle}
-            </h1>
+            <div className="flex items-center gap-5 mb-5">
+              <h1 className="font-inter font-bold text-5xl md:text-7xl text-text-primary tracking-tight">
+                {c.heroTitle}
+              </h1>
+              <img
+                src="/avatar.png"
+                alt={c.heroTitle}
+                className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#6cbcb2]/40 object-cover"
+              />
+            </div>
             <div className="flex flex-wrap items-center gap-4 mb-7">
               {c.socials.map((s) => {
                 const iconSrc =
