@@ -11,8 +11,38 @@ import { DuckEscapeProject } from './pages/DuckEscapeProject';
 import { NPCAgentProject } from './pages/NPCAgentProject';
 import { TwoLinkProject } from './pages/TwoLinkProject';
 import { DistanceProject } from './pages/DistanceProject';
+import { useEffect } from 'react';
+import Lenis from 'lenis';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 function App() {
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    const lenis = new Lenis({
+      duration: isMobile ? 0.8 : 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: isMobile ? 1.5 : 1,
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      lenis.destroy();
+      gsap.ticker.remove(() => {});
+    };
+  }, []);
+
   return (
     <HashRouter>
       <LangProvider>

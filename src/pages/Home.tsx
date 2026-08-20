@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom';
 import { Github, Mail, ExternalLink, ArrowRight, Sparkles } from 'lucide-react';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 type Translation = {
   heroTitle: string;
@@ -296,6 +299,32 @@ export function Home() {
   const { lang } = useLang();
   const c = t[lang];
 
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const sections = gsap.utils.toArray<HTMLElement>('[data-animate]');
+    sections.forEach((section) => {
+      gsap.fromTo(section,
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 85%',
+            once: true,
+          },
+        }
+      );
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-bg-primary pt-14">
       {/* Hero */}
@@ -417,7 +446,7 @@ export function Home() {
       </section>
 
       {/* Timeline */}
-      <section className="bg-bg-primary py-16 md:py-24 px-5">
+      <section data-animate className="bg-bg-primary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-10">{c.timelineTitle}</h2>
           <div className="relative rounded border border-border-custom bg-bg-secondary/70 p-5 md:p-8">
@@ -441,7 +470,7 @@ export function Home() {
       </section>
 
       {/* About */}
-      <section className="bg-bg-secondary py-16 md:py-24 px-5">
+      <section data-animate className="bg-bg-secondary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-8">{c.aboutTitle}</h2>
           <div className="font-noto text-base text-text-primary leading-relaxed space-y-6 border-l border-border-custom pl-6">
@@ -452,7 +481,7 @@ export function Home() {
       </section>
 
       {/* Projects */}
-      <section id="projects" className="bg-bg-secondary py-16 md:py-24 px-5">
+      <section id="projects" data-animate className="bg-bg-secondary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-2">{c.projectsTitle}</h2>
           <p className="font-noto text-sm text-text-secondary mb-8">{c.threadDesc}</p>
@@ -647,7 +676,7 @@ export function Home() {
       </section>
 
       {/* Contact */}
-      <section className="bg-bg-primary py-16 md:py-24 px-5">
+      <section data-animate className="bg-bg-primary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto text-center">
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-6">{c.contactTitle}</h2>
           <p className="font-noto text-base text-text-secondary mb-8">{c.contactDesc}</p>
