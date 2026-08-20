@@ -74,6 +74,7 @@ const t: Record<'zh' | 'en', Translation> = {
         { text: '极客', color: 'orange' },
         { text: '独立AI研究者', color: 'orange' },
         { text: '不依赖人的系统', color: 'orange' },
+        { text: 'OPC圣体', color: 'gold' },
       ],
       mid: [
         { text: '开源实践者', color: 'teal' },
@@ -412,9 +413,11 @@ export function Home() {
                 <span
                   key={k.text}
                   className={`inline-flex items-center rounded border px-3 py-1.5 text-base font-bold transition-all duration-200 hover:-translate-y-0.5 cursor-default ${
-                    k.color === 'orange'
+                    k.color === 'gold'
                       ? 'border-[#f4a261]/40 bg-[#f4a261]/10 text-[#f4a261] hover:border-[#f4a261]/70'
-                      : 'border-[#6cbcb2]/40 bg-[#6cbcb2]/10 text-[#6cbcb2] hover:border-[#6cbcb2]/70'
+                      : k.color === 'orange'
+                        ? 'border-[#f4a261]/40 bg-[#f4a261]/10 text-[#f4a261] hover:border-[#f4a261]/70'
+                        : 'border-[#6cbcb2]/40 bg-[#6cbcb2]/10 text-[#6cbcb2] hover:border-[#6cbcb2]/70'
                   }`}
                 >
                   {k.text}
@@ -423,7 +426,11 @@ export function Home() {
               {c.keywords.mid.map((k) => (
                 <span
                   key={k.text}
-                  className="inline-flex items-center rounded border border-[#6cbcb2]/25 bg-[#6cbcb2]/5 text-[#9bd8cf] text-sm px-2.5 py-1 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#6cbcb2]/50 cursor-default"
+                  className={`inline-flex items-center rounded border text-sm px-2.5 py-1 transition-all duration-200 hover:-translate-y-0.5 cursor-default ${
+                    k.color === 'gold'
+                      ? 'border-[#f4a261]/40 bg-[#f4a261]/10 text-[#f4a261] hover:border-[#f4a261]/70'
+                      : 'border-[#6cbcb2]/25 bg-[#6cbcb2]/5 text-[#9bd8cf] hover:border-[#6cbcb2]/50'
+                  }`}
                 >
                   {k.text}
                 </span>
