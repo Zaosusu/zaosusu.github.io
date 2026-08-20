@@ -49,6 +49,7 @@ type Translation = {
   twoLinkCardTag: string;
   twoLinkCardDesc: string;
   awards: { title: string; desc: string }[];
+  endorsement: { title: string; desc: string };
   contactTitle: string;
   contactDesc: string;
   email: string;
@@ -159,6 +160,10 @@ const t: Record<'zh' | 'en', Translation> = {
       { title: '南京OPC创新创业大赛', desc: '一等奖' },
       { title: '苏州金鸡湖OPC半决赛', desc: '创业者' },
     ],
+    endorsement: {
+      title: '江岸计划 · Youth AI Hackathon（南京市鼓楼区政府主办）',
+      desc: '赛事顾问 · 政府级AI赛事背书',
+    },
     contactTitle: '联系我',
     contactDesc: '如果你对我的研究或项目感兴趣，欢迎交流：',
     email: 'qinqiao2014@gmail.com',
@@ -271,6 +276,10 @@ const t: Record<'zh' | 'en', Translation> = {
       { title: 'Nanjing OPC Innovation Competition', desc: '1st Prize' },
       { title: 'Suzhou Jinji Lake OPC Semi-final', desc: 'Entrepreneur' },
     ],
+    endorsement: {
+      title: "Jiang'an Plan · Youth AI Hackathon (Gulou District Gov)",
+      desc: 'Competition Advisor · Gov-level AI Endorsement',
+    },
     contactTitle: 'Contact',
     contactDesc: 'If you are interested in my research or projects, feel free to reach out:',
     email: 'qinqiao2014@gmail.com',
@@ -344,6 +353,12 @@ export function Home() {
                   <span className="font-noto text-xs text-text-secondary">{award.title}</span>
                 </div>
               ))}
+              <div
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#0f8b8d]/30 bg-[#0f8b8d]/8"
+              >
+                <span className="font-noto text-xs text-[#0f8b8d] font-bold">{c.endorsement.desc}</span>
+                <span className="font-noto text-xs text-text-secondary">{c.endorsement.title}</span>
+              </div>
             </div>
             <button
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
