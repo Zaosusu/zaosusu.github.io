@@ -43,7 +43,17 @@ const t = {
       { count: '171', label: '报名项目' },
       { count: '65', label: '初赛入围' },
       { count: '24', label: '决赛' },
-      { count: '8', label: '最终获奖' },
+      { count: '1', label: '最终获奖' },
+    ],
+    makerBadge: '创客中国',
+    makerTitle: '第十一届"创客中国"江苏省中小企业创新创业大赛',
+    makerDesc: '全省创业组（创客团队组）20 强 · 优胜奖。一人成军，从南京市区域赛晋级省专题赛，最终进入全省创业组（创客团队组）20强。',
+    makerLink: 'https://www.cnmaker.org.cn/ds/detail/dbec42189afd4f53af6e1d676fed9ce0.html',
+    makerSteps: [
+      { count: '360+', label: '参赛项目' },
+      { count: '41', label: '决赛' },
+      { count: '13', label: '20强' },
+      { count: '优胜奖', label: '最终获奖' },
     ],
     viewLink: '查看官网',
     archTitle: '技术架构',
@@ -129,6 +139,16 @@ const t = {
       { count: '65', label: 'Shortlisted' },
       { count: '24', label: 'Finalists' },
       { count: '10', label: 'Winners' },
+    ],
+    makerBadge: 'Maker China',
+    makerTitle: '11th Maker China Jiangsu SME Innovation Competition',
+    makerDesc: 'Top 20 Provincial Entrepreneurship Track (Maker Team) · Excellence Award · Top 100 Project. Solo participation, advanced from Nanjing regional to provincial finals.',
+    makerLink: 'https://www.makerchina.net/',
+    makerSteps: [
+      { count: '360+', label: 'Projects' },
+      { count: '41', label: 'Finals' },
+      { count: '13', label: 'Top 20 Track' },
+      { count: 'Excellence Award', label: 'Final Award' },
     ],
     viewLink: 'View Website',
     archTitle: 'Architecture',
@@ -270,7 +290,29 @@ export function WalkingXiuxian() {
           </div>
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-8">{c.awardsTitle}</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {/* Maker China */}
+            <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 md:p-6 flex flex-col">
+              <div className="flex items-center gap-2 text-[#9bd8cf] mb-3">
+                <Trophy className="w-4 h-4" />
+                <span className="font-noto text-xs">{c.makerBadge}</span>
+              </div>
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.makerTitle}</h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4 flex-grow">{c.makerDesc}</p>
+              <div className="grid grid-cols-2 gap-2 mb-4">
+                {c.makerSteps.map((step, i) => (
+                  <div key={step.count} className={`p-2 rounded border text-center ${i === c.makerSteps.length - 1 ? 'border-[#6cbcb2]/70 bg-[#6cbcb2]/10' : 'border-border-custom bg-bg-primary/70'}`}>
+                    <span className="font-inter font-bold text-xl text-text-primary">{step.count}</span>
+                    <p className="font-noto text-xs text-text-secondary mt-1">{step.label}</p>
+                  </div>
+                ))}
+              </div>
+              <a href={c.makerLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-[#9bd8cf] hover:text-[#6cbcb2] transition-colors">
+                <ExternalLink className="w-3 h-3" />
+                <span>{c.viewLink}</span>
+              </a>
+            </div>
+
             {/* OPC */}
             <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 md:p-6 flex flex-col">
               <div className="flex items-center gap-2 text-[#9bd8cf] mb-3">

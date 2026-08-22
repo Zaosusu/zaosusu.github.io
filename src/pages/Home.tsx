@@ -163,7 +163,7 @@ const t: Record<'zh' | 'en', Translation> = {
       { title: '抖音AI创变者计划 金陵站', desc: '一等奖' },
       { title: '南京OPC创新创业大赛', desc: '一等奖' },
       { title: '苏州金鸡湖OPC半决赛', desc: '创业者' },
-      { title: '第十一届创客中国 江苏省中小企业创新创业大赛', desc: '全省创业组前20强 · 优胜奖' },
+      { title: '第十一届"创客中国"江苏省中小企业创新创业大赛', desc: '百强项目 · 创业组（创客团队组）20 强 · 优胜奖' },
     ],
     endorsement: {
       title: '江岸计划 · Youth AI Hackathon（南京市鼓楼区政府主办）',
@@ -376,15 +376,18 @@ export function Home() {
               {c.heroDesc}
             </p>
             <div className="flex flex-wrap gap-2 mb-9">
-              {c.awards.map((award, i) => (
-                <div
-                  key={i}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#f4a261]/30 bg-[#f4a261]/8"
-                >
-                  <span className="font-noto text-xs text-[#f4a261] font-bold">{award.desc}</span>
-                  <span className="font-noto text-xs text-text-secondary">{award.title}</span>
-                </div>
-              ))}
+              {c.awards.map((award, i) => {
+                const isMakerChina = award.title.includes('创客中国');
+                return (
+                  <div
+                    key={i}
+                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#f4a261]/30 bg-[#f4a261]/8 ${isMakerChina ? 'flex-col items-start gap-0.5' : ''}`}
+                  >
+                    <span className={`font-noto text-xs text-[#f4a261] font-bold leading-tight ${isMakerChina ? '' : ''}`}>{award.desc}</span>
+                    <span className={`font-noto text-xs text-text-secondary leading-tight ${isMakerChina ? '' : ''}`}>{award.title}</span>
+                  </div>
+                );
+              })}
               <div
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#0f8b8d]/30 bg-[#0f8b8d]/8"
               >
