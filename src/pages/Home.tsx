@@ -163,6 +163,7 @@ const t: Record<'zh' | 'en', Translation> = {
       { title: '抖音AI创变者计划 金陵站', desc: '一等奖' },
       { title: '南京OPC创新创业大赛', desc: '一等奖' },
       { title: '苏州金鸡湖OPC半决赛', desc: '创业者' },
+      { title: '第十一届创客中国 江苏省中小企业创新创业大赛', desc: '全省创业组前20强 · 优胜奖' },
     ],
     endorsement: {
       title: '江岸计划 · Youth AI Hackathon（南京市鼓楼区政府主办）',
@@ -279,6 +280,7 @@ const t: Record<'zh' | 'en', Translation> = {
       { title: 'Douyin AI Innovator Plan Jinling', desc: '1st Prize' },
       { title: 'Nanjing OPC Innovation Competition', desc: '1st Prize' },
       { title: 'Suzhou Jinji Lake OPC Semi-final', desc: 'Entrepreneur' },
+      { title: 'Maker China Jiangsu SME Innovation Competition', desc: 'Top 20 Provincial Entrepreneurship Track · Excellence Award' },
     ],
     endorsement: {
       title: "Jiang'an Plan · Youth AI Hackathon (Gulou District Gov)",
