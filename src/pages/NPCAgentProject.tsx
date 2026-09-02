@@ -8,9 +8,10 @@ import { ImageLightbox } from '../components/ImageLightbox';
 const t = {
   zh: {
     back: '返回首页',
-    heroTitle: '通用NPC Agent底座',
-    heroSubtitle: 'Universal NPC Agent Base',
-    heroDesc: 'GOAI 世界人工智能开源大赛前300强作品（参赛名称：互动叙事多智能体框架）。通用NPC Agent底座，验证 Agent 如何热插拔进入不同游戏/故事世界。',
+    heroTitle: '互动叙事多智能体框架',
+    heroSubtitle: 'Interactive Fiction Multi-Agent Framework',
+    heroDesc: 'GOAI 世界人工智能开源大赛新智基座赛道前300强作品，阶跃星辰 AGENT BUILDER HACKATHON 南京站一等奖。一套面向互动叙事的多智能体框架，验证 Agent 如何热插拔进入不同游戏/故事世界。',
+    heroFormerName: '——原名「通用NPC Agent底座」',
     status: '2026 · GOAI 前300强 · AGENT BUILDER HACKATHON 一等奖',
     heroLink: '查看项目',
     awardsBadge: '赛事与认可',
@@ -177,8 +178,8 @@ const t = {
     ],
     linksTitle: '相关链接',
     experience: '项目仓库',
-    cardTitle: '通用NPC Agent底座',
-    cardDesc: '验证通用NPC Agent底座如何热插拔进入不同游戏/故事世界。',
+    cardTitle: '互动叙事多智能体框架',
+    cardDesc: '原名「通用NPC Agent底座」。验证该多智能体框架如何热插拔进入不同游戏/故事世界。',
     teamBadge: '项目团队',
     goaiTeamTitle: 'GOAI · 项目团队',
     goaiTeamDesc: '3 人小队出征新智基座赛道（Agent Infra），聚焦多智能体基础设施方向，与全球开发者同场竞技。',
@@ -203,9 +204,10 @@ const t = {
   },
   en: {
     back: 'Back to Home',
-    heroTitle: 'Universal NPC Agent Base',
-    heroSubtitle: 'Universal NPC Agent Base',
-    heroDesc: 'Top 300 finisher of GOAI World AI Open Source Competition (entry name: Interactive Fiction Multi-Agent Framework). A universal NPC Agent base validating how agents can hot-plug into different game/story worlds.',
+    heroTitle: 'Interactive Fiction Multi-Agent Framework',
+    heroSubtitle: 'Interactive Fiction Multi-Agent Framework',
+    heroDesc: 'Top 300 finisher of GOAI World AI Open Source Competition (Agent Infra Track), StepFun AGENT BUILDER HACKATHON Nanjing first prize. An interactive-fiction multi-agent framework validating how agents can hot-plug into different game/story worlds.',
+    heroFormerName: '—— formerly "Universal NPC Agent Base"',
     status: '2026 · GOAI Top 300 · AGENT BUILDER HACKATHON First Prize',
     heroLink: 'View Project',
     awardsBadge: 'Awards & Recognition',
@@ -216,7 +218,7 @@ const t = {
     hackathonLink: 'https://luma.com/duqkma6w?tk=F2LgCx',
     goaiBadge: 'GOAI · Top 300',
     goaiTitle: 'GOAI World AI Open Source Competition · Agent Infra Track',
-    goaiDesc: 'A global AI open-source competition (Global Open-source AI Challenge) hosted by the Hangzhou Open-source AI Foundation, co-organized by Zhejiang Lab, Alibaba Cloud, and Ant Group, featuring four tracks and a RMB 5M prize pool. Entry: Interactive Fiction Multi-Agent Framework — a universal NPC Agent base for text-adventure games with multi-Agent collaboration, stage-based pipeline orchestration, and deterministic guardrails.',
+    goaiDesc: 'A global AI open-source competition (Global Open-source AI Challenge) hosted by the Hangzhou Open-source AI Foundation, co-organized by Zhejiang Lab, Alibaba Cloud, and Ant Group, featuring four tracks and a RMB 5M prize pool. Entry: Interactive Fiction Multi-Agent Framework (formerly Universal NPC Agent Base) — a multi-agent framework for interactive-fiction games with multi-Agent collaboration, stage-based pipeline orchestration, and deterministic guardrails.',
     goaiLink: 'https://github.com/Zaosusu/goai-interactive-fiction-agents',
     goaiViewLink: 'View Repo',
     viewLink: 'View Competition',
@@ -372,8 +374,8 @@ const t = {
     ],
     linksTitle: 'Links',
     experience: 'Project Repo',
-    cardTitle: 'Universal NPC Agent Base',
-    cardDesc: 'Validating how a universal NPC Agent base can hot-plug into different game/story worlds.',
+    cardTitle: 'Interactive Fiction Multi-Agent Framework',
+    cardDesc: 'Formerly "Universal NPC Agent Base". Validating how this multi-agent framework can hot-plug into different game/story worlds.',
     teamBadge: 'Team',
     goaiTeamTitle: 'GOAI · Project Team',
     goaiTeamDesc: 'A 3-person team competing in the Agent Infra track, focused on multi-agent infrastructure, alongside developers from around the world.',
@@ -462,6 +464,7 @@ export function NPCAgentProject() {
             {c.heroTitle}
           </h1>
           <p className="font-inter text-lg text-text-secondary mb-4">{c.heroSubtitle}</p>
+          <p className="font-noto text-sm text-text-muted mb-2">{c.heroFormerName}</p>
           <p className="font-noto text-sm md:text-base text-text-muted mb-6 max-w-lg mx-auto">
             {c.heroDesc}
           </p>
@@ -480,18 +483,7 @@ export function NPCAgentProject() {
           </div>
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-8">{c.awardsTitle}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 md:p-6 flex flex-col">
-              <div className="flex items-center gap-2 text-[#f4a261] mb-3">
-                <Trophy className="w-4 h-4" />
-                <span className="font-noto text-xs">{c.goaiBadge}</span>
-              </div>
-              <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.goaiTitle}</h3>
-              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4 flex-grow">{c.goaiDesc}</p>
-              <a href={c.goaiLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-[#9bd8cf] hover:text-[#6cbcb2] transition-colors">
-                <Github className="w-3 h-3" />
-                <span>{c.goaiViewLink}</span>
-              </a>
-            </div>
+            {/* Left column: Agent Builder */}
             <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 md:p-6 flex flex-col">
               <div className="flex items-center gap-2 text-[#f4a261] mb-3">
                 <Trophy className="w-4 h-4" />
@@ -504,22 +496,20 @@ export function NPCAgentProject() {
                 <span>{c.viewLink}</span>
               </a>
             </div>
+            {/* Right column: GOAI */}
             <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 md:p-6 flex flex-col">
-              <div className="flex items-center gap-2 text-[#9bd8cf] mb-3">
-                <Users className="w-4 h-4" />
-                <span className="font-noto text-xs">{c.teamBadge}</span>
+              <div className="flex items-center gap-2 text-[#f4a261] mb-3">
+                <Trophy className="w-4 h-4" />
+                <span className="font-noto text-xs">{c.goaiBadge}</span>
               </div>
-              <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.goaiTeamTitle}</h3>
-              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">{c.goaiTeamDesc}</p>
-              <div className="grid grid-cols-3 gap-2 mt-auto">
-                {c.goaiTeamMembers.map((member, i) => (
-                  <div key={i} className="px-3 py-2 border border-border-custom bg-bg-primary rounded text-center">
-                    <span className="block text-sm font-noto text-text-primary">{member.name}</span>
-                    {member.role && <span className="block text-xs font-noto text-text-secondary mt-0.5">{member.role}</span>}
-                  </div>
-                ))}
-              </div>
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.goaiTitle}</h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4 flex-grow">{c.goaiDesc}</p>
+              <a href={c.goaiLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-[#9bd8cf] hover:text-[#6cbcb2] transition-colors">
+                <Github className="w-3 h-3" />
+                <span>{c.goaiViewLink}</span>
+              </a>
             </div>
+            {/* Left column: Agent Builder Team */}
             <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 md:p-6 flex flex-col">
               <div className="flex items-center gap-2 text-[#9bd8cf] mb-3">
                 <Users className="w-4 h-4" />
@@ -530,6 +520,23 @@ export function NPCAgentProject() {
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-auto">
                 {c.hackathonTeamMembers.map((member, i) => (
                   <div key={i} className={`px-3 py-2 border rounded text-center ${i === 0 ? 'border-[#6cbcb2]/50 bg-[#6cbcb2]/10' : 'border-border-custom bg-bg-primary'}`}>
+                    <span className="block text-sm font-noto text-text-primary">{member.name}</span>
+                    {member.role && <span className="block text-xs font-noto text-text-secondary mt-0.5">{member.role}</span>}
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Right column: GOAI Team */}
+            <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 md:p-6 flex flex-col">
+              <div className="flex items-center gap-2 text-[#9bd8cf] mb-3">
+                <Users className="w-4 h-4" />
+                <span className="font-noto text-xs">{c.teamBadge}</span>
+              </div>
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.goaiTeamTitle}</h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">{c.goaiTeamDesc}</p>
+              <div className="grid grid-cols-3 gap-2 mt-auto">
+                {c.goaiTeamMembers.map((member, i) => (
+                  <div key={i} className="px-3 py-2 border border-border-custom bg-bg-primary rounded text-center">
                     <span className="block text-sm font-noto text-text-primary">{member.name}</span>
                     {member.role && <span className="block text-xs font-noto text-text-secondary mt-0.5">{member.role}</span>}
                   </div>

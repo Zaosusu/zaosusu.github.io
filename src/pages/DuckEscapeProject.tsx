@@ -87,7 +87,7 @@ const t = {
     contactDesc: '对技术实现感兴趣？欢迎交流：',
     email: 'qinqiao2014@gmail.com',
     navPrev: '← 上一个：无限学园',
-    navNext: '下一个：通用NPC Agent底座 →',
+    navNext: '下一个：互动叙事多智能体框架 →',
     galleryTitle: '配套编辑器',
     galleryDesc: 'YaNanjing Framework 配套的可视化剧情编辑器，覆盖节点编辑、角色管理、结局配置、素材管理和数据分析全链路。',
     gallery: [
@@ -182,7 +182,7 @@ const t = {
     contactDesc: 'Interested in the technical implementation? Feel free to reach out:',
     email: 'qinqiao2014@gmail.com',
     navPrev: '← Prev: Infinite Academy',
-    navNext: 'Next: Universal NPC Agent Base →',
+    navNext: 'Next: Interactive Fiction Multi-Agent Framework →',
     galleryTitle: 'Companion Editor',
     galleryDesc: 'The visual story editor bundled with YaNanjing Framework, covering node editing, character management, ending config, asset management, and analytics.',
     gallery: [
