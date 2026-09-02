@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { ExternalLink, ArrowLeft, Trophy, Code2, Database, Server, Box, Activity, Zap, Globe, Layout, Users, GitBranch, Layers, Shield, BookOpen } from 'lucide-react';
+import { ExternalLink, ArrowLeft, Trophy, Code2, Database, Server, Box, Activity, Zap, Globe, Layout, Users, GitBranch, Layers, Shield, BookOpen, Github } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
@@ -10,8 +10,8 @@ const t = {
     back: '返回首页',
     heroTitle: '通用NPC Agent底座',
     heroSubtitle: 'Universal NPC Agent Base',
-    heroDesc: 'AGENT BUILDER HACKATHON 南京站一等奖作品。通用NPC Agent底座，验证 Agent 如何热插拔进入不同游戏/故事世界。',
-    status: '2026 · AGENT BUILDER HACKATHON 南京站 · 一等奖',
+    heroDesc: 'GOAI 世界人工智能开源大赛前300强作品（参赛名称：互动叙事多智能体框架）。通用NPC Agent底座，验证 Agent 如何热插拔进入不同游戏/故事世界。',
+    status: '2026 · GOAI 前300强 · AGENT BUILDER HACKATHON 一等奖',
     heroLink: '查看项目',
     awardsBadge: '赛事与认可',
     awardsTitle: '赛事与认可',
@@ -19,7 +19,97 @@ const t = {
     hackathonTitle: 'AGENT BUILDER HACKATHON · 南京站 · 2026',
     hackathonDesc: 'StepFun（阶跃星辰）与 去探索 联合主办的 AI Agent 黑客松。4小时限时开发，从众多参赛项目中脱颖而出，斩获一等奖。',
     hackathonLink: 'https://luma.com/duqkma6w?tk=F2LgCx',
+    goaiBadge: 'GOAI · 前300强',
+    goaiTitle: 'GOAI 世界人工智能开源大赛 · 新智基座赛道',
+    goaiDesc: '全球性 AI 开源赛事（Global Open-source AI Challenge），由杭州市开源人工智能基金会主办，之江实验室、阿里云、蚂蚁集团等联合承办，设四大赛道、500 万元总奖池。参赛作品：互动叙事多智能体框架——面向文字冒险/互动小说游戏，以 Agent-module-first 为边界，支持多 Agent 分工协作、Pipeline Workbench 阶段化编排与确定性护栏。',
+    goaiLink: 'https://github.com/Zaosusu/goai-interactive-fiction-agents',
+    goaiViewLink: '查看仓库',
     viewLink: '查看赛事',
+    newArchBadge: '架构演进 · 2026 复赛版',
+    newArchTitle: '新架构 · Agent-module-first',
+    newArchDesc: '初赛版本以「API 层 → Agent Runtime 层 → 世界适配层」的三层架构为核心，验证 Agent 能热插拔进入不同世界。复赛版本把能力边界重新收敛为 Agent-module-first：共享能力层位于 app/agents/*，由两种控制面并行编排其中不同子集，各阶段以可检查、可持久化的 Artifact 交接，最终由两种 Runtime 消费，而不是单一播放逻辑。',
+    newArchFlow: [
+      { role: '控制面', title: 'Pipeline Workbench · Creator Orchestrator', desc: '两种控制面并行编排共享 Agent 的不同子集：前者是阶段化 API，可直接检查、重跑每个 Artifact；后者是 Assistant + Workflow + MCP Tools 的对话式创作。' },
+      { role: '能力层', title: 'Shared Agent Modules（app/agents/*）', desc: '15 个 Agent 模块构成共享能力层：项目接入、剧本拆解、剧情创作与扩写、世界构建、Lorebook、视觉提示词与资产、世界与 NPC 审查、NPC 运行时、自动试玩、经验沉淀、UI 投影。' },
+      { role: '存储层', title: 'Artifact Store + World Store', desc: '每个阶段产出可检查、可持久化、可重跑的 Artifact；世界最终由 Creator 编译为 SandboxWorldConfig 世界信封进入世界库。' },
+      { role: '运行时', title: 'Creator Graph Player · Generic NPC Runtime', desc: 'Creator 发布的世界进入 /play，由 Creator Graph Player 做确定性分支剧情遍历；Pipeline 生成的世界由 Generic NPC Runtime 消费（Lorebook + Memory + RAG + Guardrail）。' },
+    ],
+    agentModulesTitle: '共享 Agent 能力层（app/agents · 15 个模块）',
+    agentModulesDesc: 'Agent-module-first 是项目内的开发标准：新增大能力时先按 app/agents/<agent_module> 设计；若短期复用 app/worlds/sandbox 旧实现，app/agents/<agent_module> 仍作为外部 import 入口；不把 Agent 专属 compiler / store / review 继续堆到 app/core，也不把确定性 compiler / tool 命名成 *Agent。',
+    agentModules: [
+      { name: 'project_intake', desc: '项目 / 设定 / 接口文档的结构化接入分析入口。' },
+      { name: 'script_decomposition', desc: '剧本拆解产品化模块，已包含 ScriptGraph schema / compiler / store / tools。' },
+      { name: 'story_authoring', desc: '剧情创作：生成、Schema 审查、自动修稿与复验，再编译为 Creator Graph。' },
+      { name: 'story_expansion', desc: '剧情扩写：保留现有 Creator Graph，生成指定数量新节点，再由编译器串联接回原流程。' },
+      { name: 'visual_prompt_composer', desc: '视觉提示词编排入口。' },
+      { name: 'visual_asset_generation', desc: '视觉资产生成：角色立绘与场景背景，角色图自动本地抠图并校验透明 PNG。' },
+      { name: 'world_builder', desc: '世界 / 环境构建；内部生成链会附加 Lorebook 产物并执行质量门。' },
+      { name: 'world_review', desc: '世界产出审查（确定性规则实现，架构角色为 Review / Validator）。' },
+      { name: 'npc_review', desc: 'NPC 输出协议与质量审查（确定性规则实现）。' },
+      { name: 'npc_lorebook', desc: '角色知识库：条目、关键词 / 正则、激活策略、插入位置、扫描深度、连锁触发与 token 预算，可热插拔进任意故事世界。' },
+      { name: 'npc_runtime', desc: 'NPC 运行时：re-export AgentRuntime / NpcAgent / RouterAgent / StateValidatorAgent，维护每个角色的私有状态与私有记忆。' },
+      { name: 'playtest_validation', desc: '自动试玩与流程审查（确定性规则实现，架构角色为 Simulator）。' },
+      { name: 'experience_learning', desc: '经验沉淀：玩家 / 测试反馈回流，驱动后续生成质量提升。' },
+      { name: 'creator_assistant', desc: '创作者辅助：Assistant + Workflow + MCP Tools 组成的复合创作控制面。' },
+      { name: 'ui_projection', desc: '对外的 UI / 接口投影，把复杂世界状态投影成前端可消费的数据。' },
+    ],
+    controlPlanesTitle: '两种控制面：Pipeline 与 Creator',
+    controlPlanesDesc: '两种控制面对底层 Agent 是并行入口关系：Pipeline 直接暴露更广泛的阶段化能力，Creator 只编排其中面向创作发布的子集，并直接 import 共享 Agent 模块（不经由 app.pipeline 转发）。',
+    controlPlanes: [
+      { title: 'Pipeline Workbench（阶段化创作控制面）', desc: 'app/pipeline/routes.py 是 Pipeline Workbench 的阶段化 REST 入口，直接暴露剧本拆解、Script Graph 编译、视觉资产规划 / 生成与世界生成等阶段，并把对应 Artifact 落盘。独立 Lorebook 生成 / 版本选择与 Experience Learning API 位于 app/content/routes.py，Generic NPC Runtime 位于 app/client/routes.py——它们共享 Agent 模块与 Store，但不属于 pipeline/routes.py 的直接端点。' },
+      { title: 'Creator Orchestrator（对话式创作控制面）', desc: '位于 app/agents/creator_assistant/，不是单一 Agent，而是由 CreatorAssistantAgent（意图理解与工具决策）、CreatorWorkflowOrchestrator（工作流执行）、CreatorMcpToolServer（MCP 形态工具边界）、CreatorToolRegistry（11 个工具目录）、CreatorToolExecutor（能力执行）组成的复合创作控制面，串起「创作剧情 → 扩写 → 审查 → 视觉资产 → 试玩 → 保存 / 发布」的创作者流程。' },
+    ],
+    creatorToolsTitle: 'Creator 工具链（11 个工具 · tools/list）',
+    creatorToolsDesc: '每个阶段都是一个可被 tools/list 发现、tools/call 调用的标准工具。capability_type 标注了它的性质：agent 由 LLM 驱动，compiler / validator / store 是确定性组件。',
+    creatorTools: [
+      { id: 'author_story', name: '创作完整剧情', owner: 'StoryAuthoringAgent', kind: 'agent', desc: '调用 StoryAuthoringAgent 完成生成、Schema 审查、自动修稿和复验，再编译为 Creator Graph。' },
+      { id: 'expand_story', name: '扩写当前剧情', owner: 'StoryExpansionAgent', kind: 'agent', desc: '在保留现有 Creator Graph 的前提下生成指定数量的新节点，再由确定性编译器串联并接回原流程。' },
+      { id: 'layout_creator_graph', name: '整理剧情节点', owner: 'CreatorGraphLayoutCompiler', kind: 'compiler', desc: '确定性整理 Creator Graph 的画布坐标，可整理全部节点或从选中节点整理下游；不修改剧情正文、连接、条件或效果。' },
+      { id: 'validate_creator_graph', name: '校验剧情图', owner: 'CreatorGraphValidator', kind: 'validator', desc: '检查节点、连线、分支、结局和可达性，不修改内容。' },
+      { id: 'compile_creator_graph', name: '编译剧情图', owner: 'CreatorGraphCompiler', kind: 'compiler', desc: '规范化当前 Creator Graph，生成可保存、可运行的标准结构。' },
+      { id: 'review_playable_world', name: '试玩审查', owner: 'WorldReviewAgent + PlaytestAgent', kind: 'agent', desc: '审查世界结构并自动模拟可玩闭环。' },
+      { id: 'plan_visual_assets', name: '规划视觉资产', owner: 'VisualAssetGenerationAgent', kind: 'agent', desc: '从角色与场景生成可检查的资产计划，不生成图片。' },
+      { id: 'generate_visual_assets', name: '生成视觉资产', owner: 'VisualAssetGenerationAgent', kind: 'agent', desc: '执行角色立绘与场景背景生成；角色图会自动本地抠图并校验透明 PNG。' },
+      { id: 'bind_visual_assets', name: '绑定视觉资产', owner: 'VisualAssetBindingCompiler', kind: 'compiler', desc: '把已生成的图片确定性绑定到 Creator 角色 portrait 与节点 background。' },
+      { id: 'save_world', name: '保存世界', owner: 'WorldStore', kind: 'store', desc: '把 Creator Graph 编译为 SandboxWorldConfig 并保存到世界库。' },
+      { id: 'publish_to_play', name: '发布到玩家端', owner: 'PlayerWorldPublisher', kind: 'store', desc: '校验并保存当前世界，使其出现在 /play 的可玩世界列表。' },
+    ],
+    runtimesTitle: '两种运行时：Creator Graph Player 与 Generic NPC Runtime',
+    runtimesDesc: '产物不再由单一播放逻辑消费：Creator 发布的世界走确定性分支剧情，普通 Pipeline 世界走通用 NPC 运行时。',
+    runtimes: [
+      { title: 'Creator Graph Player', desc: '位于 app/player_experience/，核心是 PlayerStoryRuntime。它消费经 Creator 编译并发布的 SandboxWorldConfig 世界信封（强制要求 metadata.published_to_play == true，且 metadata.creator_graph 存在且有效），在其上做确定性的 GALGAME 式遍历：start / resume / advance / choose；由 PlayerSessionStore 做会话持久化与跨进程恢复，经 app/api/routes.py 挂载到 /play。' },
+      { title: 'Generic NPC Runtime', desc: '面向普通 Pipeline 生成世界与项目内世界的通用运行时：Lorebook 设定激活 + 每个 NPC 的私有记忆 + Corrective RAG 检索纠偏 + 确定性护栏。NPC 可以灵活表达，但任务、道具、位置等状态变更必须输出结构化 command，经 CommandValidator 校验后由 CommandExecutor 真正落地。' },
+    ],
+    mcpTitle: 'MCP-shaped 工具边界',
+    mcpDesc: '能力出口不锁死在私有接口里：工具的定义、调用与结果信封复用 MCP 的数据模型约定，传输层刻意放在类之外，便于后续接入官方 MCP 传输。',
+    mcpPoints: [
+      { label: 'tools/list', desc: 'CreatorMcpToolServer.list_tools() 返回 McpToolsListResult，每个工具是 McpToolDefinition：name / title / description / inputSchema / annotations / _meta。annotations 直接复用 MCP 规范字段（readOnlyHint、destructiveHint、idempotentHint、openWorldHint），便于 Client 判断副作用与可重入性。' },
+      { label: 'tools/call', desc: 'call_tool() 对应 MCP 的 tools/call，返回 McpCallToolResult：content（McpTextContent 文本块列表）、structuredContent（更新后的 project、产生的 artifacts delta 与执行 detail）、isError。请求携带 name、arguments，以及由工作流宿主注入的 project / artifacts 上下文。' },
+      { label: 'REST 暴露', desc: 'GET /api/creator/mcp/tools/list → McpToolsListResult；POST /api/creator/mcp/tools/call → McpCallToolResult。' },
+    ],
+    mcpNote: '当前尚未挂载官方 MCP transport（无 JSON-RPC 消息层、无 initialize / capabilities 协商、无 stdio / SSE / Streamable HTTP 传输），且 tools/call 需额外携带 project 与 artifacts 上下文，因此标准 MCP Client 暂时不能直接连接。传输可替换，工具实现无需改动。',
+    deterministicTitle: '确定性组件：Compiler / Validator / Store / Adapter',
+    deterministicDesc: '架构原则：AI 负责创造，规则负责裁决，执行器负责落地。以下组件不调用 LLM，是系统「可预期」的保证——Agent / ReviewAgent 只提建议，最终合规、修复与执行必须落到确定性代码。',
+    deterministic: [
+      { name: 'ScriptGraphCompiler / CreatorGraphCompiler / CreatorGraphValidator / CreatorGraphLayoutCompiler', desc: '剧本图谱与剧情图的编译、规范化、可达性校验与画布坐标整理。' },
+      { name: 'VisualAssetBindingCompiler', desc: '把已生成图片确定性绑定到角色立绘与场景背景。' },
+      { name: 'SandboxWorldValidator', desc: '保存前自动补齐最低可运行字段：玩家字段、NPC、任务、action、completion、地点闭环。' },
+      { name: 'WorldRuntimeGuardrail', desc: '运行时拦截未登记地点：NPC 引导去不存在的地点时触发最多 2 次 LLM 重试，仍失败则返回安全地点引导。' },
+      { name: 'CommandValidator / CommandExecutor', desc: '门卫只判断不执行，执行器只执行已校验的 command，支撑 none / set_player / grant_item / complete_task / switch_npc / set_flag / run_world_action。' },
+      { name: 'ArtifactStore / WorldStore / PlayerSessionStore', desc: '产物、世界与玩家会话的持久化，PlayerSessionStore 支持跨进程重启恢复。' },
+    ],
+    qualityNoteTitle: '关于命名：哪些是「真 Agent」',
+    qualityNote: '当前名为 WorldReviewAgent、NpcReviewAgent、PlaytestAgent 的质量组件采用确定性规则实现、不调用 LLM；这些名称属于历史兼容命名，在架构角色上应视为 Review / Validator / Simulator，而不是智能 Agent。同理，确定性 compiler / tool 也不应命名成 *Agent。',
+    skillsTitle: '项目内 Skill 契约（6 项）',
+    skillsDesc: '六项核心 Skill 是面向 AgentTeams（原 Hiclaw）的正式设计契约；当前仓库为自定义实现，复赛阶段将按本契约封装为 AgentTeams Worker / Skill。每项契约字段：输入 / 输出 / 调用条件 / 依赖工具 / 失败处理 / 安全边界 / 验证方式 / 复用价值。',
+    skills: [
+      { name: 'script-decompose', module: 'app/agents/script_decomposition', loop: '步骤 2 · 拆解' },
+      { name: 'world-build', module: 'app/agents/world_builder', loop: '步骤 3 · 世界' },
+      { name: 'lorebook-activate', module: 'app/agents/npc_lorebook', loop: '步骤 4 · 剧情 / 运行时' },
+      { name: 'playtest-validate', module: 'app/agents/playtest_validation', loop: '步骤 6 · 审查' },
+      { name: 'npc-runtime', module: 'app/agents/npc_runtime', loop: '步骤 7 · 发布后运行时' },
+      { name: 'guardrail-check', module: 'WorldRuntimeGuardrail（app/worlds/sandbox/guardrails.py）', loop: '运行时 · Generic NPC Runtime 对话护栏' },
+    ],
     storyboardBadge: '架构图册',
     storyboardTitle: '架构图册',
     storyboardDesc: '三个版本覆盖不同受众：总览故事版讲"整个底座是什么"；Agent 职责详解版逐个讲"每个 Agent 做什么"；技术详图版给研发看 pipeline 与校验链路。',
@@ -100,9 +190,16 @@ const t = {
     cardTitle: '通用NPC Agent底座',
     cardDesc: '验证通用NPC Agent底座如何热插拔进入不同游戏/故事世界。',
     teamBadge: '项目团队',
-    teamTitle: '项目团队',
-    teamDesc: '5人团队，分工覆盖技术开发、剧情策划与美术设计。',
-    teamMembers: [
+    goaiTeamTitle: 'GOAI · 项目团队',
+    goaiTeamDesc: '3 人小队出征新智基座赛道（Agent Infra），聚焦多智能体基础设施方向，与全球开发者同场竞技。',
+    goaiTeamMembers: [
+      { name: '阿早', role: '' },
+      { name: '张天华', role: '' },
+      { name: '李俊', role: '' },
+    ],
+    hackathonTeamTitle: 'AGENT BUILDER · 项目团队',
+    hackathonTeamDesc: '5人团队，分工覆盖技术开发、剧情策划与美术设计。',
+    hackathonTeamMembers: [
       { name: '阿早', role: '全栈 · 队长' },
       { name: '张紫悦', role: '视觉' },
       { name: '柳淇凯', role: '前端' },
@@ -118,8 +215,8 @@ const t = {
     back: 'Back to Home',
     heroTitle: 'Universal NPC Agent Base',
     heroSubtitle: 'Universal NPC Agent Base',
-    heroDesc: 'First prize winner of AGENT BUILDER HACKATHON Nanjing. A universal NPC Agent base validating how agents can hot-plug into different game/story worlds.',
-    status: '2026 · AGENT BUILDER HACKATHON Nanjing · First Prize',
+    heroDesc: 'Top 300 finisher of GOAI World AI Open Source Competition (entry name: Interactive Fiction Multi-Agent Framework). A universal NPC Agent base validating how agents can hot-plug into different game/story worlds.',
+    status: '2026 · GOAI Top 300 · AGENT BUILDER HACKATHON First Prize',
     heroLink: 'View Project',
     awardsBadge: 'Awards & Recognition',
     awardsTitle: 'Awards & Recognition',
@@ -127,7 +224,97 @@ const t = {
     hackathonTitle: 'AGENT BUILDER HACKATHON · Nanjing · 2026',
     hackathonDesc: 'An AI Agent hackathon hosted by StepFun and Ququ. 4-hour timed development. Won first prize among numerous entries.',
     hackathonLink: 'https://luma.com/duqkma6w?tk=F2LgCx',
+    goaiBadge: 'GOAI · Top 300',
+    goaiTitle: 'GOAI World AI Open Source Competition · Agent Infra Track',
+    goaiDesc: 'A global AI open-source competition (Global Open-source AI Challenge) hosted by the Hangzhou Open-source AI Foundation, co-organized by Zhejiang Lab, Alibaba Cloud, and Ant Group, featuring four tracks and a RMB 5M prize pool. Entry: Interactive Fiction Multi-Agent Framework — a universal NPC Agent base for text-adventure games with multi-Agent collaboration, stage-based pipeline orchestration, and deterministic guardrails.',
+    goaiLink: 'https://github.com/Zaosusu/goai-interactive-fiction-agents',
+    goaiViewLink: 'View Repo',
     viewLink: 'View Competition',
+    newArchBadge: 'Architecture Evolution · 2026 Semifinal Edition',
+    newArchTitle: 'New Architecture · Agent-module-first',
+    newArchDesc: 'The preliminary version centered on a three-layer stack (API Layer, Agent Runtime Layer, World Adapter Layer) to prove that agents can hot-plug into different worlds. The semifinal version reconverges the capability boundary into Agent-module-first: shared capabilities live in app/agents/*, two control planes orchestrate different subsets of them in parallel, every stage hands off via inspectable and persistent Artifacts, and two runtimes consume the results instead of a single playback logic.',
+    newArchFlow: [
+      { role: 'Control Plane', title: 'Pipeline Workbench · Creator Orchestrator', desc: 'Two control planes orchestrate different subsets of the shared agents in parallel: the former is a staged API where every Artifact can be inspected and re-run; the latter is conversational authoring built on Assistant + Workflow + MCP Tools.' },
+      { role: 'Capability Layer', title: 'Shared Agent Modules (app/agents/*)', desc: '15 agent modules form the shared capability layer: project intake, script decomposition, story authoring and expansion, world building, lorebook, visual prompts and assets, world and NPC review, NPC runtime, automated playtest, experience learning, and UI projection.' },
+      { role: 'Storage Layer', title: 'Artifact Store + World Store', desc: 'Every stage produces an inspectable, persistent, re-runnable Artifact; worlds are finally compiled by Creator into a SandboxWorldConfig world envelope stored in the world library.' },
+      { role: 'Runtime', title: 'Creator Graph Player · Generic NPC Runtime', desc: 'Worlds published by Creator enter /play and are traversed deterministically by the Creator Graph Player; worlds generated by Pipeline are consumed by the Generic NPC Runtime (Lorebook + Memory + RAG + Guardrail).' },
+    ],
+    agentModulesTitle: 'Shared Agent Capability Layer (app/agents · 15 modules)',
+    agentModulesDesc: 'Agent-module-first is the in-repo development standard: design new capabilities as app/agents/<agent_module> first; when reusing legacy code from app/worlds/sandbox, app/agents/<agent_module> still remains the external import entry; do not keep stacking agent-specific compiler / store / review into app/core, and do not name deterministic compilers or tools as *Agent.',
+    agentModules: [
+      { name: 'project_intake', desc: 'Structured intake and analysis entry for projects, settings, and interface documents.' },
+      { name: 'script_decomposition', desc: 'Productized script decomposition module, including ScriptGraph schema / compiler / store / tools.' },
+      { name: 'story_authoring', desc: 'Story authoring: generation, schema review, automatic revision and re-validation, then compiled into a Creator Graph.' },
+      { name: 'story_expansion', desc: 'Story expansion: generate a target number of new nodes while preserving the existing Creator Graph, then wire them back via deterministic compilers.' },
+      { name: 'visual_prompt_composer', desc: 'Visual prompt composition entry.' },
+      { name: 'visual_asset_generation', desc: 'Visual asset generation: character portraits and scene backgrounds, with automatic local matting and transparent PNG validation.' },
+      { name: 'world_builder', desc: 'World and environment building; its internal generation chain attaches lorebook artifacts and runs a quality gate.' },
+      { name: 'world_review', desc: 'World output review (deterministic rule implementation; architectural role is Review / Validator).' },
+      { name: 'npc_review', desc: 'NPC output protocol and quality review (deterministic rule implementation).' },
+      { name: 'npc_lorebook', desc: 'Character knowledge base: entries, keywords / regex, activation strategy, insertion position, scan depth, chained triggers and token budget; hot-pluggable into any story world.' },
+      { name: 'npc_runtime', desc: 'NPC runtime: re-exports AgentRuntime / NpcAgent / RouterAgent / StateValidatorAgent and maintains per-character private state and memory.' },
+      { name: 'playtest_validation', desc: 'Automated playtest and flow review (deterministic rule implementation; architectural role is Simulator).' },
+      { name: 'experience_learning', desc: 'Experience accumulation: player and test feedback flows back to improve later generation quality.' },
+      { name: 'creator_assistant', desc: 'Creator assistant: a composite authoring control plane of Assistant + Workflow + MCP Tools.' },
+      { name: 'ui_projection', desc: 'External UI / interface projection, turning complex world state into frontend-consumable data.' },
+    ],
+    controlPlanesTitle: 'Two Control Planes: Pipeline and Creator',
+    controlPlanesDesc: 'The two control planes are parallel entries to the underlying agents: Pipeline directly exposes a broader set of staged capabilities, while Creator only orchestrates the subset aimed at authoring and publishing, importing shared agent modules directly instead of going through app.pipeline.',
+    controlPlanes: [
+      { title: 'Pipeline Workbench (staged authoring control plane)', desc: 'app/pipeline/routes.py is the staged REST entry of the Pipeline Workbench. It directly exposes script decomposition, Script Graph compilation, visual asset planning / generation and world generation, persisting the corresponding Artifacts. Standalone lorebook generation / version selection and Experience Learning APIs live in app/content/routes.py, and the Generic NPC Runtime lives in app/client/routes.py — they share agent modules and stores but are not direct endpoints of pipeline/routes.py.' },
+      { title: 'Creator Orchestrator (conversational authoring control plane)', desc: 'Located in app/agents/creator_assistant/, it is not a single agent but a composite control plane made of CreatorAssistantAgent (intent understanding and tool decisions), CreatorWorkflowOrchestrator (workflow execution), CreatorMcpToolServer (MCP-shaped tool boundary), CreatorToolRegistry (a catalog of 11 tools) and CreatorToolExecutor (capability execution), chaining the creator flow: author story, expand, review, visual assets, playtest, save / publish.' },
+    ],
+    creatorToolsTitle: 'Creator Tool Chain (11 tools · tools/list)',
+    creatorToolsDesc: 'Every stage is a standard tool discoverable via tools/list and callable via tools/call. The capability_type marks its nature: agent is LLM-driven, while compiler / validator / store are deterministic components.',
+    creatorTools: [
+      { id: 'author_story', name: 'Author full story', owner: 'StoryAuthoringAgent', kind: 'agent', desc: 'Calls StoryAuthoringAgent for generation, schema review, automatic revision and re-validation, then compiles the result into a Creator Graph.' },
+      { id: 'expand_story', name: 'Expand current story', owner: 'StoryExpansionAgent', kind: 'agent', desc: 'Generates a target number of new nodes while preserving the existing Creator Graph, then deterministic compilers wire them back into the original flow.' },
+      { id: 'layout_creator_graph', name: 'Arrange story nodes', owner: 'CreatorGraphLayoutCompiler', kind: 'compiler', desc: 'Deterministically arranges canvas coordinates of the Creator Graph, either globally or downstream from a selected node; it never edits story text, connections, conditions or effects.' },
+      { id: 'validate_creator_graph', name: 'Validate story graph', owner: 'CreatorGraphValidator', kind: 'validator', desc: 'Checks nodes, edges, branches, endings and reachability without modifying content.' },
+      { id: 'compile_creator_graph', name: 'Compile story graph', owner: 'CreatorGraphCompiler', kind: 'compiler', desc: 'Normalizes the current Creator Graph into a standard structure that can be saved and run.' },
+      { id: 'review_playable_world', name: 'Playtest review', owner: 'WorldReviewAgent + PlaytestAgent', kind: 'agent', desc: 'Reviews world structure and automatically simulates a playable loop.' },
+      { id: 'plan_visual_assets', name: 'Plan visual assets', owner: 'VisualAssetGenerationAgent', kind: 'agent', desc: 'Generates an inspectable asset plan from characters and scenes, without producing images.' },
+      { id: 'generate_visual_assets', name: 'Generate visual assets', owner: 'VisualAssetGenerationAgent', kind: 'agent', desc: 'Executes character portrait and scene background generation; character images are matted locally and validated as transparent PNG.' },
+      { id: 'bind_visual_assets', name: 'Bind visual assets', owner: 'VisualAssetBindingCompiler', kind: 'compiler', desc: 'Deterministically binds generated images to Creator character portraits and node backgrounds.' },
+      { id: 'save_world', name: 'Save world', owner: 'WorldStore', kind: 'store', desc: 'Compiles the Creator Graph into a SandboxWorldConfig and saves it into the world library.' },
+      { id: 'publish_to_play', name: 'Publish to player', owner: 'PlayerWorldPublisher', kind: 'store', desc: 'Validates and saves the current world so it appears in the playable world list at /play.' },
+    ],
+    runtimesTitle: 'Two Runtimes: Creator Graph Player and Generic NPC Runtime',
+    runtimesDesc: 'Artifacts are no longer consumed by a single playback logic: worlds published by Creator run deterministic branching stories, while ordinary Pipeline worlds run on the generic NPC runtime.',
+    runtimes: [
+      { title: 'Creator Graph Player', desc: 'Located in app/player_experience/ and centered on PlayerStoryRuntime. It consumes a SandboxWorldConfig world envelope compiled and published by Creator (it enforces metadata.published_to_play == true and requires a valid metadata.creator_graph), and performs deterministic GALGAME-style traversal: start / resume / advance / choose. PlayerSessionStore handles session persistence and cross-process recovery, and app/api/routes.py mounts it at /play.' },
+      { title: 'Generic NPC Runtime', desc: 'A general runtime for ordinary Pipeline-generated worlds and in-repo worlds: lorebook activation, private memory per NPC, Corrective RAG retrieval with correction, and deterministic guardrails. NPCs can express themselves freely, but changes to quests, items or locations must be emitted as structured commands, validated by CommandValidator and applied by CommandExecutor.' },
+    ],
+    mcpTitle: 'MCP-shaped Tool Boundary',
+    mcpDesc: 'The capability exit is not locked into a private interface: tool definitions, invocation and result envelopes reuse the MCP data model conventions, and the transport layer is deliberately kept outside the class so official MCP transport can be plugged in later.',
+    mcpPoints: [
+      { label: 'tools/list', desc: 'CreatorMcpToolServer.list_tools() returns McpToolsListResult, where each tool is an McpToolDefinition: name / title / description / inputSchema / annotations / _meta. Annotations reuse the standard MCP fields (readOnlyHint, destructiveHint, idempotentHint, openWorldHint) so clients can reason about side effects and re-entrancy.' },
+      { label: 'tools/call', desc: 'call_tool() mirrors MCP tools/call and returns McpCallToolResult: content (a list of McpTextContent blocks), structuredContent (updated project, produced artifacts delta and execution detail) and isError. Requests carry name, arguments, plus the project / artifacts context injected by the workflow host.' },
+      { label: 'REST exposure', desc: 'GET /api/creator/mcp/tools/list returns McpToolsListResult; POST /api/creator/mcp/tools/call returns McpCallToolResult.' },
+    ],
+    mcpNote: 'The official MCP transport is not mounted yet (no JSON-RPC message layer, no initialize / capabilities negotiation, no stdio / SSE / Streamable HTTP transport), and tools/call additionally requires the project and artifacts context, so a standard MCP client cannot connect directly for now. Transport is replaceable and the tool implementations stay unchanged.',
+    deterministicTitle: 'Deterministic Components: Compiler / Validator / Store / Adapter',
+    deterministicDesc: 'Architectural principle: AI creates, rules decide, executors land the change. The components below never call an LLM, and they are what makes the system predictable — agents and review agents only propose; final compliance, repair and execution always land in deterministic code.',
+    deterministic: [
+      { name: 'ScriptGraphCompiler / CreatorGraphCompiler / CreatorGraphValidator / CreatorGraphLayoutCompiler', desc: 'Compilation, normalization, reachability validation and canvas layout for script graphs and story graphs.' },
+      { name: 'VisualAssetBindingCompiler', desc: 'Deterministically binds generated images to character portraits and scene backgrounds.' },
+      { name: 'SandboxWorldValidator', desc: 'Auto-fills the minimum runnable fields before saving: player fields, NPCs, quests, actions, completion, location loops.' },
+      { name: 'WorldRuntimeGuardrail', desc: 'Blocks unregistered locations at runtime: when an NPC points to a nonexistent location, up to two LLM retries are triggered, after which a safe location hint is returned.' },
+      { name: 'CommandValidator / CommandExecutor', desc: 'The gatekeeper only decides and never executes; the executor only runs validated commands, covering none / set_player / grant_item / complete_task / switch_npc / set_flag / run_world_action.' },
+      { name: 'ArtifactStore / WorldStore / PlayerSessionStore', desc: 'Persistence for artifacts, worlds and player sessions; PlayerSessionStore supports cross-process restart recovery.' },
+    ],
+    qualityNoteTitle: 'On Naming: Which Ones Are Real Agents',
+    qualityNote: 'The quality components currently named WorldReviewAgent, NpcReviewAgent and PlaytestAgent are implemented with deterministic rules and do not call an LLM; these names are legacy compatibility names and should be treated architecturally as Review / Validator / Simulator rather than intelligent agents. Likewise, deterministic compilers and tools should not be named *Agent.',
+    skillsTitle: 'In-Repo Skill Contracts (6 Items)',
+    skillsDesc: 'Six core skills are formal design contracts targeting AgentTeams (formerly Hiclaw); the current repository is a custom implementation, and they will be packaged as AgentTeams Workers / Skills in the semifinal stage. Each contract defines: input / output / invocation conditions / dependent tools / failure handling / safety boundary / validation method / reuse value.',
+    skills: [
+      { name: 'script-decompose', module: 'app/agents/script_decomposition', loop: 'Step 2 · Decomposition' },
+      { name: 'world-build', module: 'app/agents/world_builder', loop: 'Step 3 · World' },
+      { name: 'lorebook-activate', module: 'app/agents/npc_lorebook', loop: 'Step 4 · Story / Runtime' },
+      { name: 'playtest-validate', module: 'app/agents/playtest_validation', loop: 'Step 6 · Review' },
+      { name: 'npc-runtime', module: 'app/agents/npc_runtime', loop: 'Step 7 · Post-publish runtime' },
+      { name: 'guardrail-check', module: 'WorldRuntimeGuardrail (app/worlds/sandbox/guardrails.py)', loop: 'Runtime · Generic NPC Runtime dialogue guardrail' },
+    ],
     storyboardBadge: 'Architecture Storyboard',
     storyboardTitle: 'Architecture Storyboard',
     storyboardDesc: 'Three editions for different audiences: Overview explains "what the base is"; Agent Roles details "what each agent does"; Technical Diagrams shows pipelines and validation chains for engineers.',
@@ -208,9 +395,16 @@ const t = {
     cardTitle: 'Universal NPC Agent Base',
     cardDesc: 'Validating how a universal NPC Agent base can hot-plug into different game/story worlds.',
     teamBadge: 'Team',
-    teamTitle: 'Team',
-    teamDesc: '5-person team covering tech development, story planning, and art design.',
-    teamMembers: [
+    goaiTeamTitle: 'GOAI · Project Team',
+    goaiTeamDesc: 'A 3-person team competing in the Agent Infra track, focused on multi-agent infrastructure, alongside developers from around the world.',
+    goaiTeamMembers: [
+      { name: 'Zaosusu', role: '' },
+      { name: 'Zhang Tianhua', role: '' },
+      { name: 'Li Jun', role: '' },
+    ],
+    hackathonTeamTitle: 'AGENT BUILDER · Project Team',
+    hackathonTeamDesc: '5-person team covering tech development, story planning, and art design.',
+    hackathonTeamMembers: [
       { name: 'Zaosusu', role: 'Full Stack · Captain' },
       { name: 'Zhang Ziyue', role: 'Visual' },
       { name: 'Liu Qikai', role: 'Frontend' },
@@ -309,6 +503,18 @@ export function NPCAgentProject() {
             <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 md:p-6 flex flex-col">
               <div className="flex items-center gap-2 text-[#f4a261] mb-3">
                 <Trophy className="w-4 h-4" />
+                <span className="font-noto text-xs">{c.goaiBadge}</span>
+              </div>
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.goaiTitle}</h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4 flex-grow">{c.goaiDesc}</p>
+              <a href={c.goaiLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-[#9bd8cf] hover:text-[#6cbcb2] transition-colors">
+                <Github className="w-3 h-3" />
+                <span>{c.goaiViewLink}</span>
+              </a>
+            </div>
+            <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 md:p-6 flex flex-col">
+              <div className="flex items-center gap-2 text-[#f4a261] mb-3">
+                <Trophy className="w-4 h-4" />
                 <span className="font-noto text-xs">{c.hackathonBadge}</span>
               </div>
               <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.hackathonTitle}</h3>
@@ -323,10 +529,26 @@ export function NPCAgentProject() {
                 <Users className="w-4 h-4" />
                 <span className="font-noto text-xs">{c.teamBadge}</span>
               </div>
-              <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.teamTitle}</h3>
-              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4 flex-grow">{c.teamDesc}</p>
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.goaiTeamTitle}</h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">{c.goaiTeamDesc}</p>
+              <div className="grid grid-cols-3 gap-2 mt-auto">
+                {c.goaiTeamMembers.map((member, i) => (
+                  <div key={i} className="px-3 py-2 border border-border-custom bg-bg-primary rounded text-center">
+                    <span className="block text-sm font-noto text-text-primary">{member.name}</span>
+                    {member.role && <span className="block text-xs font-noto text-text-secondary mt-0.5">{member.role}</span>}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="rounded border border-border-custom bg-bg-secondary/80 p-5 md:p-6 flex flex-col">
+              <div className="flex items-center gap-2 text-[#9bd8cf] mb-3">
+                <Users className="w-4 h-4" />
+                <span className="font-noto text-xs">{c.teamBadge}</span>
+              </div>
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2">{c.hackathonTeamTitle}</h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">{c.hackathonTeamDesc}</p>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-auto">
-                {c.teamMembers.map((member, i) => (
+                {c.hackathonTeamMembers.map((member, i) => (
                   <div key={i} className={`px-3 py-2 border rounded text-center ${i === 0 ? 'border-[#6cbcb2]/50 bg-[#6cbcb2]/10' : 'border-border-custom bg-bg-primary'}`}>
                     <span className="block text-sm font-noto text-text-primary">{member.name}</span>
                     {member.role && <span className="block text-xs font-noto text-text-secondary mt-0.5">{member.role}</span>}
@@ -338,8 +560,176 @@ export function NPCAgentProject() {
         </div>
       </section>
 
-      {/* Architecture */}
+      {/* New Architecture: Agent-module-first */}
       <section className="bg-bg-secondary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <div className="flex items-center gap-2 text-[#9bd8cf] mb-4">
+            <Layers className="w-5 h-5" />
+            <span className="font-noto text-sm">{c.newArchBadge}</span>
+          </div>
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-4">{c.newArchTitle}</h2>
+          <p className="font-noto text-base text-text-secondary leading-relaxed mb-10 max-w-4xl">{c.newArchDesc}</p>
+          <div className="space-y-2">
+            {c.newArchFlow.map((f, i) => (
+              <div key={i}>
+                <div className="p-5 border border-border-custom rounded bg-bg-primary">
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <span className="px-2 py-0.5 rounded text-xs font-noto border border-[#6cbcb2]/30 bg-[#6cbcb2]/10 text-[#9bd8cf]">{f.role}</span>
+                    <h3 className="font-noto font-bold text-base text-text-primary">{f.title}</h3>
+                  </div>
+                  <p className="font-noto text-sm text-text-secondary leading-relaxed">{f.desc}</p>
+                </div>
+                {i < c.newArchFlow.length - 1 && (
+                  <div className="text-center text-[#6cbcb2] text-lg leading-none py-1.5">&#8595;</div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Shared Agent Modules */}
+      <section className="bg-bg-primary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <div className="flex items-center gap-2 text-text-primary mb-3">
+            <Box className="w-5 h-5" />
+            <h2 className="font-noto font-bold text-2xl md:text-3xl">{c.agentModulesTitle}</h2>
+          </div>
+          <p className="font-noto text-sm text-text-secondary leading-relaxed mb-8 max-w-4xl">{c.agentModulesDesc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {c.agentModules.map((m, i) => (
+              <div key={i} className="p-4 border border-border-custom rounded bg-bg-secondary hover:border-[#6cbcb2]/60 transition-colors">
+                <code className="font-mono text-sm text-[#9bd8cf] block mb-1.5">{m.name}</code>
+                <p className="font-noto text-sm text-text-secondary leading-relaxed">{m.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Two Control Planes */}
+      <section className="bg-bg-secondary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <div className="flex items-center gap-2 text-text-primary mb-3">
+            <GitBranch className="w-5 h-5" />
+            <h2 className="font-noto font-bold text-2xl md:text-3xl">{c.controlPlanesTitle}</h2>
+          </div>
+          <p className="font-noto text-sm text-text-secondary leading-relaxed mb-8 max-w-4xl">{c.controlPlanesDesc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {c.controlPlanes.map((p, i) => (
+              <div key={i} className="p-5 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2]/60 transition-colors">
+                <h3 className="font-noto font-bold text-base text-text-primary mb-3">{p.title}</h3>
+                <p className="font-noto text-sm text-text-secondary leading-relaxed">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Creator Tool Chain */}
+      <section className="bg-bg-primary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <div className="flex items-center gap-2 text-text-primary mb-3">
+            <Code2 className="w-5 h-5" />
+            <h2 className="font-noto font-bold text-2xl md:text-3xl">{c.creatorToolsTitle}</h2>
+          </div>
+          <p className="font-noto text-sm text-text-secondary leading-relaxed mb-8 max-w-4xl">{c.creatorToolsDesc}</p>
+          <div className="space-y-3">
+            {c.creatorTools.map((tool, i) => (
+              <div key={i} className="p-4 border border-border-custom rounded bg-bg-secondary hover:border-[#6cbcb2]/60 transition-colors">
+                <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                  <code className="font-mono text-sm text-[#9bd8cf]">{tool.id}</code>
+                  <span className="font-noto font-bold text-sm text-text-primary">{tool.name}</span>
+                  <span className="px-2 py-0.5 rounded text-[11px] font-mono border border-[#6cbcb2]/30 bg-[#6cbcb2]/10 text-[#9bd8cf]">{tool.kind}</span>
+                  <span className="font-mono text-[11px] text-text-muted">{tool.owner}</span>
+                </div>
+                <p className="font-noto text-sm text-text-secondary leading-relaxed">{tool.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Two Runtimes */}
+      <section className="bg-bg-secondary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <div className="flex items-center gap-2 text-text-primary mb-3">
+            <Activity className="w-5 h-5" />
+            <h2 className="font-noto font-bold text-2xl md:text-3xl">{c.runtimesTitle}</h2>
+          </div>
+          <p className="font-noto text-sm text-text-secondary leading-relaxed mb-8 max-w-4xl">{c.runtimesDesc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {c.runtimes.map((r, i) => (
+              <div key={i} className="p-5 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2]/60 transition-colors">
+                <h3 className="font-noto font-bold text-base text-text-primary mb-3">{r.title}</h3>
+                <p className="font-noto text-sm text-text-secondary leading-relaxed">{r.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MCP-shaped Tool Boundary */}
+      <section className="bg-bg-primary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <div className="flex items-center gap-2 text-text-primary mb-3">
+            <Server className="w-5 h-5" />
+            <h2 className="font-noto font-bold text-2xl md:text-3xl">{c.mcpTitle}</h2>
+          </div>
+          <p className="font-noto text-sm text-text-secondary leading-relaxed mb-8 max-w-4xl">{c.mcpDesc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+            {c.mcpPoints.map((p, i) => (
+              <div key={i} className="p-4 border border-border-custom rounded bg-bg-secondary">
+                <code className="font-mono text-sm text-[#9bd8cf] block mb-2">{p.label}</code>
+                <p className="font-noto text-sm text-text-secondary leading-relaxed">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="p-4 rounded bg-bg-secondary border border-[#f4a261]/30">
+            <p className="font-noto text-sm text-text-secondary leading-relaxed">{c.mcpNote}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Deterministic Components + Skill Contracts */}
+      <section className="bg-bg-secondary py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <div className="flex items-center gap-2 text-text-primary mb-3">
+            <Shield className="w-5 h-5" />
+            <h2 className="font-noto font-bold text-2xl md:text-3xl">{c.deterministicTitle}</h2>
+          </div>
+          <p className="font-noto text-sm text-text-secondary leading-relaxed mb-8 max-w-4xl">{c.deterministicDesc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            {c.deterministic.map((d, i) => (
+              <div key={i} className="p-4 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2]/60 transition-colors">
+                <code className="font-mono text-[13px] text-[#9bd8cf] block mb-1.5 leading-relaxed">{d.name}</code>
+                <p className="font-noto text-sm text-text-secondary leading-relaxed">{d.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="p-4 rounded bg-bg-primary border border-border-custom mb-12">
+            <h3 className="font-noto font-bold text-sm text-text-primary mb-2">{c.qualityNoteTitle}</h3>
+            <p className="font-noto text-sm text-text-secondary leading-relaxed">{c.qualityNote}</p>
+          </div>
+          <div className="flex items-center gap-2 text-text-primary mb-3">
+            <BookOpen className="w-5 h-5" />
+            <h3 className="font-noto font-bold text-xl md:text-2xl">{c.skillsTitle}</h3>
+          </div>
+          <p className="font-noto text-sm text-text-secondary leading-relaxed mb-6 max-w-4xl">{c.skillsDesc}</p>
+          <div className="space-y-2">
+            {c.skills.map((s, i) => (
+              <div key={i} className="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 p-4 border border-border-custom rounded bg-bg-primary">
+                <code className="font-mono text-sm text-[#9bd8cf] md:w-48 flex-shrink-0">{s.name}</code>
+                <span className="font-mono text-[12px] text-text-muted flex-grow break-all">{s.module}</span>
+                <span className="px-2 py-0.5 rounded text-[11px] font-noto border border-[#6cbcb2]/30 bg-[#6cbcb2]/10 text-[#9bd8cf] flex-shrink-0 w-fit">{s.loop}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Architecture */}
+      <section className="bg-bg-primary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-6">{c.archTitle}</h2>
           <p className="font-noto text-base text-text-primary leading-relaxed mb-8">{c.archDesc}</p>

@@ -163,6 +163,7 @@ const t: Record<'zh' | 'en', Translation> = {
       { title: '抖音AI创变者计划 金陵站', desc: '一等奖' },
       { title: '南京OPC创新创业大赛', desc: '一等奖' },
       { title: '苏州金鸡湖OPC半决赛', desc: '创业者' },
+      { title: 'GOAI 世界人工智能开源大赛 · 新智基座赛道', desc: '前300强' },
       { title: '第十一届"创客中国"江苏省中小企业创新创业大赛', desc: '百强项目 · 创业组（创客团队组）20 强 · 优胜奖' },
     ],
     endorsement: {
