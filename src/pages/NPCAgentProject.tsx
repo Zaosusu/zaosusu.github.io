@@ -100,16 +100,6 @@ const t = {
     ],
     qualityNoteTitle: '关于命名：哪些是「真 Agent」',
     qualityNote: '当前名为 WorldReviewAgent、NpcReviewAgent、PlaytestAgent 的质量组件采用确定性规则实现、不调用 LLM；这些名称属于历史兼容命名，在架构角色上应视为 Review / Validator / Simulator，而不是智能 Agent。同理，确定性 compiler / tool 也不应命名成 *Agent。',
-    skillsTitle: '项目内 Skill 契约（6 项）',
-    skillsDesc: '六项核心 Skill 是面向 AgentTeams（原 Hiclaw）的正式设计契约；当前仓库为自定义实现，复赛阶段将按本契约封装为 AgentTeams Worker / Skill。每项契约字段：输入 / 输出 / 调用条件 / 依赖工具 / 失败处理 / 安全边界 / 验证方式 / 复用价值。',
-    skills: [
-      { name: 'script-decompose', module: 'app/agents/script_decomposition', loop: '步骤 2 · 拆解' },
-      { name: 'world-build', module: 'app/agents/world_builder', loop: '步骤 3 · 世界' },
-      { name: 'lorebook-activate', module: 'app/agents/npc_lorebook', loop: '步骤 4 · 剧情 / 运行时' },
-      { name: 'playtest-validate', module: 'app/agents/playtest_validation', loop: '步骤 6 · 审查' },
-      { name: 'npc-runtime', module: 'app/agents/npc_runtime', loop: '步骤 7 · 发布后运行时' },
-      { name: 'guardrail-check', module: 'WorldRuntimeGuardrail（app/worlds/sandbox/guardrails.py）', loop: '运行时 · Generic NPC Runtime 对话护栏' },
-    ],
     storyboardBadge: '架构图册',
     storyboardTitle: '架构图册',
     storyboardDesc: '三个版本覆盖不同受众：总览故事版讲"整个底座是什么"；Agent 职责详解版逐个讲"每个 Agent 做什么"；技术详图版给研发看 pipeline 与校验链路。',
@@ -305,16 +295,6 @@ const t = {
     ],
     qualityNoteTitle: 'On Naming: Which Ones Are Real Agents',
     qualityNote: 'The quality components currently named WorldReviewAgent, NpcReviewAgent and PlaytestAgent are implemented with deterministic rules and do not call an LLM; these names are legacy compatibility names and should be treated architecturally as Review / Validator / Simulator rather than intelligent agents. Likewise, deterministic compilers and tools should not be named *Agent.',
-    skillsTitle: 'In-Repo Skill Contracts (6 Items)',
-    skillsDesc: 'Six core skills are formal design contracts targeting AgentTeams (formerly Hiclaw); the current repository is a custom implementation, and they will be packaged as AgentTeams Workers / Skills in the semifinal stage. Each contract defines: input / output / invocation conditions / dependent tools / failure handling / safety boundary / validation method / reuse value.',
-    skills: [
-      { name: 'script-decompose', module: 'app/agents/script_decomposition', loop: 'Step 2 · Decomposition' },
-      { name: 'world-build', module: 'app/agents/world_builder', loop: 'Step 3 · World' },
-      { name: 'lorebook-activate', module: 'app/agents/npc_lorebook', loop: 'Step 4 · Story / Runtime' },
-      { name: 'playtest-validate', module: 'app/agents/playtest_validation', loop: 'Step 6 · Review' },
-      { name: 'npc-runtime', module: 'app/agents/npc_runtime', loop: 'Step 7 · Post-publish runtime' },
-      { name: 'guardrail-check', module: 'WorldRuntimeGuardrail (app/worlds/sandbox/guardrails.py)', loop: 'Runtime · Generic NPC Runtime dialogue guardrail' },
-    ],
     storyboardBadge: 'Architecture Storyboard',
     storyboardTitle: 'Architecture Storyboard',
     storyboardDesc: 'Three editions for different audiences: Overview explains "what the base is"; Agent Roles details "what each agent does"; Technical Diagrams shows pipelines and validation chains for engineers.',
@@ -691,7 +671,7 @@ export function NPCAgentProject() {
         </div>
       </section>
 
-      {/* Deterministic Components + Skill Contracts */}
+      {/* Deterministic Components */}
       <section className="bg-bg-secondary py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
           <div className="flex items-center gap-2 text-text-primary mb-3">
@@ -707,23 +687,9 @@ export function NPCAgentProject() {
               </div>
             ))}
           </div>
-          <div className="p-4 rounded bg-bg-primary border border-border-custom mb-12">
+          <div className="p-4 rounded bg-bg-primary border border-border-custom">
             <h3 className="font-noto font-bold text-sm text-text-primary mb-2">{c.qualityNoteTitle}</h3>
             <p className="font-noto text-sm text-text-secondary leading-relaxed">{c.qualityNote}</p>
-          </div>
-          <div className="flex items-center gap-2 text-text-primary mb-3">
-            <BookOpen className="w-5 h-5" />
-            <h3 className="font-noto font-bold text-xl md:text-2xl">{c.skillsTitle}</h3>
-          </div>
-          <p className="font-noto text-sm text-text-secondary leading-relaxed mb-6 max-w-4xl">{c.skillsDesc}</p>
-          <div className="space-y-2">
-            {c.skills.map((s, i) => (
-              <div key={i} className="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 p-4 border border-border-custom rounded bg-bg-primary">
-                <code className="font-mono text-sm text-[#9bd8cf] md:w-48 flex-shrink-0">{s.name}</code>
-                <span className="font-mono text-[12px] text-text-muted flex-grow break-all">{s.module}</span>
-                <span className="px-2 py-0.5 rounded text-[11px] font-noto border border-[#6cbcb2]/30 bg-[#6cbcb2]/10 text-[#9bd8cf] flex-shrink-0 w-fit">{s.loop}</span>
-              </div>
-            ))}
           </div>
         </div>
       </section>
