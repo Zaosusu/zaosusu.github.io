@@ -25,9 +25,9 @@ const t = {
     goaiLink: 'https://github.com/Zaosusu/goai-interactive-fiction-agents',
     goaiViewLink: '查看仓库',
     viewLink: '查看赛事',
-    newArchBadge: '架构演进 · 2026 复赛版',
+    newArchBadge: '架构演进 · Agent-module-first',
     newArchTitle: '新架构 · Agent-module-first',
-    newArchDesc: '初赛版本以「API 层 → Agent Runtime 层 → 世界适配层」的三层架构为核心，验证 Agent 能热插拔进入不同世界。复赛版本把能力边界重新收敛为 Agent-module-first：共享能力层位于 app/agents/*，由两种控制面并行编排其中不同子集，各阶段以可检查、可持久化的 Artifact 交接，最终由两种 Runtime 消费，而不是单一播放逻辑。',
+    newArchDesc: '早期版本以「API 层 → Agent Runtime 层 → 世界适配层」的三层架构为核心，验证 Agent 能热插拔进入不同世界。当前版本把能力边界重新收敛为 Agent-module-first：共享能力层位于 app/agents/*，由两种控制面并行编排其中不同子集，各阶段以可检查、可持久化的 Artifact 交接，最终由两种 Runtime 消费，而不是单一播放逻辑。',
     newArchFlow: [
       { role: '控制面', title: 'Pipeline Workbench · Creator Orchestrator', desc: '两种控制面并行编排共享 Agent 的不同子集：前者是阶段化 API，可直接检查、重跑每个 Artifact；后者是 Assistant + Workflow + MCP Tools 的对话式创作。' },
       { role: '能力层', title: 'Shared Agent Modules（app/agents/*）', desc: '15 个 Agent 模块构成共享能力层：项目接入、剧本拆解、剧情创作与扩写、世界构建、Lorebook、视觉提示词与资产、世界与 NPC 审查、NPC 运行时、自动试玩、经验沉淀、UI 投影。' },
@@ -220,9 +220,9 @@ const t = {
     goaiLink: 'https://github.com/Zaosusu/goai-interactive-fiction-agents',
     goaiViewLink: 'View Repo',
     viewLink: 'View Competition',
-    newArchBadge: 'Architecture Evolution · 2026 Semifinal Edition',
+    newArchBadge: 'Architecture Evolution · Agent-module-first',
     newArchTitle: 'New Architecture · Agent-module-first',
-    newArchDesc: 'The preliminary version centered on a three-layer stack (API Layer, Agent Runtime Layer, World Adapter Layer) to prove that agents can hot-plug into different worlds. The semifinal version reconverges the capability boundary into Agent-module-first: shared capabilities live in app/agents/*, two control planes orchestrate different subsets of them in parallel, every stage hands off via inspectable and persistent Artifacts, and two runtimes consume the results instead of a single playback logic.',
+    newArchDesc: 'The early version centered on a three-layer stack (API Layer, Agent Runtime Layer, World Adapter Layer) to prove that agents can hot-plug into different worlds. The current version reconverges the capability boundary into Agent-module-first: shared capabilities live in app/agents/*, two control planes orchestrate different subsets of them in parallel, every stage hands off via inspectable and persistent Artifacts, and two runtimes consume the results instead of a single playback logic.',
     newArchFlow: [
       { role: 'Control Plane', title: 'Pipeline Workbench · Creator Orchestrator', desc: 'Two control planes orchestrate different subsets of the shared agents in parallel: the former is a staged API where every Artifact can be inspected and re-run; the latter is conversational authoring built on Assistant + Workflow + MCP Tools.' },
       { role: 'Capability Layer', title: 'Shared Agent Modules (app/agents/*)', desc: '15 agent modules form the shared capability layer: project intake, script decomposition, story authoring and expansion, world building, lorebook, visual prompts and assets, world and NPC review, NPC runtime, automated playtest, experience learning, and UI projection.' },
