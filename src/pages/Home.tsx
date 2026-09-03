@@ -563,16 +563,16 @@ export function Home() {
           </div>
 
           {/* Evolution thread line — between row 1 and row 2 */}
-          <div className="hidden md:grid grid-cols-3 gap-6 my-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 my-6">
             {c.threadSteps.map((step, i) => (
               <div key={i} className="flex items-center">
                 <Link to={step.path} className="flex items-center gap-2 group shrink-0 whitespace-nowrap">
                   <span className={`inline-block w-2.5 h-2.5 rounded-full ${step.color === 'green' ? 'bg-[#6cbcb2]' : step.color === 'orange' ? 'bg-[#f4a261]' : 'bg-[#9bd8cf]'}`} />
                   <span className="font-noto text-xs text-text-muted group-hover:text-text-primary transition-colors">{step.label}</span>
-                  <span className="font-noto text-xs font-bold text-text-primary group-hover:text-[#9bd8cf] transition-colors hidden lg:inline">· {step.project}</span>
+                  <span className="font-noto text-xs font-bold text-text-primary group-hover:text-[#9bd8cf] transition-colors">{step.project}</span>
                 </Link>
                 {i < c.threadSteps.length - 1 && (
-                  <div className="flex-1 flex items-center mx-3">
+                  <div className="hidden md:flex flex-1 items-center mx-3">
                     <span className="flex-1 h-px bg-border-custom" />
                     <ArrowRight className="w-3 h-3 text-text-muted mx-1 shrink-0" />
                   </div>
