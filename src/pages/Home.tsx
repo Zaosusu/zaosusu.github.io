@@ -52,12 +52,15 @@ type Translation = {
   twoLinkCardTag: string;
   twoLinkCardDesc: string;
   awards: { title: string; desc: string }[];
-  endorsement: { title: string; desc: string };
+  endorsement: { title: string; desc: string; link?: string };
   contactTitle: string;
   contactDesc: string;
   email: string;
   github: string;
   socials: { name: string; url: string }[];
+  skillsTitle: string;
+  skillsDesc: string;
+  skills: { name: string; tag: string; desc: string; stars: number; url: string }[];
 };
 
 const t: Record<'zh' | 'en', Translation> = {
@@ -169,6 +172,7 @@ const t: Record<'zh' | 'en', Translation> = {
     endorsement: {
       title: '江岸计划 · Youth AI Hackathon（南京市鼓楼区政府主办）',
       desc: '赛事顾问 · 政府级AI赛事背书',
+      link: 'https://mp.weixin.qq.com/s/ZRx-b1RV5Cy15TnEZozw4w',
     },
     contactTitle: '联系我',
     contactDesc: '如果你对我的研究或项目感兴趣，欢迎交流：',
@@ -178,6 +182,16 @@ const t: Record<'zh' | 'en', Translation> = {
       { name: '抖音', url: 'https://www.douyin.com/user/MS4wLjABAAAAV92gjs6tGrme_ENgc65WaPEIUWLfqA2KSTJdJxefKSM' },
       { name: '小红书', url: 'https://www.xiaohongshu.com/user/profile/5e95c83c00000000010077a5' },
       { name: 'B站', url: 'https://space.bilibili.com/31603890' },
+    ],
+    skillsTitle: '巴别图书馆',
+    skillsDesc: '我造的工具与技能收藏——Skill、工作流，以及能把 AI 当学徒使的各类装置。',
+    skills: [
+      { name: 'zhicheng-shenbao-skill', tag: '申报助手', desc: '职称初定与评审申报全流程自动化，从材料梳理到提交清单。', stars: 0, url: 'https://github.com/Zaosusu/zhicheng-shenbao-skill' },
+      { name: 'schedule-onepager', tag: '效率工具', desc: '一页纸排期表，数据驱动生成 HTML 并直接渲染进邮箱。', stars: 1, url: 'https://github.com/Zaosusu/schedule-onepager' },
+      { name: 'live-class-skill', tag: '会议转录', desc: '直播课 / 会议的「代听」转写，自动生成纪要文本。', stars: 1, url: 'https://github.com/Zaosusu/live-class-skill' },
+      { name: 'imgbox-skill', tag: '图像生成', desc: '聚合多家生图模型（含 StepFun）的一站式入口，含 AI 抠图。', stars: 0, url: 'https://github.com/Zaosusu/imgbox-skill' },
+      { name: 'resume-onepager', tag: '简历', desc: '一页纸简历生成，输出带真实文字层的 A4 PDF / PNG。', stars: 0, url: 'https://github.com/Zaosusu/resume-onepager' },
+      { name: 'multi-agent-async-workflow', tag: '工作流', desc: '多 Agent 异步协同，以 GitHub Issues 作为任务总线。', stars: 7, url: 'https://github.com/Zaosusu/multi-agent-async-workflow' },
     ],
   },
   en: {
@@ -286,6 +300,7 @@ const t: Record<'zh' | 'en', Translation> = {
     endorsement: {
       title: "Jiang'an Plan · Youth AI Hackathon (Gulou District Gov)",
       desc: 'Competition Advisor · Gov-level AI Endorsement',
+      link: 'https://mp.weixin.qq.com/s/ZRx-b1RV5Cy15TnEZozw4w',
     },
     contactTitle: 'Contact',
     contactDesc: 'If you are interested in my research or projects, feel free to reach out:',
@@ -295,6 +310,16 @@ const t: Record<'zh' | 'en', Translation> = {
       { name: 'Douyin', url: 'https://www.douyin.com/user/MS4wLjABAAAAV92gjs6tGrme_ENgc65WaPEIUWLfqA2KSTJdJxefKSM' },
       { name: 'Xiaohongshu', url: 'https://www.xiaohongshu.com/user/profile/5e95c83c00000000010077a5' },
       { name: 'Bilibili', url: 'https://space.bilibili.com/31603890' },
+    ],
+    skillsTitle: 'The Library of Babel',
+    skillsDesc: 'My collection of crafted tools and skills — skills, workflows, and contraptions that put AI to work as an apprentice.',
+    skills: [
+      { name: 'zhicheng-shenbao-skill', tag: 'Filing Helper', desc: 'End-to-end automation for professional-title declaration & review, from material sorting to submission checklist.', stars: 0, url: 'https://github.com/Zaosusu/zhicheng-shenbao-skill' },
+      { name: 'schedule-onepager', tag: 'Productivity', desc: 'One-page schedule generator that renders HTML straight into your inbox.', stars: 1, url: 'https://github.com/Zaosusu/schedule-onepager' },
+      { name: 'live-class-skill', tag: 'Meeting Notes', desc: '"Attend-for-you" transcription for live classes & meetings, auto-generating minutes.', stars: 1, url: 'https://github.com/Zaosusu/live-class-skill' },
+      { name: 'imgbox-skill', tag: 'Image Gen', desc: 'One-stop hub aggregating multiple image models (including StepFun), with AI matting.', stars: 0, url: 'https://github.com/Zaosusu/imgbox-skill' },
+      { name: 'resume-onepager', tag: 'Resume', desc: 'One-page resume generator exporting A4 PDF / PNG with real text layers.', stars: 0, url: 'https://github.com/Zaosusu/resume-onepager' },
+      { name: 'multi-agent-async-workflow', tag: 'Workflow', desc: 'Multi-agent async collaboration using GitHub Issues as a task bus.', stars: 7, url: 'https://github.com/Zaosusu/multi-agent-async-workflow' },
     ],
   },
 };
@@ -389,12 +414,25 @@ export function Home() {
                   </div>
                 );
               })}
-              <div
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#0f8b8d]/30 bg-[#0f8b8d]/8"
-              >
-                <span className="font-noto text-xs text-[#0f8b8d] font-bold">{c.endorsement.desc}</span>
-                <span className="font-noto text-xs text-text-secondary">{c.endorsement.title}</span>
-              </div>
+              {c.endorsement.link ? (
+                <a
+                  href={c.endorsement.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#0f8b8d]/30 bg-[#0f8b8d]/8 hover:border-[#0f8b8d]/60 hover:bg-[#0f8b8d]/14 transition-colors duration-200 group"
+                >
+                  <span className="font-noto text-xs text-[#0f8b8d] font-bold">{c.endorsement.desc}</span>
+                  <span className="font-noto text-xs text-text-secondary group-hover:text-text-primary transition-colors">{c.endorsement.title}</span>
+                  <ExternalLink className="w-3 h-3 text-[#0f8b8d]" />
+                </a>
+              ) : (
+                <div
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#0f8b8d]/30 bg-[#0f8b8d]/8"
+                >
+                  <span className="font-noto text-xs text-[#0f8b8d] font-bold">{c.endorsement.desc}</span>
+                  <span className="font-noto text-xs text-text-secondary">{c.endorsement.title}</span>
+                </div>
+              )}
             </div>
             <button
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
@@ -688,8 +726,45 @@ export function Home() {
         </div>
       </section>
 
+      {/* 巴别图书馆 · 开源 Skill 集合 */}
+      <section data-animate className="bg-bg-primary pt-16 md:pt-24 pb-10 md:pb-14 px-5">
+        <div className="max-w-content mx-auto">
+          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-2">{c.skillsTitle}</h2>
+          <p className="font-noto text-sm text-text-secondary mb-8">{c.skillsDesc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[...c.skills].sort((a, b) => b.stars - a.stars).map((s, i) => (
+              <Link
+                key={i}
+                to="/library-of-babel"
+                className="group block min-h-[200px] p-6 border border-border-custom rounded bg-bg-secondary hover:border-[#6cbcb2] hover:-translate-y-1 transition-all duration-200"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="inline-block px-2 py-0.5 rounded text-xs font-noto bg-[#6cbcb2]/10 text-[#6cbcb2] border border-[#6cbcb2]/30">
+                    {s.tag}
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-xs font-noto text-text-muted">
+                    <span className="text-[#f4a261]">★</span>
+                    <span>{s.stars}</span>
+                  </span>
+                </div>
+                <h3 className="font-noto font-bold text-base md:text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors break-all">
+                  {s.name}
+                </h3>
+                <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
+                  {s.desc}
+                </p>
+                <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
+                  <span className="font-noto">{lang === 'zh' ? '查看详情' : 'View Details'}</span>
+                  <ArrowRight className="w-3 h-3" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact */}
-      <section data-animate className="bg-bg-primary py-16 md:py-24 px-5">
+      <section data-animate className="bg-bg-primary pt-10 md:pt-14 pb-16 md:pb-24 px-5">
         <div className="max-w-content mx-auto text-center">
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-6">{c.contactTitle}</h2>
           <p className="font-noto text-base text-text-secondary mb-8">{c.contactDesc}</p>

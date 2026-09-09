@@ -11,6 +11,7 @@ import { DuckEscapeProject } from './pages/DuckEscapeProject';
 import { NPCAgentProject } from './pages/NPCAgentProject';
 import { TwoLinkProject } from './pages/TwoLinkProject';
 import { DistanceProject } from './pages/DistanceProject';
+import { LibraryOfBabel } from './pages/LibraryOfBabel';
 import { useEffect } from 'react';
 import Lenis from 'lenis';
 import gsap from 'gsap';
@@ -59,6 +60,7 @@ function App() {
             <Route path="/projects/npc-agent" element={<NPCAgentProject />} />
             <Route path="/projects/2link" element={<TwoLinkProject />} />
             <Route path="/projects/distance" element={<DistanceProject />} />
+            <Route path="/library-of-babel" element={<LibraryOfBabel />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>

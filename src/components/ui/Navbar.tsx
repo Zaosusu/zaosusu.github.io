@@ -7,6 +7,7 @@ const navt = {
   zh: {
     home: '阿早',
     projects: '项目',
+    library: 'Skill',
     ogcp: 'OGCP',
     walking: '走路修仙',
     xhs: '小红书自动邀约系统',
@@ -19,6 +20,7 @@ const navt = {
   en: {
     home: 'Zaosusu',
     projects: 'Projects',
+    library: 'Skill',
     ogcp: 'OGCP',
     walking: 'WalkingXiuxian',
     xhs: 'XHS Auto-Invite',
@@ -108,6 +110,16 @@ export function Navbar() {
             )}
           </div>
 
+          {/* Library of Babel */}
+          <Link
+            to="/library-of-babel"
+            className={`font-noto text-sm transition-colors duration-200 ${
+              location.pathname === '/library-of-babel' ? 'text-text-primary' : 'text-text-muted hover:text-[#9bd8cf]'
+            }`}
+          >
+            {c.library}
+          </Link>
+
           <button
             onClick={toggle}
             className="font-inter text-xs text-text-muted hover:text-text-primary border border-border-custom bg-bg-secondary/70 px-3 py-1.5 rounded transition-colors duration-200"
@@ -137,6 +149,15 @@ export function Navbar() {
       {/* Mobile Menu */}
       {mobileOpen && (
         <div className="md:hidden bg-bg-primary/95 backdrop-blur-xl border-t border-border-custom px-5 py-4 space-y-3">
+          <Link
+            to="/library-of-babel"
+            className={`block font-noto text-sm ${
+              location.pathname === '/library-of-babel' ? 'text-text-primary' : 'text-text-muted'
+            }`}
+            onClick={() => setMobileOpen(false)}
+          >
+            {c.library}
+          </Link>
           {projectLinks.map((p) => (
             <Link
               key={p.path}
