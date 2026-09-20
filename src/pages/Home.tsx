@@ -192,6 +192,8 @@ const t: Record<'zh' | 'en', Translation> = {
       { name: 'imgbox-skill', tag: '图像生成', desc: '聚合多家生图模型（含 StepFun）的一站式入口，含 AI 抠图。', stars: 0, url: 'https://github.com/Zaosusu/imgbox-skill' },
       { name: 'resume-onepager', tag: '简历', desc: '一页纸简历生成，输出带真实文字层的 A4 PDF / PNG。', stars: 0, url: 'https://github.com/Zaosusu/resume-onepager' },
       { name: 'multi-agent-async-workflow', tag: '工作流', desc: '多 Agent 异步协同，以 GitHub Issues 作为任务总线。', stars: 7, url: 'https://github.com/Zaosusu/multi-agent-async-workflow' },
+      { name: 'agent-usage-skill', tag: '用量监控', desc: '本地多 AI Agent Token 用量统一监控看板，插件化接入、实时刷新。', stars: 0, url: 'https://github.com/Zaosusu/agent-usage-skill' },
+      { name: 'form-autofill-skill', tag: '填表助手', desc: '一次录档表单自动填，提交永远由你本人点。', stars: 0, url: 'https://github.com/Zaosusu/form-autofill-skill' },
     ],
   },
   en: {
@@ -320,6 +322,8 @@ const t: Record<'zh' | 'en', Translation> = {
       { name: 'imgbox-skill', tag: 'Image Gen', desc: 'One-stop hub aggregating multiple image models (including StepFun), with AI matting.', stars: 0, url: 'https://github.com/Zaosusu/imgbox-skill' },
       { name: 'resume-onepager', tag: 'Resume', desc: 'One-page resume generator exporting A4 PDF / PNG with real text layers.', stars: 0, url: 'https://github.com/Zaosusu/resume-onepager' },
       { name: 'multi-agent-async-workflow', tag: 'Workflow', desc: 'Multi-agent async collaboration using GitHub Issues as a task bus.', stars: 7, url: 'https://github.com/Zaosusu/multi-agent-async-workflow' },
+      { name: 'agent-usage-skill', tag: 'Usage Monitor', desc: 'Unified local dashboard for multi-Agent Token usage, plugin-based and real-time.', stars: 0, url: 'https://github.com/Zaosusu/agent-usage-skill' },
+      { name: 'form-autofill-skill', tag: 'Form Helper', desc: 'Record once, forms auto-fill — submit always by you.', stars: 0, url: 'https://github.com/Zaosusu/form-autofill-skill' },
     ],
   },
 };

@@ -12,11 +12,12 @@ import {
   Sparkles,
   Cpu,
   Play,
-  ExternalLink,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
+
+const BILIBILI_VIDEO = 'https://www.bilibili.com/video/BV14f3q6mE8R/';
 
 const t = {
   zh: {
@@ -26,6 +27,7 @@ const t = {
     tag: 'AdventureX 2026 · PICO 赛道第二名',
     desc: 'distance 是一款社交关系可视化产品。你的每段经历、每个朋友、每段关系都会被编译成一颗「个人星球」，悬浮在三维宇宙中。关系越近，星球靠得越近；关系越淡，光年越远。',
     status: '团队作品 · AdventureX 2026 PICO 赛道 优胜 Web 应用创作者',
+    cta: '产品介绍',
 
     awardTitle: '比赛成绩',
     award: 'AdventureX 2026 — PICO 赛道 第二名 · 优胜 Web 应用创作者',
@@ -117,6 +119,7 @@ const t = {
     tag: 'AdventureX 2026 · PICO Track 2nd Place',
     desc: 'distance is a social relationship visualization product. Every experience, friend, and relationship is compiled into a "personal planet" floating in a 3D universe. Closer relationships pull planets together; distant ones drift light-years apart.',
     status: 'Team Project · AdventureX 2026 PICO Track — Outstanding Web App Creator',
+    cta: 'Product Intro',
 
     awardTitle: 'Competition Result',
     award: 'AdventureX 2026 — PICO Track 2nd Place · Outstanding Web App Creator',
@@ -253,13 +256,13 @@ export function DistanceProject() {
           </p>
           <p className="font-noto text-xs text-text-muted/60 mb-4">{c.status}</p>
           <a
-            href="https://www.distance3d.xyz"
+            href={BILIBILI_VIDEO}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-3 rounded border border-[#0f8b8d]/60 bg-[#0f8b8d]/12 text-text-primary hover:bg-[#0f8b8d]/18 hover:border-[#0f8b8d] transition-colors duration-200 mb-16"
           >
-            <ExternalLink className="w-4 h-4" />
-            <span className="font-noto text-sm">{lang === 'zh' ? '访问网站' : 'Visit Website'}</span>
+            <Play className="w-4 h-4" />
+            <span className="font-noto text-sm">{c.cta}</span>
           </a>
         </div>
 

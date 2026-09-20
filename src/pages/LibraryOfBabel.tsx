@@ -1,4 +1,4 @@
-import { ExternalLink, ArrowLeft, Github, Star, Briefcase, Clock, Mic, Image, FileText, GitBranch, Code2, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ExternalLink, ArrowLeft, Github, Star, Briefcase, Clock, Mic, Image, FileText, GitBranch, Code2, CheckCircle2, ArrowRight, Activity, ClipboardList } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
@@ -216,6 +216,62 @@ const skillsData: SkillDetail[] = [
     url: 'https://github.com/Zaosusu/multi-agent-async-workflow',
     stars: 7,
     icon: <GitBranch className="w-6 h-6" />,
+  },
+  {
+    name: 'agent-usage-skill',
+    nameEn: 'agent-usage-skill',
+    tag: '用量监控',
+    tagEn: 'Usage Monitor',
+    oneLiner: '本地多 AI Agent Token 用量统一监控看板',
+    oneLinerEn: 'Unified local dashboard for multi-Agent Token usage monitoring',
+    desc: '本地多 AI Agent Token 用量统一监控 Skill。插件化架构——装了新 Agent，丢一个插件文件就能接入；实时监控，数据源一变看板自动刷新；写了 SKILL.md，任何 AI 都能自动发现并调用。涵盖总用量 KPI、每日趋势、各 Agent 对比、模型 TOP15、会话明细，并提供结构化 JSON 的 Agent API。单文件 exe，本地运行，数据不上传云端。',
+    descEn: 'A unified local Token-usage monitoring skill for multiple AI Agents. Plugin-based architecture — drop a plugin file to onboard a new Agent; real-time watch that auto-refreshes the dashboard on data change; ships a SKILL.md so any AI can auto-discover and invoke it. Covers total-usage KPIs, daily trends, per-Agent comparison, model TOP15, session details, plus a structured-JSON Agent API. Single-file exe, runs locally, no data uploaded to the cloud.',
+    features: [
+      '插件化架构：接入新 Agent 只需丢一个插件文件',
+      '实时监控 + SSE 推送，数据源变化看板自动刷新',
+      '总用量 KPI、每日趋势堆叠柱、各 Agent 对比、模型 TOP15',
+      'Agent API 返回结构化 JSON，AI 直接调用无需解析',
+      '单文件 exe，本地运行，数据不上传云端',
+    ],
+    featuresEn: [
+      'Plugin architecture — onboard a new Agent with just one plugin file',
+      'Real-time monitoring + SSE push, dashboard auto-refreshes on data change',
+      'Total-usage KPIs, daily trend stacked bars, per-Agent comparison, model TOP15',
+      'Agent API returns structured JSON for direct AI invocation',
+      'Single-file exe, runs locally, no data uploaded to the cloud',
+    ],
+    tech: ['Python', 'SSE', 'SQLite', 'Dashboard', 'WorkBuddy Skill'],
+    url: 'https://github.com/Zaosusu/agent-usage-skill',
+    stars: 0,
+    icon: <Activity className="w-6 h-6" />,
+  },
+  {
+    name: 'form-autofill-skill',
+    nameEn: 'form-autofill-skill',
+    tag: '填表助手',
+    tagEn: 'Form Helper',
+    oneLiner: '一次录档，表单自动填；提交永远由你本人点',
+    oneLinerEn: 'Record once, forms auto-fill — submit always by you',
+    desc: '一次录档，表单自动填；提交永远由你本人点。给它一个在线表单（默认面向飞书多维表格公开表单，也适用一般 Web 表单），抓出每个字段的标签 / 类型 / 是否必填，用你的固定信息档案做映射，能对上的直接填，对不上的回头问你，最后给你一张对照表复核，把填好的表单留在浏览器里等你本人点提交。不保存密码，不猜身份证号，不替你按下提交。',
+    descEn: 'Record once, forms auto-fill; submit always by you. Give it an online form (Feishu multi-dimensional-table public forms by default, also general web forms). It extracts each field\'s label / type / required flag, maps against your fixed-info profile, fills what matches, asks you for the rest, then hands you a comparison table to review and leaves the filled form in the browser for your own submit. No password saved, no ID guessed, no submit clicked on your behalf.',
+    features: [
+      '固定信息档案作单一数据源，能对上的字段直接自动填',
+      '未知 / 创作类 / 敏感字段回头问你，绝不瞎猜',
+      '硬规则：永不自动提交，提交按钮永远由人点',
+      '填完给一张对照表复核，私人信息外置不入库',
+      'Python 标准库 + agent-browser (CDP)，可只用对照表自己复制',
+    ],
+    featuresEn: [
+      'Fixed-info profile as single source of truth, auto-fills matching fields',
+      'Unknown / creative / sensitive fields ask you — never guessed',
+      'Hard rule: never auto-submit, the submit button is always yours',
+      'Comparison table for review; private info kept external, never committed',
+      'Python stdlib + agent-browser (CDP); can use the table alone to copy-paste',
+    ],
+    tech: ['Python', 'agent-browser (CDP)', 'Feishu Forms', 'Bash/PowerShell', 'WorkBuddy Skill'],
+    url: 'https://github.com/Zaosusu/form-autofill-skill',
+    stars: 0,
+    icon: <ClipboardList className="w-6 h-6" />,
   },
 ];
 
