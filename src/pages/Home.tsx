@@ -5,6 +5,7 @@ import { Footer } from '../sections/Footer';
 import { useEffect, type ReactNode } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { resolveStars } from '../lib/resolveStars';
 
 type Translation = {
   heroTitle: string;
@@ -752,7 +753,10 @@ export function Home() {
           <SectionHeading numeral="IV" className="mb-2">{c.skillsTitle}</SectionHeading>
           <p className="font-noto text-sm text-text-secondary mb-8">{c.skillsDesc}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-stagger>
-            {[...c.skills].sort((a, b) => b.stars - a.stars).map((s, i) => (
+            {[...c.skills]
+              .map((s) => ({ ...s, stars: resolveStars(s.url, s.stars) }))
+              .sort((a, b) => b.stars - a.stars)
+              .map((s, i) => (
               <Link
                 key={i}
                 to="/library-of-babel"

@@ -5,6 +5,7 @@ import { Footer } from '../sections/Footer';
 import { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { resolveStars } from '../lib/resolveStars';
 
 type SkillDetail = {
   name: string;
@@ -279,7 +280,9 @@ export function LibraryOfBabel() {
   const { lang } = useLang();
   const c = t[lang];
 
-  const sortedSkills = [...skillsData].sort((a, b) => b.stars - a.stars);
+  const sortedSkills = skillsData
+    .map((s) => ({ ...s, stars: resolveStars(s.url, s.stars) }))
+    .sort((a, b) => b.stars - a.stars);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);

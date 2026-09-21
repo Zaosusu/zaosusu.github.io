@@ -33,6 +33,11 @@ jobs:
       
       - name: Build
         run: npm run build
+        env:
+          # 平台自动注入的临时凭证，仓库里无需配置任何 secret，job 结束即失效。
+          # 作用仅是把 GitHub API 的匿名限流（60 次/小时）提到 5000 次/小时；
+          # 即使这里不传，构建也会匿名拉取并在失败时沿用旧值，不会中断。
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       - name: SPA fallback
         run: cp dist/index.html dist/404.html

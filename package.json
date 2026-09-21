@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/fetch-stars.mjs",
     "build": "tsc -b && vite build",
+    "sync-stars": "node scripts/fetch-stars.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
