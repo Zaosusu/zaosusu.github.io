@@ -69,12 +69,6 @@ const t = {
       { icon: 'smartphone', title: 'Android Flutter 客户端', desc: '完全独立运行的 Flutter 原生 App。用户自配 API Key 直连模型，本地 CRAG 记忆 + 加密备份 + 指纹锁。无服务器依赖。', tag: '私有', repo: '' },
       { icon: 'server', title: '授权网关后端', desc: 'Node.js · 账号注册/登录 · 授权码管理 · 额度计量 · 模型中转(chat/image/TTS/voice) · 管理后台 · 审计日志。API Key 服务端隔离，前端不暴露。', tag: '私有', repo: '' },
     ],
-    pluginsTitle: '插件与工具',
-    pluginsDesc: '产品周边的开源工具，降低用户换平台成本并增强豆包体验。',
-    plugins: [
-      { icon: 'plug', title: 'Better Doubao — 豆包增强插件', desc: 'Chrome & Edge 浏览器扩展（Manifest V3）。五大功能：消息快速定位（导航+书签）、对话文件夹管理（彩色标签+拖拽）、语料板（跨对话文本片段采集）、导出（PDF/TXT/Markdown）、LaTeX 公式下载。已上架 Edge 插件商店。MIT 开源。', tag: '开源', repo: 'https://github.com/Zaosusu/Better_Doubao' },
-
-    ],
     agentTitle: 'Agent 编排',
     agentDesc: '后端统一编排入口 orchestrateCompanionTurn()，每个聊天回合由 8 个独立 Agent 协作完成：',
     agents: [
@@ -136,7 +130,6 @@ const t = {
     email: 'qinqiao2014@gmail.com',
     repoLinks: [
       { title: '开源客户端仓库', url: 'https://github.com/Zaosusu/virtual-companion-agent' },
-      { title: '豆包迁移插件', url: 'https://github.com/Zaosusu/Better_Doubao' },
     ],
   },
   en: {
@@ -204,12 +197,6 @@ const t = {
       { icon: 'smartphone', title: 'Android Flutter Client', desc: 'Fully standalone Flutter native app. User configures own API Key, direct model connection. Local CRAG memory + encrypted backup + biometric lock. No server dependency.', tag: 'Private', repo: '' },
       { icon: 'server', title: 'License Gateway Backend', desc: 'Node.js · Account registration/login · License code management · Quota metering · Model relay (chat/image/TTS/voice) · Admin dashboard · Audit logs. API Key isolated on server side.', tag: 'Private', repo: '' },
     ],
-    pluginsTitle: 'Plugins & Tools',
-    pluginsDesc: 'Open-source tools around the product: lowering switching cost and enhancing Doubao experience.',
-    plugins: [
-      { icon: 'plug', title: 'Better Doubao — Doubao Enhancement Plugin', desc: 'Chrome & Edge browser extension (Manifest V3). 5 features: Quick Locator (message navigation + bookmarks), Folder Manager (colored tags + drag-drop), Corpus Board (cross-conversation text snippets), Export (PDF/TXT/Markdown), LaTeX Downloader. Published on Edge Add-ons store. MIT license.', tag: 'Open Source', repo: 'https://github.com/Zaosusu/Better_Doubao' },
-
-    ],
     agentTitle: 'Agent Orchestration',
     agentDesc: 'Backend unified orchestration entry orchestrateCompanionTurn(). Every chat turn is completed by 8 independent agents:',
     agents: [
@@ -271,7 +258,6 @@ const t = {
     email: 'qinqiao2014@gmail.com',
     repoLinks: [
       { title: 'Open Source Client', url: 'https://github.com/Zaosusu/virtual-companion-agent' },
-      { title: 'Doubao Migration Plugin', url: 'https://github.com/Zaosusu/Better_Doubao' },
     ],
   },
 };
@@ -538,29 +524,6 @@ export function TwoLinkProject() {
                   <p className="font-noto text-sm text-text-secondary leading-relaxed">{client.desc}</p>
                   {client.repo && (
                     <a href={client.repo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 mt-3 text-xs text-[#0f8b8d] hover:text-[#096466] transition-colors">
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      <span className="font-noto">GitHub</span>
-                    </a>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Plugins & Tools */}
-          <div className="mb-12">
-            <h3 className="font-noto font-bold text-xl text-text-primary mb-3">{c.pluginsTitle}</h3>
-            <p className="font-noto text-sm text-text-secondary leading-relaxed mb-6">{c.pluginsDesc}</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {c.plugins.map((plugin, i) => (
-                <div key={i} className="p-5 border border-[#0f8b8d]/30 rounded bg-bg-primary hover:border-[#0f8b8d] transition-colors">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="inline-block px-2 py-0.5 rounded text-xs font-noto bg-[#0f8b8d]/10 text-[#0f8b8d] border border-[#0f8b8d]/30">{plugin.tag}</span>
-                    <h4 className="font-noto font-bold text-base text-text-primary">{plugin.title}</h4>
-                  </div>
-                  <p className="font-noto text-sm text-text-secondary leading-relaxed">{plugin.desc}</p>
-                  {plugin.repo && (
-                    <a href={plugin.repo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 mt-3 text-xs text-[#0f8b8d] hover:text-[#096466] transition-colors">
                       <ExternalLink className="w-3.5 h-3.5" />
                       <span className="font-noto">GitHub</span>
                     </a>
