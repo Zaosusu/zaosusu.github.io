@@ -11,6 +11,7 @@ type Translation = {
   heroSubtitle: string;
   heroDesc: string;
   heroCta: string;
+  heroEpigraph: string;
   currentTitle: string;
   keywordIntro: string;
   keywordQuote: string;
@@ -66,6 +67,7 @@ const t: Record<'zh' | 'en', Translation> = {
     heroSubtitle: '独立AI研究者 · 开源实践者',
     heroDesc: '15年商业历练后转型技术，相信"不依赖人"的系统才是未来。',
     heroCta: '查看项目',
+    heroEpigraph: '「我总想象，天堂应是图书馆的模样。」 —— 博尔赫斯',
     currentTitle: '我是谁',
     keywordIntro: '极客 · 独立AI研究者 · 开源实践者。15年商业历练后转型技术，相信"不依赖人的系统"才是未来。',
     keywordQuote: '"我才知道原来我一直在找身份认同，现在找到了。" — 2026',
@@ -195,6 +197,7 @@ const t: Record<'zh' | 'en', Translation> = {
     heroSubtitle: 'Independent AI Researcher · Open Source Practitioner',
     heroDesc: '15 years in business before pivoting to tech. Believing systems that don\'t depend on people are the future.',
     heroCta: 'View Projects',
+    heroEpigraph: '"I have always imagined that Paradise will be a kind of library." — Borges',
     currentTitle: 'Who I Am',
     keywordIntro: 'Geek · Independent AI Researcher · Open Source Practitioner. 15 years in business before pivoting to tech. Believing systems that don\'t depend on people are the future.',
     keywordQuote: '"I finally realized I\'ve been searching for my identity all along. Now I\'ve found it." — 2026',
@@ -344,25 +347,47 @@ export function Home() {
       );
     });
 
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion) {
+      gsap.utils.toArray<HTMLElement>('[data-stagger]').forEach((container) => {
+        const items = Array.from(container.children);
+        gsap.fromTo(
+          items,
+          { y: 36, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            ease: 'power2.out',
+            stagger: 0.09,
+            scrollTrigger: { trigger: container, start: 'top 84%', once: true },
+          }
+        );
+      });
+    }
+
     return () => {
       ScrollTrigger.getAll().forEach((st) => st.kill());
     };
   }, []);
 
   return (
-    <div className="min-h-screen bg-bg-primary pt-14">
+    <div className="min-h-screen bg-[#080B10]/80 pt-16 md:pt-20">
       {/* Hero */}
-      <section className="relative min-h-[86vh] flex items-center overflow-hidden px-5">
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden px-5">
         <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(67,120,116,0.18),transparent_34%),linear-gradient(180deg,rgba(244,241,232,0.04),transparent_46%)]" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#6cbcb2]/50 to-transparent" />
         <div className="relative max-w-content w-full mx-auto grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center animate-rise-in">
           <div>
+            <p className="font-serif-lit italic text-sm text-text-muted mb-6 leading-relaxed">
+              {c.heroEpigraph}
+            </p>
             <div className="inline-flex items-center gap-2 rounded border border-[#6cbcb2]/30 bg-[#6cbcb2]/10 px-3 py-1.5 text-xs text-[#9bd8cf] mb-7">
               <Sparkles className="w-3.5 h-3.5" />
               <span className="font-noto">{c.heroSubtitle}</span>
             </div>
             <div className="flex items-center gap-5 mb-5">
-              <h1 className="font-inter font-bold text-5xl md:text-7xl text-text-primary tracking-tight">
+              <h1 className="font-serif-lit font-bold text-6xl md:text-8xl text-text-primary tracking-tight leading-[1.05]">
                 {c.heroTitle}
               </h1>
               <img
@@ -516,7 +541,7 @@ export function Home() {
       </section>
 
       {/* About */}
-      <section data-animate className="bg-bg-secondary py-16 md:py-24 px-5">
+      <section data-animate className="bg-[#101720]/80 py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-8">{c.aboutTitle}</h2>
           <div className="font-noto text-base text-text-primary leading-relaxed space-y-6 border-l border-border-custom pl-6">
@@ -533,7 +558,7 @@ export function Home() {
           <p className="font-noto text-sm text-text-secondary mb-8">{c.threadDesc}</p>
 
           {/* Standalone projects — 2×2 grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6" data-stagger>
             {/* OGCP Card */}
             <Link
               to="/projects/ogcp"
@@ -634,7 +659,7 @@ export function Home() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6" data-stagger>
             {/* Infinite Academy Card */}
             <Link
               to="/projects/infinite-academy"
@@ -700,11 +725,11 @@ export function Home() {
       </section>
 
       {/* 巴别图书馆 · 开源 Skill 集合 */}
-      <section data-animate className="bg-bg-primary pt-16 md:pt-24 pb-10 md:pb-14 px-5">
+      <section data-animate className="bg-[#080B10]/80 pt-16 md:pt-24 pb-10 md:pb-14 px-5">
         <div className="max-w-content mx-auto">
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-2">{c.skillsTitle}</h2>
           <p className="font-noto text-sm text-text-secondary mb-8">{c.skillsDesc}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-stagger>
             {[...c.skills].sort((a, b) => b.stars - a.stars).map((s, i) => (
               <Link
                 key={i}
@@ -737,7 +762,7 @@ export function Home() {
       </section>
 
       {/* Contact */}
-      <section data-animate className="bg-bg-primary pt-10 md:pt-14 pb-16 md:pb-24 px-5">
+      <section data-animate className="bg-[#080B10]/80 pt-10 md:pt-14 pb-16 md:pb-24 px-5">
         <div className="max-w-content mx-auto text-center">
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-6">{c.contactTitle}</h2>
           <p className="font-noto text-base text-text-secondary mb-8">{c.contactDesc}</p>

@@ -49,6 +49,7 @@ module.exports = {
       fontFamily: {
         'inter': ['Inter', 'sans-serif'],
         'noto': ['Noto Sans SC', 'sans-serif'],
+        'serif-lit': ['"Playfair Display"', '"Noto Serif SC"', 'serif'],
       },
       maxWidth: {
         'content': '1080px',

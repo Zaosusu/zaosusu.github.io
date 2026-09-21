@@ -15,6 +15,8 @@ import { useEffect } from 'react';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { StarfieldBackground } from './components/StarfieldBackground';
+import { ScrollProgress } from './components/ScrollProgress';
 
 function App() {
   useEffect(() => {
@@ -46,7 +48,9 @@ function App() {
   return (
     <HashRouter>
       <LangProvider>
-        <div className="min-h-screen bg-bg-primary">
+        <StarfieldBackground />
+        <ScrollProgress />
+        <div className="relative z-10 min-h-screen">
           <ScrollToTop />
           <Navbar />
           <Routes>
