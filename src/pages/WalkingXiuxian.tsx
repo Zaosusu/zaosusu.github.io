@@ -235,7 +235,7 @@ export function WalkingXiuxian() {
             alt="WalkingXiuxian Logo"
             className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 rounded-2xl object-cover"
           />
-          <h1 className="font-inter font-bold text-4xl md:text-6xl text-text-primary tracking-tight mb-3">
+          <h1 className="font-serif-lit font-bold text-4xl md:text-6xl text-text-primary tracking-tight mb-3">
             {c.heroTitle}
           </h1>
           <p className="font-inter text-lg text-text-secondary mb-4">{c.heroSubtitle}</p>

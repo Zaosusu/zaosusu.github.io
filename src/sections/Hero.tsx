@@ -24,7 +24,7 @@ export function Hero() {
     <section className="relative min-h-screen flex flex-col items-center justify-center bg-bg-primary px-5 overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(108,188,178,0.16),transparent_36%),linear-gradient(180deg,rgba(244,241,232,0.05),transparent_50%)]" />
       <div className="relative max-w-content w-full text-center animate-rise-in">
-        <h1 className="font-inter font-bold text-4xl md:text-6xl text-text-primary tracking-tight mb-5">
+        <h1 className="font-serif-lit font-bold text-4xl md:text-6xl text-text-primary tracking-tight mb-5">
           OpenGuitarChordProject
         </h1>
         <p className="font-noto text-lg md:text-xl text-text-secondary mb-3">

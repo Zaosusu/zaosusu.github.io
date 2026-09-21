@@ -333,7 +333,7 @@ export function TwoLinkProject() {
         <div className="relative max-w-content mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="animate-rise-in">
-              <h1 className="font-inter font-bold text-3xl md:text-5xl text-text-primary tracking-tight mb-3">
+              <h1 className="font-serif-lit font-bold text-3xl md:text-5xl text-text-primary tracking-tight mb-3">
                 {c.heroTitle}
               </h1>
               <p className="font-inter text-lg text-text-secondary mb-4">{c.heroSubtitle}</p>

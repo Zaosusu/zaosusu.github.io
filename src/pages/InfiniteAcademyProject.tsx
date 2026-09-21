@@ -257,7 +257,7 @@ export function InfiniteAcademyProject() {
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-10 items-center">
             <div>
               <p className="font-inter text-sm text-text-muted mb-3">{c.subtitle}</p>
-              <h1 className="font-noto font-bold text-4xl md:text-6xl text-text-primary tracking-tight mb-5">{c.title}</h1>
+              <h1 className="font-serif-lit font-bold text-4xl md:text-6xl text-text-primary tracking-tight mb-5">{c.title}</h1>
               <p className="font-noto text-sm md:text-base text-text-secondary leading-relaxed mb-6">{c.desc}</p>
               <span className="inline-block px-4 py-1.5 border border-[#6cbcb2]/40 bg-[#6cbcb2]/10 rounded text-xs text-[#9bd8cf]">{c.status}</span>
             </div>

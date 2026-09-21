@@ -1494,7 +1494,7 @@ export function NPCAgentProject() {
       <section className="relative py-12 md:py-24 px-5 overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(108,188,178,0.14),transparent_38%),linear-gradient(180deg,rgba(244,241,232,0.04),transparent_56%)]" />
         <div className="relative max-w-content mx-auto text-center animate-rise-in">
-          <h1 className="font-inter font-bold text-4xl md:text-6xl text-text-primary tracking-tight mb-3">
+          <h1 className="font-serif-lit font-bold text-4xl md:text-6xl text-text-primary tracking-tight mb-3">
             {c.heroTitle}
           </h1>
           <p className="font-inter text-lg text-text-secondary mb-4">

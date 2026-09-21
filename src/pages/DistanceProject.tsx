@@ -245,7 +245,7 @@ export function DistanceProject() {
             </span>
           </div>
 
-          <h1 className="font-inter font-bold text-3xl md:text-5xl text-text-primary mb-3 tracking-tight">
+          <h1 className="font-serif-lit font-bold text-3xl md:text-5xl text-text-primary mb-3 tracking-tight">
             {c.title}
           </h1>
           <p className="font-noto text-lg md:text-xl text-text-secondary mb-4">

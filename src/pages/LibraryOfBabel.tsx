@@ -321,7 +321,7 @@ export function LibraryOfBabel() {
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span className="font-noto">{c.back}</span>
           </Link>
-          <h1 className="font-inter font-bold text-4xl md:text-6xl text-text-primary tracking-tight mb-4">
+          <h1 className="font-serif-lit font-bold text-4xl md:text-6xl text-text-primary tracking-tight mb-4">
             {c.heroTitle}
           </h1>
           <p className="font-inter text-base md:text-lg text-text-secondary italic mb-3">
