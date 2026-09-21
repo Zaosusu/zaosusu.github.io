@@ -5,7 +5,6 @@ import { Navbar } from './components/ui/Navbar';
 import { Home } from './pages/Home';
 import { OGCPProject } from './pages/OGCPProject';
 import { WalkingXiuxian } from './pages/WalkingXiuxian';
-import { XiaohongshuProject } from './pages/XiaohongshuProject';
 import { InfiniteAcademyProject } from './pages/InfiniteAcademyProject';
 import { DuckEscapeProject } from './pages/DuckEscapeProject';
 import { NPCAgentProject } from './pages/NPCAgentProject';
@@ -54,7 +53,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/projects/ogcp" element={<OGCPProject />} />
             <Route path="/projects/walking-xiuxian" element={<WalkingXiuxian />} />
-            <Route path="/projects/xiaohongshu" element={<XiaohongshuProject />} />
             <Route path="/projects/infinite-academy" element={<InfiniteAcademyProject />} />
             <Route path="/projects/duck-escape" element={<DuckEscapeProject />} />
             <Route path="/projects/npc-agent" element={<NPCAgentProject />} />

@@ -33,9 +33,6 @@ type Translation = {
   walkingCardTitle: string;
   walkingCardTag: string;
   walkingCardDesc: string;
-  xhsCardTitle: string;
-  xhsCardTag: string;
-  xhsCardDesc: string;
   academyCardTitle: string;
   academyCardTag: string;
   academyCardDesc: string;
@@ -141,9 +138,6 @@ const t: Record<'zh' | 'en', Translation> = {
     walkingCardTitle: '走路修仙',
     walkingCardTag: '跨端App',
     walkingCardDesc: '将真实步数转化为修仙修为的跨端App。Flutter + FastAPI，21阶境界系统，Android 真机计步验证通过。',
-    xhsCardTitle: '小红书自动邀约系统',
-    xhsCardTag: '自动化工具',
-    xhsCardDesc: '面向品牌投放的达人采集、筛选、分析与批量邀约工具。FastAPI + Playwright + SQLAlchemy。',
     academyCardTitle: '无限学园',
     academyCardTag: '原型探索',
     academyCardDesc: 'Godot 4 视觉小说/养成原型。探索编辑器 + AIGC 管线驱动的开发模式，React 剧情编辑器让叙事内容可配置、可迭代，验证了一条不靠硬编码的内容生产路径。',
@@ -272,9 +266,6 @@ const t: Record<'zh' | 'en', Translation> = {
     walkingCardTitle: 'WalkingXiuxian',
     walkingCardTag: 'Cross-platform App',
     walkingCardDesc: 'Turn real-world steps into cultivation power. Cross-platform Flutter App + FastAPI backend. 21-realm system. Verified on Android devices.',
-    xhsCardTitle: 'Xiaohongshu Auto-Invite System',
-    xhsCardTag: 'Automation Tool',
-    xhsCardDesc: 'Creator discovery, filtering, analytics, and batch invitation tool for brand campaigns. FastAPI + Playwright + SQLAlchemy.',
     academyCardTitle: 'Infinite Academy',
     academyCardTag: 'Prototype',
     academyCardDesc: 'Godot 4 visual novel / simulation prototype. Exploring an editor + AIGC pipeline-driven development mode. React story editor makes narrative content configurable and iterable, validating a non-hardcoded content production path.',
@@ -541,8 +532,8 @@ export function Home() {
           <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-2">{c.projectsTitle}</h2>
           <p className="font-noto text-sm text-text-secondary mb-8">{c.threadDesc}</p>
 
-          {/* Evolution thread line — aligned with the three evolution cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Standalone projects — 2×2 grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* OGCP Card */}
             <Link
               to="/projects/ogcp"
@@ -556,6 +547,26 @@ export function Home() {
               </h3>
               <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
                 {c.ogcpCardDesc}
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
+                <span className="font-noto">查看详情</span>
+                <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+
+            {/* 2link Card — moved up */}
+            <Link
+              to="/projects/2link"
+              className="group block min-h-[220px] p-6 border border-[#0f8b8d]/30 rounded bg-bg-primary hover:border-[#0f8b8d] hover:-translate-y-1 transition-all duration-200"
+            >
+              <span className="inline-block px-2 py-0.5 rounded text-xs font-noto mb-2 bg-[#0f8b8d]/10 text-[#0f8b8d] border border-[#0f8b8d]/30">
+                {c.twoLinkCardTag}
+              </span>
+              <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
+                {c.twoLinkCardTitle}
+              </h3>
+              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
+                {c.twoLinkCardDesc}
               </p>
               <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
                 <span className="font-noto">查看详情</span>
@@ -583,19 +594,19 @@ export function Home() {
               </span>
             </Link>
 
-            {/* Xiaohongshu Card */}
+            {/* distance Card — moved up */}
             <Link
-              to="/projects/xiaohongshu"
-              className="group block min-h-[220px] p-6 border border-border-custom rounded bg-bg-primary hover:border-[#6cbcb2] hover:-translate-y-1 transition-all duration-200"
+              to="/projects/distance"
+              className="group block min-h-[220px] p-6 border border-[#e9818d]/30 rounded bg-bg-primary hover:border-[#e9818d] hover:-translate-y-1 transition-all duration-200"
             >
-              <span className="inline-block px-2 py-0.5 rounded text-xs font-noto mb-2 bg-[#e76f51]/10 text-[#e76f51] border border-[#e76f51]/30">
-                {c.xhsCardTag}
+              <span className="inline-block px-2 py-0.5 rounded text-xs font-noto mb-2 bg-[#e9818d]/10 text-[#e9818d] border border-[#e9818d]/30">
+                {c.distanceCardTag}
               </span>
               <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
-                {c.xhsCardTitle}
+                {c.distanceCardTitle}
               </h3>
               <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
-                {c.xhsCardDesc}
+                {c.distanceCardDesc}
               </p>
               <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
                 <span className="font-noto">查看详情</span>
@@ -685,48 +696,6 @@ export function Home() {
             </Link>
           </div>
 
-          {/* 2link + distance — new row */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-            {/* 2link Card */}
-            <Link
-              to="/projects/2link"
-              className="group block min-h-[220px] p-6 border border-[#0f8b8d]/30 rounded bg-bg-primary hover:border-[#0f8b8d] hover:-translate-y-1 transition-all duration-200"
-            >
-              <span className="inline-block px-2 py-0.5 rounded text-xs font-noto mb-2 bg-[#0f8b8d]/10 text-[#0f8b8d] border border-[#0f8b8d]/30">
-                {c.twoLinkCardTag}
-              </span>
-              <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
-                {c.twoLinkCardTitle}
-              </h3>
-              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
-                {c.twoLinkCardDesc}
-              </p>
-              <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
-                <span className="font-noto">查看详情</span>
-                <ArrowRight className="w-3 h-3" />
-              </span>
-            </Link>
-
-            {/* distance Card */}
-            <Link
-              to="/projects/distance"
-              className="group block min-h-[220px] p-6 border border-[#e9818d]/30 rounded bg-bg-primary hover:border-[#e9818d] hover:-translate-y-1 transition-all duration-200"
-            >
-              <span className="inline-block px-2 py-0.5 rounded text-xs font-noto mb-2 bg-[#e9818d]/10 text-[#e9818d] border border-[#e9818d]/30">
-                {c.distanceCardTag}
-              </span>
-              <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
-                {c.distanceCardTitle}
-              </h3>
-              <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
-                {c.distanceCardDesc}
-              </p>
-              <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
-                <span className="font-noto">查看详情</span>
-                <ArrowRight className="w-3 h-3" />
-              </span>
-            </Link>
-          </div>
         </div>
       </section>
 

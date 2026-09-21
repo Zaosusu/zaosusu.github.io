@@ -10,7 +10,6 @@ const navt = {
     library: 'Skill',
     ogcp: 'OGCP',
     walking: '走路修仙',
-    xhs: '小红书自动邀约系统',
     academy: '无限学园',
     duck: '逃鸭南京',
     npc: '互动叙事多智能体框架',
@@ -23,7 +22,6 @@ const navt = {
     library: 'Skill',
     ogcp: 'OGCP',
     walking: 'WalkingXiuxian',
-    xhs: 'XHS Auto-Invite',
     academy: 'Infinite Academy',
     duck: 'Duck Escape',
     npc: 'Interactive Fiction Multi-Agent Framework',
@@ -35,7 +33,6 @@ const navt = {
 const projectLinks = [
   { path: '/projects/ogcp', key: 'ogcp' as const },
   { path: '/projects/walking-xiuxian', key: 'walking' as const },
-  { path: '/projects/xiaohongshu', key: 'xhs' as const },
   { path: '/projects/infinite-academy', key: 'academy' as const },
   { path: '/projects/duck-escape', key: 'duck' as const },
   { path: '/projects/npc-agent', key: 'npc' as const },
