@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Github, Mail, ExternalLink, ArrowRight, Sparkles } from 'lucide-react';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
-import { useEffect } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -322,6 +322,26 @@ const t: Record<'zh' | 'en', Translation> = {
   },
 };
 
+/** 章节标题：衬线体 + 罗马数字章节号，营造「翻书」的叙事感 */
+function SectionHeading({
+  numeral,
+  children,
+  className = '',
+}: {
+  numeral: string;
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <h2 className={`font-serif-lit font-bold text-2xl md:text-3xl text-text-primary flex items-baseline gap-3 ${className}`}>
+      <span className="text-[#6cbcb2]/60 text-xl md:text-2xl font-normal tabular-nums shrink-0" aria-hidden="true">
+        {numeral}
+      </span>
+      <span>{children}</span>
+    </h2>
+  );
+}
+
 export function Home() {
   const { lang } = useLang();
   const c = t[lang];
@@ -332,12 +352,13 @@ export function Home() {
     const sections = gsap.utils.toArray<HTMLElement>('[data-animate]');
     sections.forEach((section) => {
       gsap.fromTo(section,
-        { y: 60, opacity: 0 },
+        { y: 72, opacity: 0, scale: 0.985 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.9,
-          ease: 'power2.out',
+          scale: 1,
+          duration: 1.05,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: section,
             start: 'top 85%',
@@ -353,13 +374,14 @@ export function Home() {
         const items = Array.from(container.children);
         gsap.fromTo(
           items,
-          { y: 36, opacity: 0 },
+          { y: 48, opacity: 0, scale: 0.96 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.7,
-            ease: 'power2.out',
-            stagger: 0.09,
+            scale: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+            stagger: 0.1,
             scrollTrigger: { trigger: container, start: 'top 84%', once: true },
           }
         );
@@ -372,14 +394,14 @@ export function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#080B10]/80 pt-16 md:pt-20">
+    <div className="min-h-screen pt-16 md:pt-20">
       {/* Hero */}
       <section className="relative min-h-[92vh] flex items-center overflow-hidden px-5">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(67,120,116,0.18),transparent_34%),linear-gradient(180deg,rgba(244,241,232,0.04),transparent_46%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(58%_48%_at_26%_34%,rgba(108,188,178,0.16),transparent_70%),linear-gradient(135deg,rgba(67,120,116,0.16),transparent_38%),linear-gradient(180deg,rgba(244,241,232,0.04),transparent_46%)]" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#6cbcb2]/50 to-transparent" />
         <div className="relative max-w-content w-full mx-auto grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center animate-rise-in">
           <div>
-            <p className="font-serif-lit italic text-sm text-text-muted mb-6 leading-relaxed">
+            <p className="font-serif-lit italic text-base md:text-lg text-text-secondary/90 mb-7 leading-relaxed border-l-2 border-[#6cbcb2]/40 pl-4 max-w-xl">
               {c.heroEpigraph}
             </p>
             <div className="inline-flex items-center gap-2 rounded border border-[#6cbcb2]/30 bg-[#6cbcb2]/10 px-3 py-1.5 text-xs text-[#9bd8cf] mb-7">
@@ -387,7 +409,7 @@ export function Home() {
               <span className="font-noto">{c.heroSubtitle}</span>
             </div>
             <div className="flex items-center gap-5 mb-5">
-              <h1 className="font-serif-lit font-bold text-6xl md:text-8xl text-text-primary tracking-tight leading-[1.05]">
+              <h1 className="font-serif-lit font-bold text-7xl md:text-9xl text-text-primary leading-[1.02] [text-shadow:0_0_60px_rgba(108,188,178,0.30)]">
                 {c.heroTitle}
               </h1>
               <img
@@ -464,7 +486,7 @@ export function Home() {
           </div>
           <div className="relative flex flex-col">
             <div className="flex items-center justify-between gap-4 mb-5">
-              <h2 className="font-noto font-bold text-lg text-text-primary">{c.currentTitle}</h2>
+              <h2 className="font-serif-lit font-bold text-xl text-text-primary">{c.currentTitle}</h2>
               <span className="h-px flex-1 bg-gradient-to-r from-[#6cbcb2]/60 to-transparent" />
             </div>
 
@@ -517,9 +539,9 @@ export function Home() {
       </section>
 
       {/* Timeline */}
-      <section data-animate className="bg-bg-primary py-16 md:py-24 px-5">
+      <section data-animate className="bg-bg-primary/70 py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
-          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-10">{c.timelineTitle}</h2>
+          <SectionHeading numeral="I" className="mb-10">{c.timelineTitle}</SectionHeading>
           <div className="relative rounded border border-border-custom bg-bg-secondary/70 p-5 md:p-8">
             <div className="absolute left-5 md:left-9 top-8 bottom-8 w-px bg-gradient-to-b from-[#6cbcb2] via-border-custom to-transparent" />
             <div className="space-y-8">
@@ -541,9 +563,9 @@ export function Home() {
       </section>
 
       {/* About */}
-      <section data-animate className="bg-[#101720]/80 py-16 md:py-24 px-5">
+      <section data-animate className="bg-[#101720]/70 py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
-          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-8">{c.aboutTitle}</h2>
+          <SectionHeading numeral="II" className="mb-8">{c.aboutTitle}</SectionHeading>
           <div className="font-noto text-base text-text-primary leading-relaxed space-y-6 border-l border-border-custom pl-6">
             <p dangerouslySetInnerHTML={{ __html: c.aboutIntro.replace(/\n/g, '<br/>') }} />
             <p className="text-text-secondary">{c.aboutGoal}</p>
@@ -552,9 +574,9 @@ export function Home() {
       </section>
 
       {/* Projects */}
-      <section id="projects" data-animate className="bg-bg-secondary py-16 md:py-24 px-5">
+      <section id="projects" data-animate className="bg-bg-secondary/70 py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
-          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-2">{c.projectsTitle}</h2>
+          <SectionHeading numeral="III" className="mb-2">{c.projectsTitle}</SectionHeading>
           <p className="font-noto text-sm text-text-secondary mb-8">{c.threadDesc}</p>
 
           {/* Standalone projects — 2×2 grid */}
@@ -725,9 +747,9 @@ export function Home() {
       </section>
 
       {/* 巴别图书馆 · 开源 Skill 集合 */}
-      <section data-animate className="bg-[#080B10]/80 pt-16 md:pt-24 pb-10 md:pb-14 px-5">
+      <section data-animate className="bg-[#080B10]/70 pt-16 md:pt-24 pb-10 md:pb-14 px-5">
         <div className="max-w-content mx-auto">
-          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-2">{c.skillsTitle}</h2>
+          <SectionHeading numeral="IV" className="mb-2">{c.skillsTitle}</SectionHeading>
           <p className="font-noto text-sm text-text-secondary mb-8">{c.skillsDesc}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-stagger>
             {[...c.skills].sort((a, b) => b.stars - a.stars).map((s, i) => (
@@ -762,9 +784,9 @@ export function Home() {
       </section>
 
       {/* Contact */}
-      <section data-animate className="bg-[#080B10]/80 pt-10 md:pt-14 pb-16 md:pb-24 px-5">
+      <section data-animate className="bg-[#080B10]/70 pt-10 md:pt-14 pb-16 md:pb-24 px-5">
         <div className="max-w-content mx-auto text-center">
-          <h2 className="font-noto font-bold text-2xl md:text-3xl text-text-primary mb-6">{c.contactTitle}</h2>
+          <SectionHeading numeral="V" className="mb-6 justify-center">{c.contactTitle}</SectionHeading>
           <p className="font-noto text-base text-text-secondary mb-8">{c.contactDesc}</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <a href={`mailto:${c.email}`} className="inline-flex items-center gap-2 text-text-primary hover:text-text-secondary transition-colors duration-200 group">
